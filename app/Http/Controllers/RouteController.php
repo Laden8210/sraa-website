@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
+use App\Utils\AccommodationManager;
 use Illuminate\Http\Request;
 
 class RouteController extends Controller
@@ -27,8 +28,20 @@ class RouteController extends Controller
         return view('user.student');
     }
 
+    public function user(){
+        return view('user.users');
+    }
+
     public function attendance(){
         return view('user.attendance');
+    }
+
+    public function register(){
+        $manager = new AccommodationManager();
+        $divisions = $manager->getDivisions();
+        $events = $manager->getEvents();
+
+        return view('registration', compact('divisions', 'events'));
     }
 
 }
