@@ -7,6 +7,7 @@ use App\Http\Controllers\StudentController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\CoachController;
 use App\Http\Controllers\QRController;
+use Illuminate\Support\Facades\Auth;
 
 Route::get('', [RouteController::class, 'index'])->name('welcome');
 Route::get('register', [RouteController::class, 'register'])->name('register');
@@ -35,5 +36,10 @@ Route::middleware(['check.role:admin'])->group(function () {
     Route::post('save-coach-excel', [CoachController::class, 'createFromExcel'])->name('save-coach-excel');
     
     Route::post('/generate-qr-code', [QRController::class, 'generateQrCode'])->name('generate-qr-code');
+
+    Route::get('logout', function() {
+        Auth::logout();
+        return view('welcome');
+    })->name('logout');
 });
 

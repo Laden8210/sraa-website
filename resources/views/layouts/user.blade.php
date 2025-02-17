@@ -100,7 +100,7 @@
                         <i class="fas fa-bars"></i>
                     </a>
                     <ul class="dropdown-menu p-2 shadow mt-2">
-                        <li><a href="#" class="dropdown-item text-dark">Log out</a></li>
+                        <li><a href="logout" class="dropdown-item text-dark">Log out</a></li>
                     </ul>
                 </div>
             </div>
