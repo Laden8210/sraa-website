@@ -19,7 +19,7 @@ Route::middleware(['check.role:admin'])->group(function () {
     Route::get('dashboard', [RouteController::class, 'dashboard'])->name('dashboard');
     Route::get('qr-code', [QRController::class, 'show'])->name('qr-code');
     Route::get('faculty', [CoachController::class, 'show'])->name('faculty');
-    Route::get('users', [UserController::class, 'showUsers'])->name('users');
+    Route::get('users', [UserController::class, 'showUsers'])->name('users');   
     Route::get('student', [StudentController::class, 'show'])->name('student');
     Route::get('attendance', [RouteController::class, 'attendance'])->name('attendance');
     

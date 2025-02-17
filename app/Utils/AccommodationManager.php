@@ -18,6 +18,7 @@ class AccommodationManager
         'Marbel 8 ES',
         'Marbel 1 CES',
         'KCES 1',
+        'Main HQ',
     ];
 
     private $divisions = [
@@ -28,7 +29,8 @@ class AccommodationManager
         'Saranggani',
         'South Cotabato',
         'Sultan Kudarat',
-        'Tacurong City'
+        'Tacurong City', 
+        'Main HQ',
     ];
 
     private $events = [

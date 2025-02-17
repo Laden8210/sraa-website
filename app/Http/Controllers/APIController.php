@@ -7,14 +7,28 @@ use Illuminate\Http\Request;
 
 class APIController extends Controller
 {
-    public function fetchAttendance(Request $request){
+    public function recordAttendance(Request $request){
+
+        $attendanceData = $request->input('attendance');
+        
+        // Here you would typically save the attendance data to the database
+        // For example:
+        // Attendance::create($attendanceData);
+
+        return response()->json([
+            'status' => 'success',
+            'message' => 'Attendance recorded successfully',
+            'data' => $attendanceData
+        ]);
+    }
+    public function login(Request $request){
         return json_encode([
             'status' => 'success',
             'message' => 'Attendance fetched successfully',
             'data' => [
                 'faculty' => [
-                    'name' => 'John Doe',
-                    'attendance' => 'Present'
+                    'user_id' => 'John Doe',
+                    'name' => 'Present'
                 ],
 
             ]

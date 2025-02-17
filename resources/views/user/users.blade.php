@@ -4,17 +4,17 @@
 @section('content')
 
     <section class="container ">
-        <div class="  animate__animated  animate__fadeInDown  animate__delay-1s">
+        <div class="animate__animated animate__fadeInDown animate__delay-1s">
             <h3 class="text-start mt-5">User List</h3>
         </div>
         <div class="row p-2">
 
             <div class="col-12">
-                <div class="card px-2 py-4   animate__animated  animate__fadeIn  animate__delay-1s">
+                <div class="card px-2 py-4 animate__animated animate__fadeIn animate__delay-1s">
 
                     <div class="card-body">
 
-                        <div class="d-flex justify-content-between align-items-center ">
+                        <div class="d-flex justify-content-between align-items-center">
                             <form method="GET" action="{{ route('users') }}" class="mb-3 w-70">
                                 <div class="row g-2">
                                     <div class="col-lg-4 col-md-12">
@@ -29,7 +29,6 @@
                                                     {{ request('billeting_quarter') == $quarter ? 'selected' : '' }}>
                                                     {{ $quarter }}</option>
                                             @endforeach
-
                                         </select>
                                     </div>
                                     <div class="col-lg-1 col-md-12">
@@ -42,29 +41,37 @@
                             <button class="btn btn-primary w-auto" id="add-user">Add User</button>
                         </div>
                         <table class="table">
-                            <thead>
+                            <thead class="border-top pt-3">
                                 <tr>
                                     <th scope="col">#</th>
                                     <th scope="col">Name</th>
+                                    <th scope="col">Username</th>
+                                    <th scope="col">Division</th>
                                     <th scope="col">Billeting Quarter</th>
-                                    <th scope="col">Contact #</th>
+                                    <th scope="col">Role</th>
                                     <th scope="col">Action</th>
                                 </tr>
                             </thead>
                             <tbody>
                                 @if ($users->isEmpty())
                                     <tr>
-                                        <td colspan="5" class="text-center">No data available</td>
+                                        <td colspan="7" class="text-center">No data available</td>
                                     </tr>
                                 @else
                                     @foreach ($users as $index => $user)
                                         <tr>
                                             <td>{{ $users->firstItem() + $index }}</td> <!-- Continuous numbering -->
                                             <td>{{ $user->name }}</td>
+                                            <td>{{ $user->username }}</td>
+                                            <td>{{ $user->division }}</td>
                                             <td>{{ $user->billeting_quarter }}</td>
-                                            <td>{{ $user->mobile_num }}</td>
+                                            <td>{{ $user->role }}</td>
                                             <td>
-                                                <button class="btn btn-primary edit-user" data-id="{{ $user->user_id }}" data-name="{{ $user->name }}" data-quarter="{{ $user->billeting_quarter }}" data-mobile="{{ $user->mobile_num }}">
+                                                <button class="btn btn-primary edit-user" data-id="{{ $user->user_id }}"
+                                                    data-name="{{ $user->name }}" data-username="{{ $user->username }}"
+                                                    data-division="{{ $user->division }}"
+                                                    data-quarter="{{ $user->billeting_quarter }}"
+                                                    data-role="{{ $user->role }}">
                                                     <i class="fa fa-edit"></i>
                                                 </button>
                                             </td>
@@ -101,8 +108,19 @@
                                 <span class="text-danger" id="nameError"></span>
                             </div>
                             <div class="col-lg-12 mb-2">
+                                <label for="division" class="form-label">Division</label>
+                                <select name="division" class="form-select form-control" id="division" required>
+                                    <option value="">Select Division</option>
+                                    @foreach ($divisions as $division)
+                                        <option value="{{ $division }}">{{ $division }}</option>
+                                    @endforeach
+                                </select>
+                                <span class="text-danger" id="divisionError"></span>
+                            </div>
+                            <div class="col-lg-12 mb-2">
                                 <label for="billeting_quarter" class="form-label">Billeting Quarter</label>
-                                <select name="billeting_quarter" class="form-select form-control" id="billeting_quarter" required>
+                                <select name="billeting_quarter" class="form-select form-control" id="billeting_quarter"
+                                    required>
                                     <option value="">Select Billeting Quarter</option>
                                     @foreach ($quarters as $quarter)
                                         <option value="{{ $quarter }}">{{ $quarter }}</option>
@@ -110,20 +128,16 @@
                                 </select>
                                 <span class="text-danger" id="billetingQuarterError"></span>
                             </div>
+                            
                             <div class="col-lg-12 mb-2">
-                                <label for="mobile_num" class="form-label">Contact #</label>
-                                <input type="text" class="form-control" id="mobile_num" name="mobile_num" required>
-                                <span class="text-danger" id="mobileNumError"></span>
-                            </div>
-                            <div class="col-lg-12 password-fields mb-2">
-                                <label for="password" class="form-label">Password</label>
-                                <input type="password" class="form-control" id="password" name="password">
-                                <span class="text-danger" id="passwordError"></span>
-                            </div>
-                            <div class="col-lg-12 password-fields mb-2">
-                                <label for="password_confirmation" class="form-label">Confirm Password</label>
-                                <input type="password" class="form-control" id="password_confirmation" name="password_confirmation">
-                                <span class="text-danger" id="passwordConfirmationError"></span>
+                                <label for="role" class="form-label">Role</label>
+                                <select name="role" class="form-select form-control" id="role" required>
+                                    <option value="">Select Role</option>
+                                    <option value="admin">Admin</option>
+                                    <option value="user">User</option>
+                                    <option value="superintendent">Superintendent</option>
+                                </select>
+                                <span class="text-danger" id="roleError"></span>
                             </div>
                         </div>
                     </form>
@@ -142,25 +156,24 @@
                 $('#UserModal .modal-title').text('Add User');
                 $('#addUserForm')[0].reset();
                 $('#user_id').val('');
-                $('.password-fields').show();
-                $('#password').attr('required', true);
-                $('#password_confirmation').attr('required', true);
             });
 
             $('.edit-user').on('click', function() {
                 var userId = $(this).data('id');
                 var userName = $(this).data('name');
+                var userUsername = $(this).data('username');
+                var userDivision = $(this).data('division');
                 var userQuarter = $(this).data('quarter');
-                var userMobile = $(this).data('mobile');
+                var userRole = $(this).data('role');
 
                 $('#UserModal').modal('show');
                 $('#UserModal .modal-title').text('Edit User');
                 $('#user_id').val(userId);
                 $('#name').val(userName);
+                $('#username').val(userUsername);
+                $('#division').val(userDivision);
                 $('#billeting_quarter').val(userQuarter);
-                $('#mobile_num').val(userMobile);
-                $('#password').removeAttr('required');
-                $('#password_confirmation').removeAttr('required');
+                $('#role').val(userRole).change();
             });
 
             $('#submitUserForm').on('click', function() {
@@ -192,21 +205,21 @@
                             $('#name').addClass('is-invalid');
                             $('#nameError').text(errors.name[0]);
                         }
+                        if (errors.username) {
+                            $('#username').addClass('is-invalid');
+                            $('#usernameError').text(errors.username[0]);
+                        }
+                        if (errors.division) {
+                            $('#division').addClass('is-invalid');
+                            $('#divisionError').text(errors.division[0]);
+                        }
                         if (errors.billeting_quarter) {
                             $('#billeting_quarter').addClass('is-invalid');
                             $('#billetingQuarterError').text(errors.billeting_quarter[0]);
                         }
-                        if (errors.mobile_num) {
-                            $('#mobile_num').addClass('is-invalid');
-                            $('#mobileNumError').text(errors.mobile_num[0]);
-                        }
-                        if (errors.password) {
-                            $('#password').addClass('is-invalid');
-                            $('#passwordError').text(errors.password[0]);
-                        }
-                        if (errors.password_confirmation) {
-                            $('#password_confirmation').addClass('is-invalid');
-                            $('#passwordConfirmationError').text(errors.password_confirmation[0]);
+                        if (errors.role) {
+                            $('#role').addClass('is-invalid');
+                            $('#roleError').text(errors.role[0]);
                         }
                     }
                 });
