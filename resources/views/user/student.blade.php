@@ -48,14 +48,14 @@
                             </div>
                         </div>
                         <table class="table">
-                            <thead>
+                            <thead class="border-top pt-3">
                                 <tr>
                                     <th scope="col">#</th>
                                     <th scope="col">Name</th>
                                     <th scope="col">Division</th>
                                     <th scope="col">School</th>
                                     <th scope="col">Event</th>
-                                    <th scope="col">Contact #</th>
+                                    <th scope="col">Username</th>
                                     <th scope="col">Action</th>
                                 </tr>
                             </thead>
@@ -72,9 +72,9 @@
                                             <td>{{ $student->division }}</td>
                                             <td>{{ $student->school }}</td>
                                             <td>{{ $student->event }}</td>
-                                            <td>{{ $student->mobile_num }}</td>
+                                            <td>{{ $student->username }}</td>
                                             <td>
-                                                <button class="btn btn-primary edit-student" data-id="{{ $student->student_id }}" data-name="{{ $student->name }}" data-division="{{ $student->division }}" data-school="{{ $student->school }}" data-event="{{ $student->event }}" data-mobile="{{ $student->mobile_num }}">
+                                                <button class="btn btn-primary edit-student" data-id="{{ $student->participant_id }}" data-name="{{ $student->name }}" data-division="{{ $student->division }}" data-school="{{ $student->school }}" data-event="{{ $student->event }}" data-mobile="{{ $student->mobile_num }}">
                                                     <i class="fa fa-edit"></i>
                                                 </button>
                                             </td>
@@ -134,21 +134,7 @@
                                 </select>
                                 <span class="text-danger" id="eventError"></span>
                             </div>
-                            <div class="col-lg-12 mb-2">
-                                <label for="mobile_num" class="form-label">Contact #</label>
-                                <input type="text" class="form-control" id="mobile_num" name="mobile_num" required>
-                                <span class="text-danger" id="mobileNumError"></span>
-                            </div>
-                            <div class="col-lg-12 password-fields mb-2">
-                                <label for="password" class="form-label">Password</label>
-                                <input type="password" class="form-control" id="password" name="password">
-                                <span class="text-danger" id="passwordError"></span>
-                            </div>
-                            <div class="col-lg-12 password-fields mb-2">
-                                <label for="password_confirmation" class="form-label">Confirm Password</label>
-                                <input type="password" class="form-control" id="password_confirmation" name="password_confirmation">
-                                <span class="text-danger" id="passwordConfirmationError"></span>
-                            </div>
+                          
                         </div>
                     </form>
                 </div>
@@ -214,9 +200,6 @@
                 $('#StudentModal .modal-title').text('Add Student');
                 $('#addStudentForm')[0].reset();
                 $('#student_id').val('');
-                $('.password-fields').show();
-                $('#password').attr('required', true);
-                $('#password_confirmation').attr('required', true);
             });
 
             $('#upload-excel').on('click', function() {
@@ -230,8 +213,7 @@
                 var studentDivision = $(this).data('division');
                 var studentSchool = $(this).data('school');
                 var studentEvent = $(this).data('event');
-                var studentMobile = $(this).data('mobile');
-
+                console.log(studentId);
                 $('#StudentModal').modal('show');
                 $('#StudentModal .modal-title').text('Edit Student');
                 $('#student_id').val(studentId);
@@ -239,9 +221,6 @@
                 $('#division').val(studentDivision);
                 $('#school').val(studentSchool);
                 $('#event').val(studentEvent);
-                $('#mobile_num').val(studentMobile);
-                $('#password').removeAttr('required');
-                $('#password_confirmation').removeAttr('required');
             });
 
             $('#submitStudentForm').on('click', function() {

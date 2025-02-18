@@ -17,7 +17,7 @@ class CoachController extends Controller
         if ($request->has('search')) {
             $query->where(function ($q) use ($request) {
                 $q->where('name', 'like', '%' . $request->search . '%')
-                  ->orWhere('mobile_num', 'like', '%' . $request->search . '%');
+                  ->orWhere('username', 'like', '%' . $request->search . '%');
             });
         }
 
@@ -36,24 +36,24 @@ class CoachController extends Controller
     public function store(Request $request) {
         $validator = Validator::make($request->all(), [
             'name' => 'required|string|max:255',
-            'mobile_num' => 'required|string|max:255',
             'division' => 'required|string|max:255',
             'school' => 'required|string|max:255',
-            'password' => 'required|string|min:8|confirmed',
         ]);
 
         if ($validator->fails()) {
             return response()->json(['success' => false, 'errors' => $validator->errors()], 422);
         }
+        
+        $username = $this->generateUniqueUsername($request->name, $request->division);
 
         Participant::create([
             'name' => $request->name,
-            'mobile_num' => $request->mobile_num,
+            'username' => $username,
             'division' => $request->division,
             'school' => $request->school,
             'event' => 'N/A',
             'participant_role' => 'coach',
-            'password' => bcrypt($request->password),
+            'password' => bcrypt($username),
             'is_deleted' => false,
         ]);
 
@@ -63,10 +63,8 @@ class CoachController extends Controller
     public function update(Request $request) {
         $validator = Validator::make($request->all(), [
             'name' => 'required|string|max:255',
-            'mobile_num' => 'required|string|max:255|unique:participants,mobile_num,' . $request->participant_id . ',participant_id',
             'division' => 'required|string|max:255',
             'school' => 'required|string|max:255',
-            'password' => 'nullable|string|min:8|confirmed',
         ]);
 
         if ($validator->fails()) {
@@ -80,12 +78,25 @@ class CoachController extends Controller
         }
 
         $coach->name = $request->name;
-        $coach->mobile_num = $request->mobile_num;
         $coach->division = $request->division;
         $coach->school = $request->school;
         $coach->save();
 
         return response()->json(['success' => true]);
+    }
+
+    private function generateUniqueUsername($name, $division)
+    {
+        $baseUsername = strtolower(preg_replace('/\s+/', '', $name)) . '_' . strtolower(str_replace(' ', '', $division));
+        $username = $baseUsername;
+        $counter = 1;
+
+        while (Participant::where('username', $username)->exists()) {
+            $username = $baseUsername . $counter;
+            $counter++;
+        }
+
+        return $username;
     }
 
     public function createFromExcel(Request $request) {
@@ -102,6 +113,7 @@ class CoachController extends Controller
             $coaches = []; // Array to store coach data
             $totalRows = iterator_count($worksheet->getRowIterator()) - 1; // Exclude header row
             $batchSize = ceil($totalRows / 2); // Batch size is half the total number of rows
+            
 
             foreach ($worksheet->getRowIterator(2) as $row) { 
                 $cellIterator = $row->getCellIterator();
@@ -112,14 +124,16 @@ class CoachController extends Controller
                     $data[] = $cell->getValue(); 
                 }
 
+                $username = $this->generateUniqueUsername($data[0], $request->division);
+
                 $coaches[] = [
                     'name' => $data[0] ?? null,
-                    'mobile_num' => $data[1] ?? null,
-                    'school' => $data[2] ?? null,
+                    'username' => $username,
+                    'school' => $data[1] ?? null,
                     'division' => $request->division,
                     'event' => 'N/A',
                     'participant_role' => 'coach',
-                    'password' => bcrypt('defaultpassword'), 
+                    'password' => bcrypt($username), 
                     'is_deleted' => false,
                     'created_at' => now(),
                     'updated_at' => now(),

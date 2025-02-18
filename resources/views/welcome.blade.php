@@ -53,9 +53,9 @@
                             @endif
 
                             <div class="mb-2">
-                                <label for="mobile_num" class="form-label text-black">Mobile Number</label>
-                                <input type="text" class="form-control" id="mobile_num" name="mobile_num"
-                                    placeholder="Enter your mobile number" required>
+                                <label for="username" class="form-label text-black">Username</label>
+                                <input type="text" class="form-control" id="username" name="username"
+                                    placeholder="Enter your username" required>
                             </div>
 
                             <div class="mb-2">
@@ -78,6 +78,4 @@
             </div>
         </div>
     </section>
-
-
 @endsection

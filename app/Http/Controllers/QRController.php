@@ -20,7 +20,7 @@ class QRController extends Controller
         if ($request->has('search')) {
             $query->where(function ($q) use ($request) {
                 $q->where('name', 'like', '%' . $request->search . '%')
-                  ->orWhere('mobile_num', 'like', '%' . $request->search . '%');
+                  ->orWhere('username', 'like', '%' . $request->search . '%');
             });
         }
 
@@ -48,7 +48,7 @@ class QRController extends Controller
         if ($request->has('search')) {
             $query->where(function ($q) use ($request) {
                 $q->where('name', 'like', '%' . $request->search . '%')
-                  ->orWhere('mobile_num', 'like', '%' . $request->search . '%');
+                  ->orWhere('username', 'like', '%' . $request->search . '%');
             });
         }
 

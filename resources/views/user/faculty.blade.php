@@ -39,13 +39,13 @@
                             </div>
                         </div>
                         <table class="table">
-                            <thead>
+                            <thead class="border-top">
                                 <tr>
                                     <th scope="col">#</th>
                                     <th scope="col">Name</th>
                                     <th scope="col">Division</th>
                                     <th scope="col">School</th>
-                                    <th scope="col">Contact #</th>
+                                    <th scope="col">Username</th>
                                     <th scope="col">Action</th>
                                 </tr>
                             </thead>
@@ -61,7 +61,7 @@
                                             <td>{{ $coach->name }}</td>
                                             <td>{{ $coach->division }}</td>
                                             <td>{{ $coach->school }}</td>
-                                            <td>{{ $coach->mobile_num }}</td>
+                                            <td>{{ $coach->username }}</td>
                                             <td>
                                                 <button class="btn btn-primary edit-coach" data-id="{{ $coach->participant_id }}" data-name="{{ $coach->name }}" data-division="{{ $coach->division }}" data-school="{{ $coach->school }}" data-mobile="{{ $coach->mobile_num }}">
                                                     <i class="fa fa-edit"></i>
@@ -113,21 +113,7 @@
                                 <input type="text" class="form-control" id="school" name="school" required>
                                 <span class="text-danger" id="schoolError"></span>
                             </div>
-                            <div class="col-lg-12 mb-2">
-                                <label for="mobile_num" class="form-label">Contact #</label>
-                                <input type="text" class="form-control" id="mobile_num" name="mobile_num" required>
-                                <span class="text-danger" id="mobileNumError"></span>
-                            </div>
-                            <div class="col-lg-12 password-fields mb-2">
-                                <label for="password" class="form-label">Password</label>
-                                <input type="password" class="form-control" id="password" name="password">
-                                <span class="text-danger" id="passwordError"></span>
-                            </div>
-                            <div class="col-lg-12 password-fields mb-2">
-                                <label for="password_confirmation" class="form-label">Confirm Password</label>
-                                <input type="password" class="form-control" id="password_confirmation" name="password_confirmation">
-                                <span class="text-danger" id="passwordConfirmationError"></span>
-                            </div>
+                           
                         </div>
                     </form>
                 </div>
@@ -183,9 +169,6 @@
                 $('#CoachModal .modal-title').text('Add Coach');
                 $('#addCoachForm')[0].reset();
                 $('#participant_id').val('');
-                $('.password-fields').show();
-                $('#password').attr('required', true);
-                $('#password_confirmation').attr('required', true);
             });
 
             $('#upload-excel').on('click', function() {
@@ -198,7 +181,6 @@
                 var coachName = $(this).data('name');
                 var coachDivision = $(this).data('division');
                 var coachSchool = $(this).data('school');
-                var coachMobile = $(this).data('mobile');
 
                 $('#CoachModal').modal('show');
                 $('#CoachModal .modal-title').text('Edit Coach');
@@ -206,9 +188,6 @@
                 $('#name').val(coachName);
                 $('#division').val(coachDivision);
                 $('#school').val(coachSchool);
-                $('#mobile_num').val(coachMobile);
-                $('#password').removeAttr('required');
-                $('#password_confirmation').removeAttr('required');
             });
 
             $('#submitCoachForm').on('click', function() {
@@ -248,18 +227,7 @@
                             $('#school').addClass('is-invalid');
                             $('#schoolError').text(errors.school[0]);
                         }
-                        if (errors.mobile_num) {
-                            $('#mobile_num').addClass('is-invalid');
-                            $('#mobileNumError').text(errors.mobile_num[0]);
-                        }
-                        if (errors.password) {
-                            $('#password').addClass('is-invalid');
-                            $('#passwordError').text(errors.password[0]);
-                        }
-                        if (errors.password_confirmation) {
-                            $('#password_confirmation').addClass('is-invalid');
-                            $('#passwordConfirmationError').text(errors.password_confirmation[0]);
-                        }
+                       
                     }
                 });
             });

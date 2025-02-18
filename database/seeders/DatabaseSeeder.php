@@ -18,9 +18,10 @@ class DatabaseSeeder extends Seeder
 
         User::create([
             'name' => 'Admin User',
-            'mobile_num' => '09956225434',
+            'username' => 'Admin',
             'billeting_quarter' => 'Main HQ',
-            'password' => Hash::make('!Admin123'), 
+            'password' => Hash::make('!Admin123'),
+            'division' => 'Main HQ',
             'role' => 'admin',
             'is_deleted' => false,
         ]);

@@ -16,19 +16,18 @@ class AuthController extends Controller
     {
         // Validate the request data
         $request->validate([
-            'mobile_num' => 'required|string',
+            'username' => 'required|string',
             'password' => 'required|string',
         ]);
 
-        $credentials = $request->only('mobile_num', 'password');
+        $credentials = $request->only('username', 'password');
 
         if (Auth::attempt($credentials)) {
-
             return redirect()->intended('dashboard');
         }
 
         return back()->withErrors([
-            'mobile_num' => 'The provided credentials do not match our records.',
+            'username' => 'The provided credentials do not match our records.',
         ]);
     }
 
