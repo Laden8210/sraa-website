@@ -14,8 +14,9 @@ return new class extends Migration
         Schema::create('users', function (Blueprint $table) {
             $table->id('user_id');
             $table->string('name');
-            $table->string('mobile_num')->unique();
             $table->string('billeting_quarter');
+            $table->string('division');
+            $table->string('username')->unique();
             $table->string('password');
             $table->string('role')->default('user');
             $table->boolean('is_deleted')->default(false);
@@ -26,11 +27,11 @@ return new class extends Migration
         Schema::create('participants', function (Blueprint $table) {
             $table->id('participant_id');
             $table->string('name');
-            $table->string('mobile_num')->nullable();
             $table->string('participant_role');
             $table->string('division');
             $table->string('school');
             $table->string('event');
+            $table->string('username')->unique();
             $table->string('password');
             $table->boolean('is_deleted')->default(false);
             $table->rememberToken();

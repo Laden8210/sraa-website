@@ -19,7 +19,7 @@ class StudentController extends Controller
         if ($request->has('search')) {
             $query->where(function ($q) use ($request) {
                 $q->where('name', 'like', '%' . $request->search . '%')
-                  ->orWhere('mobile_num', 'like', '%' . $request->search . '%');
+                  ->orWhere('username', 'like', '%' . $request->search . '%');
             });
         }
 
@@ -43,53 +43,64 @@ class StudentController extends Controller
     public function create(Request $request) {
         $validator = Validator::make($request->all(), [
             'name' => 'required|string|max:255',
-            'mobile_num' => 'required|string|max:255',
             'division' => 'required|string|max:255',
             'school' => 'required|string|max:255',
             'event' => 'required|string|max:255',
-            'password' => 'required|string|min:8|confirmed',
         ]);
 
         if ($validator->fails()) {
             return response()->json(['success' => false, 'errors' => $validator->errors()], 422);
         }
 
+        $username = $this->generateUniqueUsername($request->name, $request->division);
+
         Participant::create([
             'name' => $request->name,
-            'mobile_num' => $request->mobile_num,
+            'username' => $username,
             'division' => $request->division,
             'school' => $request->school,
             'event' => $request->event,
             'participant_role' => 'student',
-            'password' => bcrypt($request->password),
+            'password' => bcrypt($username),
             'is_deleted' => false,
         ]);
 
         return response()->json(['success' => true]);
     }
 
+    private function generateUniqueUsername($name, $division)
+    {
+        $baseUsername = strtolower(preg_replace('/\s+/', '', $name)) . '_' . strtolower(str_replace(' ', '', $division));
+        $username = $baseUsername;
+        $counter = 1;
+
+        while (Participant::where('username', $username)->exists()) {
+            $username = $baseUsername . $counter;
+            $counter++;
+        }
+
+        return $username;
+    }
+
     public function update(Request $request) {
         $validator = Validator::make($request->all(), [
             'name' => 'required|string|max:255',
-            'mobile_num' => 'required|string|max:255|unique:participants,mobile_num,' . $request->participant_id . ',participant_id',
             'division' => 'required|string|max:255',
             'school' => 'required|string|max:255',
             'event' => 'required|string|max:255',
-            'password' => 'nullable|string|min:8|confirmed',
         ]);
 
         if ($validator->fails()) {
             return response()->json(['success' => false, 'errors' => $validator->errors()], 422);
         }
 
-        $student = Participant::find($request->participant_id);
+        $student = Participant::find($request->student_id);
 
         if (!$student) {
             return response()->json(['success' => false, 'message' => 'Student not found'], 404);
         }
 
         $student->name = $request->name;
-        $student->mobile_num = $request->mobile_num;
         $student->division = $request->division;
         $student->school = $request->school;
         $student->event = $request->event;
@@ -97,8 +108,6 @@ class StudentController extends Controller
 
         return response()->json(['success' => true]);
     }
-
-    
     
     public function createFromExcel(Request $request) {
         $request->validate([
@@ -124,19 +133,18 @@ class StudentController extends Controller
                 foreach ($cellIterator as $cell) {
                     $data[] = $cell->getValue(); // Get cell value
                 }
-
+                $username = $this->generateUniqueUsername($data[0], $request->division); // Generate unique username
                 // Assuming the Excel structure is: Name | Mobile Number | School | Event
                 $name = $data[0] ?? null;
-                $password = $this->generatePassword($name);
 
                 $batchData[] = [
                     'name' => $name,
-                    'mobile_num' => $data[1] ?? null,
+                    'username' => $username,
                     'division' => $request->division, // Add the division from request
-                    'school' => $data[2] ?? null,
+                    'school' => $data[1] ?? null,
                     'event' => $request->event,
                     'participant_role' => 'student',
-                    'password' => bcrypt($password), // Set the generated password
+                    'password' => bcrypt($username), // Set the generated password
                     'is_deleted' => false,
                 ];
 
@@ -156,19 +164,6 @@ class StudentController extends Controller
         } catch (\Exception $e) {
             return response()->json(['success' => false, 'message' => $e->getMessage()], 500);
         }
-    }
-
-    private function generatePassword($name) {
-        $initials = '';
-        if ($name) {
-            $nameParts = explode(' ', $name);
-            foreach ($nameParts as $part) {
-                $initials .= strtoupper($part[0]);
-            }
-        }
-        return $initials;
-    }
-
-    
+    }   
     
 }
