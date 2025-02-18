@@ -43,11 +43,12 @@
 
     <link rel="icon" type="image/png" href="{{ asset('image/logo.png') }}">
     <title>@yield('title', 'Your App Name')</title>
+
 </head>
 
 <body>
 
-    <div id="preloader" >
+    <div id="preloader">
         <div class="loader-container">
             <img src="{{ asset('image/logo.png') }}" alt="Lakbay Philippine Logo" class="loader-logo">
             <p class="loader-text">SRAA South Cotabato</p>
@@ -93,6 +94,14 @@
                     </li>
                 </ul>
             </nav>
+            {{-- <nav class="navbar">
+                <li class="active"><i class="fa-solid fa-house"></i>Home</li>
+                <li><i class="fa-solid fa-circle-info"></i>About</li>
+                <li><i class="fa-solid fa-rss"></i>Blog</li>
+                <li><i class="fa-solid fa-gear"></i>Services</li>
+                <li><i class="fa-solid fa-address-book"></i>Contact</li>
+            </nav>
+            <script src="https://kit.fontawesome.com/a692e1c39f.js" crossorigin="anonymous"></script> --}}
 
             <div class="d-flex align-items-center gap-2">
                 <div class="dropdown">

@@ -13,4 +13,4 @@ Route::get('record_attendance', [APIController::class, 'recordAttendance'])->nam
 
 Route::get('fetch_attendance', [APIController::class, 'fetchAttendance'])->name('fetch_attendance');
 
-Route::get('login', [APIController::class, 'login'])->name('login');
+Route::post('login', [APIController::class, 'login'])->name('login');

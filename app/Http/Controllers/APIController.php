@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use Illuminate\Validation\ValidationException;
 
 class APIController extends Controller
 {
@@ -21,16 +22,33 @@ class APIController extends Controller
             'data' => $attendanceData
         ]);
     }
+
     public function login(Request $request){
-        return json_encode([
+
+        try {
+            $request->validate([
+                'username' => 'required|string',
+                'password' => 'required|string',
+            ]);
+        } catch (ValidationException $e) {
+            return response()->json([
+                'status' => 'error',
+                'message' => 'Validation error',
+                'errors' => $e->errors()
+            ], 422);
+        }
+
+        $username = $request->input('username');
+        $password = $request->input('password');
+
+        return response()->json([
             'status' => 'success',
-            'message' => 'Attendance fetched successfully',
+            'message' => $username,
             'data' => [
-                'faculty' => [
-                    'user_id' => 'John Doe',
+                [
+                    'user_id' => $username,
                     'name' => 'Present'
                 ],
-
             ]
         ]);
     }
