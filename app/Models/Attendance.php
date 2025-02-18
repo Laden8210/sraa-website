@@ -13,13 +13,9 @@ class Attendance extends Model
     protected $primaryKey = 'attendance_id';
     public $timestamps = true;
 
-
-
     protected $fillable = [
-        'participant_id',
-        'date_recorded',
-        'time_recorded',
-        'reference_number',
+        'student_id',
+        'date',
         'type',
         'user_id',
     ];
