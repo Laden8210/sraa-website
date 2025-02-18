@@ -11,7 +11,7 @@ class APIController extends Controller
     public function recordAttendance(Request $request){
 
         $attendanceData = $request->input('attendance');
-        
+
         // Here you would typically save the attendance data to the database
         // For example:
         // Attendance::create($attendanceData);
@@ -41,15 +41,20 @@ class APIController extends Controller
         $username = $request->input('username');
         $password = $request->input('password');
 
+        // return response()->json([
+        //     'status' => 'success',
+        //     'message' => $username,
+        //     'data' => [
+        //         [
+        //             'user_id' => $username,
+        //             'name' => 'Present'
+        //         ],
+        //     ]
+        // ]);
+
         return response()->json([
-            'status' => 'success',
-            'message' => $username,
-            'data' => [
-                [
-                    'user_id' => $username,
-                    'name' => 'Present'
-                ],
-            ]
-        ]);
+            'status' => 'Hello',
+
+        ], 401);
     }
 }
