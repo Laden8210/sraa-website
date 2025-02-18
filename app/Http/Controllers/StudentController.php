@@ -98,8 +98,8 @@ class StudentController extends Controller
         return response()->json(['success' => true]);
     }
 
-    
-    
+
+
     public function createFromExcel(Request $request) {
         $request->validate([
             'excel_file' => 'required|file|mimes:xlsx,csv|max:2048',
@@ -169,6 +169,6 @@ class StudentController extends Controller
         return $initials;
     }
 
-    
-    
+
+
 }

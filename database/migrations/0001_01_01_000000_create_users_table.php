@@ -36,12 +36,12 @@ return new class extends Migration
             $table->rememberToken();
             $table->timestamps();
         });
-    
+
         Schema::create('attendance', function (Blueprint $table) {
             $table->id('attendance_id');
             $table->foreignId('participant_id')->references('participant_id')->on('participants')->onDelete('cascade');
             $table->date('date');
-            $table->string('type'); 
+            $table->string('type');
             $table->foreignId('user_id')->references('user_id')->on('users')->onDelete('cascade');
             $table->timestamps();
         });

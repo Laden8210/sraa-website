@@ -13,3 +13,4 @@ Route::get('/register', function (Request $request) {
         'message' => 'User registration endpoint'
     ]);
 });
+
