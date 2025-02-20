@@ -14,7 +14,6 @@ class AuthController extends Controller
 {
     public function login(Request $request)
     {
-        // Validate the request data
         $request->validate([
             'username' => 'required|string',
             'password' => 'required|string',
@@ -23,13 +22,23 @@ class AuthController extends Controller
         $credentials = $request->only('username', 'password');
 
         if (Auth::attempt($credentials)) {
-            return redirect()->intended('dashboard');
+            $user = Auth::user();
+
+            if (in_array($user->role, ['admin', 'superintendent'])) {
+                return redirect()->intended('dashboard');
+            }
+
+            Auth::logout();
+            return back()->withErrors([
+                'username' => 'Access denied. Only Admin and Superintendent can log in.',
+            ]);
         }
 
         return back()->withErrors([
             'username' => 'The provided credentials do not match our records.',
         ]);
     }
+
 
     public function register(Request $request)
     {

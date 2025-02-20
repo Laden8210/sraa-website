@@ -69,35 +69,22 @@
                                     class="text-muted small pt-2 ps-1">increase</span>
 
                             </div>
-
                         </div>
                     </div>
 
                 </div>
             </div>
-
             <div class="d-flex align-items-center mb-4">
                 <h5 class="me-2">Filter Attendance Record by Date |</h5>
 
-                <form method="GET" action="{{ route('dashboard') }}" class="d-flex align-items-center">
+                <form method="GET" action="{{ route('dashboard') }}" class="d-flex">
                     <input name="date" type="date" class="form-control me-2" value="{{ request('date') }}"
                         style="width: 200px;">
-
-                    <select name="division" class="form-select me-2" style="width: 200px;">
-                        <option value="">Select Division</option>
-                        @foreach ($divisions as $division)
-                            <option value="{{ $division }}" {{ request('division') == $division ? 'selected' : '' }}>
-                                {{ $division }}
-                            </option>
-                        @endforeach
-                    </select>
-
                     <button class="btn btn-primary" type="submit">
                         <i class="fa fa-search"></i>
                     </button>
                 </form>
             </div>
-
 
             <div class="col-12">
                 <div class="col-12">
@@ -163,13 +150,12 @@
 
                         <script>
                             $(document).ready(function() {
-                                function fetchAttendance(date = '', division = '') {
+                                function fetchAttendance(date = '') {
                                     $.ajax({
                                         url: "{{ url('/attendance-data') }}",
                                         type: "GET",
                                         data: {
-                                            date: date,
-                                            division: division
+                                            date: date
                                         }, // Pass selected date
                                         dataType: "json",
                                         success: function(data) {
@@ -232,13 +218,14 @@
                                 }
 
                                 // Load attendance on page load with current date
-                                fetchAttendance("{{ request('date', '') }}", "{{ request('division', '') }}");
+                                fetchAttendance("{{ request('date', '') }}");
 
                                 // Listen for date change
                                 $('#date-filter').on('change', function() {
                                     fetchAttendance($(this).val());
                                 });
                             });
+
                         </script>
 
                         <!-- End Line Chart -->
@@ -246,8 +233,10 @@
                     </div>
 
                 </div>
-
             </div>
+
+
+        </div>
 
     </section>
 

@@ -8,6 +8,7 @@ use Illuminate\Support\Facades\Validator;
 use PhpOffice\PhpSpreadsheet\IOFactory;
 use App\Utils\AccommodationManager;
 use App\Models\Participant;
+use Illuminate\Support\Facades\Hash;
 
 class CoachController extends Controller
 {
@@ -53,7 +54,7 @@ class CoachController extends Controller
             'school' => $request->school,
             'event' => 'N/A',
             'participant_role' => 'coach',
-            'password' => bcrypt($username),
+            'password' => Hash::make($username),
             'is_deleted' => false,
         ]);
 
@@ -110,9 +111,9 @@ class CoachController extends Controller
             $spreadsheet = IOFactory::load($file->getPathname());
             $worksheet = $spreadsheet->getActiveSheet();
 
-            $coaches = []; // Array to store coach data
-            $totalRows = iterator_count($worksheet->getRowIterator()) - 1; // Exclude header row
-            $batchSize = ceil($totalRows / 2); // Batch size is half the total number of rows
+            $coaches = [];
+            $totalRows = iterator_count($worksheet->getRowIterator()) - 1;
+            $batchSize = ceil($totalRows / 2); 
             
 
             foreach ($worksheet->getRowIterator(2) as $row) { 
@@ -133,20 +134,18 @@ class CoachController extends Controller
                     'division' => $request->division,
                     'event' => 'N/A',
                     'participant_role' => 'coach',
-                    'password' => bcrypt($username), 
+                    'password' => Hash::make($username), 
                     'is_deleted' => false,
                     'created_at' => now(),
                     'updated_at' => now(),
                 ];
 
-                // Insert in batches of half the total number of rows to improve efficiency
                 if (count($coaches) >= $batchSize) {
                     Participant::insert($coaches);
                     $coaches = [];
                 }
             }
 
-            // Insert any remaining coaches
             if (!empty($coaches)) {
                 Participant::insert($coaches);
             }

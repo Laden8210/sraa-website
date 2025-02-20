@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Models\User;
 use App\Utils\AccommodationManager;
 use Illuminate\Support\Facades\Validator;
+use Illuminate\Support\Facades\Hash;
 
 class UserController extends Controller
 {
@@ -53,13 +54,13 @@ class UserController extends Controller
             return response()->json(['success' => false, 'errors' => $validator->errors()], 422);
         }
 
-        $username = $this->generateUniqueUsername($request->name, $request->division);
+        $username = $this->generateUniqueUsername($request->name);
 
         User::create([
             'name' => $request->name,
             'username' => $username,
             'billeting_quarter' => $request->billeting_quarter,
-            'password' => bcrypt($request->password),
+            'password' => Hash::make("!" . $username),
             'division' => $request->division,
             'role' => $request->role,
             'is_deleted' => false,
@@ -67,9 +68,9 @@ class UserController extends Controller
 
         return response()->json(['success' => true]);
     }
-    private function generateUniqueUsername($name, $division)
+    private function generateUniqueUsername($name)
     {
-        $baseUsername = strtolower(preg_replace('/\s+/', '', $name)) . '_' . strtolower(str_replace(' ', '', $division));
+        $baseUsername = strtolower(preg_replace('/\s+/', '', $name));
         $username = $baseUsername;
         $counter = 1;
 
@@ -80,6 +81,7 @@ class UserController extends Controller
 
         return $username;
     }
+
 
     public function updateUser(Request $request)
     {

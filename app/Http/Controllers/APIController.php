@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Validation\ValidationException;
-
+use Illuminate\Support\Facades\Hash;
 use App\Models\User;
 use App\Models\Attendance;
 
@@ -106,11 +106,11 @@ class APIController extends Controller
             ], 200);
         }
 
-        if(!password_verify($password, $user->password)){
+        if (!Hash::check($password, $user->password)) {
             return response()->json([
-            'status' => 'error',
-            'message' => 'Invalid password',
-            'data' => []
+                'status' => 'error',
+                'message' => 'Invalid password',
+                'data' => []
             ], 200);
         }
 
@@ -122,6 +122,30 @@ class APIController extends Controller
             ]
         );
 
+    }
+
+    public function getTotalByBilleting(Request $request) {
+        try {
+            $request->validate([
+                'billeting_quarter' => 'required|string'
+            ]);
+        } catch (ValidationException $e) {
+            return response()->json([
+                'status' => 'error',
+                'message' => 'Validation error',
+                'errors' => $e->errors()
+            ], 422);
+        }
+
+        $billeting_quarter = $request->input('billeting_quarter');
+
+        $total = User::where('billeting_quarter', $billeting_quarter)->count();
+
+        return response()->json([
+            'status' => 'success',
+            'message' => 'Total users retrieved successfully',
+            'data' => ['total' => $total]
+        ]);
     }
 
 
