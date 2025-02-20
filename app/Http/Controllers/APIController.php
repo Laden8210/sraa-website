@@ -17,7 +17,6 @@ class APIController extends Controller
             $request->validate([
                 'attendances' => 'required|array',
                 'attendances.*.participant_id' => 'required|string',
-                'attendances.*.attendance_id' => 'required|integer',
                 'attendances.*.time_recorded' => 'required|string',
                 'attendances.*.date_recorded' => 'required|string',
                 'attendances.*.reference_number' => 'required|string',
@@ -45,7 +44,6 @@ class APIController extends Controller
             if (!$existingAttendance) {
                 $attendance = Attendance::create([
                     'participant_id' => $data['participant_id'],
-                    'attendance_id' => $data['attendance_id'],
                     'time_recorded' => $data['time_recorded'],
                     'date_recorded' => $data['date_recorded'],
                     'reference_number' => $data['reference_number'],
@@ -83,14 +81,16 @@ class APIController extends Controller
                 'username' => 'required|string',
                 'password' => 'required|string',
             ]);
+
+
+
         } catch (ValidationException $e) {
             return response()->json([
                 'status' => 'error',
-                'message' => 'Validation error',
-                'errors' => $e->errors()
-            ], 200);
+                'message' => collect($e->errors())->flatten()->first(),
+                'data' => []
+            ], 422);
         }
-
         $username = $request->input('username');
         $password = $request->input('password');
 
@@ -101,14 +101,16 @@ class APIController extends Controller
         if(!$user){
             return response()->json([
                 'status' => 'error',
-                'message' => 'User not found'
+                'message' => 'User not found',
+                'data' => []
             ], 200);
         }
 
         if(!password_verify($password, $user->password)){
             return response()->json([
-                'status' => 'error',
-                'message' => 'Invalid password'
+            'status' => 'error',
+            'message' => 'Invalid password',
+            'data' => []
             ], 200);
         }
 
@@ -116,8 +118,9 @@ class APIController extends Controller
         return response()->json([
             'status' => 'success',
             'message' => 'Login successful',
-            'data' => $user
-        ]);
+            'data' => [$user]
+            ]
+        );
 
     }
 
