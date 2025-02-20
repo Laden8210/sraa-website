@@ -42,6 +42,40 @@
         </div>
     </div>
 
+    <header id="header" class="fixed-top animate__animated  animate__fadeInDown shadow">
+        <div class="container d-flex align-items-center justify-content-between px-4">
+            <div>
+                <a href="/" class="d-flex align-items-center">
+                    <img src="{{ asset('image/logo.png') }}" alt="Logo" style="height: 32px;">
+
+                </a>
+            </div>
+
+
+            <nav class="d-none d-md-flex">
+                <ul class="nav">
+                    <li class="nav-item">
+                        <a class="nav-link {{ Request::routeIs('dashboard') ? 'active fw-semibold border-bottom border-2 border-dark' : '' }}"
+                            href="{{ route('dashboard') }}">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link {{ Request::routeIs('qr-code') ? 'active fw-semibold border-bottom border-2 border-dark' : '' }}"
+                            href="{{ route('qr-code') }}">Help Center</a>
+                    </li>
+                    <li class="nav-item border-r-1">
+                        <a class="nav-link {{ Request::routeIs('users') ? 'active fw-semibold border-bottom border-2 border-dark' : '' }}"
+                            href="{{ route('users') }}">About</a>
+                    </li>
+                </ul>
+            </nav>
+
+
+            <div class="d-flex align-items-center">
+                <a href="" class="btn btn-primary rounded-pill ">Login Now</a>
+            </div>
+
+        </div>
+    </header>
 
 
     <main>
