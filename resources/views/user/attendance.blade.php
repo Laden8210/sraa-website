@@ -4,20 +4,17 @@
 @section('content')
 
     <section class="container ">
-        <div class=" animate__animated  animate__fadeInDown  animate__delay-1s">
-            <h3 class="text-start mt-5">Student List</h3>
-        </div>
-        <div class="row p-2">
+        <div class="pagetitle animate__animated  animate__fadeInDown  animate__delay-1s mt-4">
+            <h3>Attendance</h3>
+            <p>Review attendance records</p>
+         </div>
 
+        <div class="row">
 
             <div class="col-xxl-6 col-md-6">
                 <div class="card info-card student-card  animate__animated  animate__fadeIn  animate__delay-1s">
-
-
-
                     <div class="card-body">
                         <h5 class="card-title">Total Time In <span>| Daily</span></h5>
-
                         <div class="d-flex align-items-center">
                             <div class="card-icon rounded-circle d-flex align-items-center justify-content-center">
                                 <i class='bx bx-cart'></i>
@@ -26,11 +23,9 @@
                                 <h6>145</h6>
                                 <span class="text-success small pt-1 fw-bold">12%</span> <span
                                     class="text-muted small pt-2 ps-1">increase</span>
-
                             </div>
                         </div>
                     </div>
-
                 </div>
             </div>
 
@@ -38,7 +33,6 @@
                 <div class="card info-card student-card  animate__animated  animate__fadeIn  animate__delay-1s">
                     <div class="card-body">
                         <h5 class="card-title">Total Time Out <span>| Daily</span></h5>
-
                         <div class="d-flex align-items-center">
                             <div class="card-icon rounded-circle d-flex align-items-center justify-content-center">
                                 <i class='bx bx-cart'></i>
@@ -47,31 +41,38 @@
                                 <h6>145</h6>
                                 <span class="text-success small pt-1 fw-bold">12%</span> <span
                                     class="text-muted small pt-2 ps-1">increase</span>
-
                             </div>
                         </div>
                     </div>
-
                 </div>
             </div>
 
             <div class="col-12">
                 <div class="card px-2 py-4  animate__animated  animate__fadeIn  animate__delay-1s">
-
                     <div class="card-body">
-
-                        <div class="d-flex justify-content-between align-items-center">
-                            <div class="d-flex align-items-center gap-2">
-                                <input type="text" class="form-control" placeholder="Search">
-
-                                <select name="" id="" class="form-select">
-                                    <option value="">Select Division</option>
-                                </select>
-                                <button class="btn btn-primary"><i class="fa fa-search" aria-hidden="true"></i></button>
-                            </div>
-
-
-                            <button class="btn btn-primary">Add Student</button>
+                        <div class="w-50">
+                            <form method="GET" action="{{ route('attendance') }}" class="mb-3 w-70">
+                                <div class="row g-2">
+                                    <div class="col-lg-7 col-md-12">
+                                        <input name="search" type="text" class="form-control" placeholder="Search" value="{{ request('search') }}">
+                                    </div>
+                                    <div class="col-lg-4 col-md-12">
+                                        <select name="division" class="form-select">
+                                            <option value="">Select Division</option>
+                                            @foreach ($divisions as $division)
+                                                <option value="{{ $division }}" {{ request('division') == $division ? 'selected' : '' }}>
+                                                    {{ $division }}</option>
+                                            @endforeach
+                                        </select>
+                                    </div>
+                                    
+                                    <div class="col-lg-1 col-md-12 d-flex align-items-center">
+                                        <button class="btn btn-primary" type="submit">
+                                            <i class="fa fa-search" aria-hidden="true"></i>
+                                        </button>
+                                    </div>
+                                </div>
+                            </form>
                         </div>
                         <table class="table">
                             <thead>
@@ -81,31 +82,30 @@
                                     <th scope="col">Division</th>
                                     <th scope="col">Time Record</th>
                                     <th scope="col">Date Record</th>
-                                    <th scope="col">Attendance Type</th>
-
+                                    <th scope="col">Recorded By</th>
                                 </tr>
                             </thead>
                             <tbody>
-                                <tr>
-                                    <th scope="row">1</th>
-                                    <td>Mark</td>
-                                    <td>Koronadal</td>
-                                    <td>8:00 AM</td>
-                                    <td>June 1, 2021</td>
-                                    <td>Time Out</td>
-
-                                </tr>
-
+                                @foreach ($attendance as $record)
+                                    <tr>
+                                        <th scope="row">{{ $loop->iteration }}</th>
+                                        <td>{{ $record->participant->name }}</td>
+                                        <td>{{ $record->participant->division }}</td>
+                                        <td>{{ $record->time_recorded }}</td>
+                                        <td>{{ $record->created_at->format('F j, Y') }}</td>
+                                        <td>{{ $record->user->name }}</td>
+                                    </tr>
+                                @endforeach
                             </tbody>
                         </table>
+                        
                     </div>
-
+                    <div class="mx-3">
+                        {{ $attendance->appends(request()->query())->links('vendor.pagination.bootstrap-5') }}
+                    </div>
                 </div>
             </div>
         </div>
-
     </section>
-
-
 
 @endsection

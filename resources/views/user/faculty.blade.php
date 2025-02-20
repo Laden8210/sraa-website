@@ -4,17 +4,25 @@
 @section('content')
 
     <section class="container ">
-        <div class="animate__animated animate__fadeInDown animate__delay-1s">
-            <h3 class="text-start mt-5">Coach List</h3>
+
+        <div class="d-flex justify-content-between align-items-end">
+            <div class="pagetitle animate__animated animate__fadeInDown animate__delay-1s mt-4">
+                <h3>Coach List</h3>
+                <p>| Manage coach records</p>
+            </div>
+            <div class="align-self-end">
+                <button type="button" class="btn btn-primary w-auto mb-3" id="add-coach"><i class="fa fa-add me-1"></i> Add Coach</button>
+                <button type="button" class="btn btn-primary w-auto mb-3" id="upload-excel"><i class="fa fa-upload me-1"></i> Upload Excel</button>
+            </div>
         </div>
-        <div class="row p-2">
+        <div class="row">
             <div class="col-12">
                 <div class="card px-2 py-4 animate__animated animate__fadeIn animate__delay-1s">
                     <div class="card-body">
-                        <div class="d-flex justify-content-between align-items-center">
+                        <div class="w-50">
                             <form method="GET" action="{{ route('faculty') }}" class="mb-3 w-70">
                                 <div class="row g-2">
-                                    <div class="col-lg-4 col-md-12">
+                                    <div class="col-lg-5 col-md-12">
                                         <input name="search" type="text" class="form-control" placeholder="Search" value="{{ request('search') }}">
                                     </div>
                                     <div class="col-lg-5 col-md-12">
@@ -26,17 +34,14 @@
                                             @endforeach
                                         </select>
                                     </div>
-                                    <div class="col-lg-1 col-md-12">
-                                        <button class="btn btn-primary h-100" type="submit">
+                                    <div class="col-lg-1 col-md-12 d-flex align-items-center">
+                                        <button class="btn btn-primary" type="submit">
                                             <i class="fa fa-search" aria-hidden="true"></i>
                                         </button>
                                     </div>
                                 </div>
                             </form>
-                            <div class="row gap-2">
-                                <button class="btn btn-primary w-auto col-lg-6" id="add-coach">Add Coach</button>
-                                <button class="btn btn-primary w-auto col-lg-6" id="upload-excel">Upload Excel</button>
-                            </div>
+                            
                         </div>
                         <table class="table">
                             <thead class="border-top">

@@ -69,10 +69,16 @@
                 </ul>
             </nav>
 
-
-            <div class="d-flex align-items-center">
-                <a href="" class="btn btn-primary rounded-pill ">Login Now</a>
-            </div>
+            @if (Auth::user() != null)
+                <div class="d-flex align-items-center">
+                    <a href="logout" class="btn btn-primary rounded-pill ">Logout</a>
+                </div>  
+            @else
+                <div class="d-flex align-items-center">
+                    <a href="login" class="btn btn-primary rounded-pill ">Login Now</a>
+                </div>  
+            @endif
+           
 
         </div>
     </header>

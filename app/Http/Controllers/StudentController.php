@@ -10,6 +10,7 @@ use App\Utils\AccommodationManager;
 use Illuminate\Support\Facades\Validator;
 use PhpOffice\PhpSpreadsheet\IOFactory;
 use ZipArchive;
+use Illuminate\Support\Facades\Hash;
 
 class StudentController extends Controller
 {
@@ -54,7 +55,7 @@ class StudentController extends Controller
             return response()->json(['success' => false, 'errors' => $validator->errors()], 422);
         }
 
-        $username = $this->generateUniqueUsername($request->name, $request->division);
+        $username = $this->generateUniqueUsername($request->name);
 
         Participant::create([
             'name' => $request->name,
@@ -63,20 +64,20 @@ class StudentController extends Controller
             'school' => $request->school,
             'event' => $request->event,
             'participant_role' => 'student',
-            'password' => bcrypt($username),
+            'password' => Hash::make("!".$username),
             'is_deleted' => false,
         ]);
 
         return response()->json(['success' => true]);
     }
 
-    private function generateUniqueUsername($name, $division)
+    private function generateUniqueUsername($name)
     {
-        $baseUsername = strtolower(preg_replace('/\s+/', '', $name)) . '_' . strtolower(str_replace(' ', '', $division));
+        $baseUsername = strtolower(preg_replace('/\s+/', '', $name));
         $username = $baseUsername;
         $counter = 1;
 
-        while (Participant::where('username', $username)->exists()) {
+        while (User::where('username', $username)->exists()) {
             $username = $baseUsername . $counter;
             $counter++;
         }
@@ -122,44 +123,42 @@ class StudentController extends Controller
         ]);
 
         try {
-            // Load the uploaded file
             $file = $request->file('excel_file');
             $spreadsheet = IOFactory::load($file->getPathname());
             $worksheet = $spreadsheet->getActiveSheet();
 
-            $batchSize = 100; // Number of records to process at a time
+            $batchSize = 100; 
             $batchData = [];
 
-            foreach ($worksheet->getRowIterator(2) as $row) { // Start from row 2 (skip header)
+            foreach ($worksheet->getRowIterator(2) as $row) { 
                 $cellIterator = $row->getCellIterator();
-                $cellIterator->setIterateOnlyExistingCells(false); // Iterate through empty cells
+                $cellIterator->setIterateOnlyExistingCells(false); 
 
                 $data = [];
                 foreach ($cellIterator as $cell) {
-                    $data[] = $cell->getValue(); // Get cell value
+                    $data[] = $cell->getValue(); 
                 }
-                $username = $this->generateUniqueUsername($data[0], $request->division); // Generate unique username
-                // Assuming the Excel structure is: Name | Mobile Number | School | Event
+                $username = $this->generateUniqueUsername($data[0]); 
+                
                 $name = $data[0] ?? null;
 
                 $batchData[] = [
                     'name' => $name,
                     'username' => $username,
-                    'division' => $request->division, // Add the division from request
+                    'division' => $request->division, 
                     'school' => $data[1] ?? null,
                     'event' => $request->event,
                     'participant_role' => 'student',
-                    'password' => bcrypt($username), // Set the generated password
+                    'password' => Hash::make("!".$username), 
                     'is_deleted' => false,
                 ];
 
                 if (count($batchData) >= $batchSize) {
-                    Participant::insert($batchData); // Insert batch data
-                    $batchData = []; // Reset batch data
+                    Participant::insert($batchData); 
+                    $batchData = []; 
                 }
             }
 
-            // Insert remaining data
             if (!empty($batchData)) {
                 Participant::insert($batchData);
             }

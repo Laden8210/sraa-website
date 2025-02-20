@@ -8,6 +8,7 @@ use App\Utils\AccommodationManager;
 use App\Models\Coach;
 use Illuminate\Support\Facades\DB;
 use App\Models\Participant;
+use App\Utils\EncryptionHelper;
 use Barryvdh\DomPDF\Facade\Pdf;
 use Illuminate\Support\Facades\View;
 
@@ -20,7 +21,7 @@ class QRController extends Controller
         if ($request->has('search')) {
             $query->where(function ($q) use ($request) {
                 $q->where('name', 'like', '%' . $request->search . '%')
-                  ->orWhere('username', 'like', '%' . $request->search . '%');
+                    ->orWhere('username', 'like', '%' . $request->search . '%');
             });
         }
 
@@ -34,13 +35,24 @@ class QRController extends Controller
 
         $results = $query->paginate(10);
 
-        // Get divisions
         $manager = new AccommodationManager();
         $divisions = $manager->getDivisions();
-        // return( $results);
+
+        $results->getCollection()->transform(function ($participant) {
+            $participant->qr_data = EncryptionHelper::encrypt(json_encode([
+                'name' => $participant->name,
+                'participant_role' => $participant->participant_role,
+                'division' => $participant->division,
+                'school' => $participant->school,
+                'event' => $participant->event,
+                'participant_id' => $participant->participant_id,
+            ]));
+            return $participant;
+        });
+
         return view('user.qr-code', compact('results', 'divisions'));
     }
-    
+
     public function generateQrCode(Request $request)
     {
         $query = Participant::where('is_deleted', false);
@@ -48,7 +60,7 @@ class QRController extends Controller
         if ($request->has('search')) {
             $query->where(function ($q) use ($request) {
                 $q->where('name', 'like', '%' . $request->search . '%')
-                  ->orWhere('username', 'like', '%' . $request->search . '%');
+                    ->orWhere('username', 'like', '%' . $request->search . '%');
             });
         }
 
@@ -62,9 +74,20 @@ class QRController extends Controller
 
         $participants = $query->get();
 
-        if (!$participants) {
+        if ($participants->isEmpty()) {
             return redirect()->back()->withErrors(['error' => 'Participant not found']);
         }
+        $participants->each(function ($participant) {
+            $participant->qr_data = EncryptionHelper::encrypt(json_encode([
+                'name' => $participant->name,
+                'participant_role' => $participant->participant_role,
+                'division' => $participant->division,
+                'school' => $participant->school,
+                'event' => $participant->event,
+                'participant_id' => $participant->participant_id,
+            ]));
+            return $participant;
+        });
 
         // $pdf = Pdf::loadView('user.generate-qr-code', compact('participants'));
 
@@ -83,11 +106,15 @@ class QRController extends Controller
             return redirect()->back()->withErrors(['error' => 'Participant not found']);
         }
 
+        $participants->getCollection()->transform(function ($participant) {
+            $participant->qr_data = 'id = ' . $participant->participant_id . "\n" . 'name = ' . $participant->name;
+            return $participant;
+        });
+
         // $pdf = Pdf::loadView('user.generate-qr-code', compact('participants'));
 
         // return $pdf->download('SRAA_MEET_2025_Participants.pdf');
 
         return view('user.generate-qr-code', compact('participants'));
     }
-
 }

@@ -56,7 +56,7 @@
     </div>
 
 
-    <header id="header" class="fixed-top animate__animated  animate__fadeInDown shadow">
+    <header id="header" class="fixed-top animate__animated  animate__fadeInDown shadow-sm">
         <div class="container-fluid d-flex align-items-center justify-content-between px-4">
             <div>
                 <a href="/" class="d-flex align-items-center">
@@ -67,32 +67,51 @@
 
 
             <nav class="d-none d-md-flex">
-                <ul class="nav">
-                    <li class="nav-item">
-                        <a class="nav-link {{ Request::routeIs('dashboard') ? 'active fw-semibold border-bottom border-2 border-dark' : '' }}"
-                            href="{{ route('dashboard') }}">Dashboard</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link {{ Request::routeIs('qr-code') ? 'active fw-semibold border-bottom border-2 border-dark' : '' }}"
-                            href="{{ route('qr-code') }}">QR Code</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link {{ Request::routeIs('users') ? 'active fw-semibold border-bottom border-2 border-dark' : '' }}"
-                            href="{{ route('users') }}">Users</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link {{ Request::routeIs('faculty') ? 'active fw-semibold border-bottom border-2 border-dark' : '' }}"
-                            href="{{ route('faculty') }}">Faculty</a>
-                    </li>
-                    <li class="nav-item position-relative">
-                        <a class="nav-link {{ Request::routeIs('student') ? 'active fw-semibold border-bottom border-2 border-dark' : '' }}"
-                            href="{{ route('student') }}">Students</a>
-                    </li>
-                    <li class="nav-item position-relative">
-                        <a class="nav-link {{ Request::routeIs('attendance') ? 'active fw-semibold border-bottom border-2 border-dark' : '' }}"
-                            href="{{ route('attendance') }}">Attendance</a>
-                    </li>
-                </ul>
+                @if (Auth::user()->role == 'admin')
+                    <ul class="nav">
+                        <li class="nav-item">
+                            <a class="nav-link {{ Request::routeIs('dashboard') ? 'active fw-semibold border-bottom border-2 border-dark' : '' }}"
+                                href="{{ route('dashboard') }}">Dashboard</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link {{ Request::routeIs('qr-code') ? 'active fw-semibold border-bottom border-2 border-dark' : '' }}"
+                                href="{{ route('qr-code') }}">QR Code</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link {{ Request::routeIs('users') ? 'active fw-semibold border-bottom border-2 border-dark' : '' }}"
+                                href="{{ route('users') }}">Users</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link {{ Request::routeIs('faculty') ? 'active fw-semibold border-bottom border-2 border-dark' : '' }}"
+                                href="{{ route('faculty') }}">Faculty</a>
+                        </li>
+                        <li class="nav-item position-relative">
+                            <a class="nav-link {{ Request::routeIs('student') ? 'active fw-semibold border-bottom border-2 border-dark' : '' }}"
+                                href="{{ route('student') }}">Students</a>
+                        </li>
+                        <li class="nav-item position-relative">
+                            <a class="nav-link {{ Request::routeIs('attendance') ? 'active fw-semibold border-bottom border-2 border-dark' : '' }}"
+                                href="{{ route('attendance') }}">Attendance</a>
+                        </li>
+                    </ul>
+                @else
+                    <ul class="nav">
+                        <li class="nav-item">
+                            <a class="nav-link {{ Request::routeIs('dashboard') ? 'active fw-semibold border-bottom border-2 border-dark' : '' }}"
+                                href="{{ route('dashboard') }}">Dashboard</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link {{ Request::routeIs('qr-code') ? 'active fw-semibold border-bottom border-2 border-dark' : '' }}"
+                                href="{{ route('qr-code') }}">QR Code</a>
+                        </li>
+                      
+                        <li class="nav-item position-relative">
+                            <a class="nav-link {{ Request::routeIs('attendance') ? 'active fw-semibold border-bottom border-2 border-dark' : '' }}"
+                                href="{{ route('attendance') }}">Attendance</a>
+                        </li>
+                    </ul>
+                @endif
+
             </nav>
             {{-- <nav class="navbar">
                 <li class="active"><i class="fa-solid fa-house"></i>Home</li>
