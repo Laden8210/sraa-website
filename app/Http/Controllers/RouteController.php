@@ -22,13 +22,20 @@ class RouteController extends Controller
     }
     public function login()
     {
+        if (Auth::user() != null) {
+            return redirect()->route('dashboard');
+        }
         return view('login');
     }
 
+    public function logout()
+    {
+        Auth::logout();
+        return redirect()->route('login');
+    }
+    
     public function dashboard(Request $request)
     {
-
-
         if (Auth::user()->role == 'admin') {
             $query = Attendance::with(["participant", "user"]);
 

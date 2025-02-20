@@ -55,7 +55,7 @@ class StudentController extends Controller
             return response()->json(['success' => false, 'errors' => $validator->errors()], 422);
         }
 
-        $username = $this->generateUniqueUsername($request->name, $request->division);
+        $username = $this->generateUniqueUsername($request->name);
 
         Participant::create([
             'name' => $request->name,
@@ -64,20 +64,20 @@ class StudentController extends Controller
             'school' => $request->school,
             'event' => $request->event,
             'participant_role' => 'student',
-            'password' => Hash::make($username),
+            'password' => Hash::make("!".$username),
             'is_deleted' => false,
         ]);
 
         return response()->json(['success' => true]);
     }
 
-    private function generateUniqueUsername($name, $division)
+    private function generateUniqueUsername($name)
     {
-        $baseUsername = strtolower(preg_replace('/\s+/', '', $name)) . '_' . strtolower(str_replace(' ', '', $division));
+        $baseUsername = strtolower(preg_replace('/\s+/', '', $name));
         $username = $baseUsername;
         $counter = 1;
 
-        while (Participant::where('username', $username)->exists()) {
+        while (User::where('username', $username)->exists()) {
             $username = $baseUsername . $counter;
             $counter++;
         }
@@ -138,7 +138,7 @@ class StudentController extends Controller
                 foreach ($cellIterator as $cell) {
                     $data[] = $cell->getValue(); 
                 }
-                $username = $this->generateUniqueUsername($data[0], $request->division); 
+                $username = $this->generateUniqueUsername($data[0]); 
                 
                 $name = $data[0] ?? null;
 
@@ -149,7 +149,7 @@ class StudentController extends Controller
                     'school' => $data[1] ?? null,
                     'event' => $request->event,
                     'participant_role' => 'student',
-                    'password' => Hash::make($username), 
+                    'password' => Hash::make("!".$username), 
                     'is_deleted' => false,
                 ];
 

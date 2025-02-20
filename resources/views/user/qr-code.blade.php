@@ -5,59 +5,67 @@
 
     <section class="container ">
         <div>
-            <div class=" animate__animated animate__fadeInDown  animate__delay-1s">
-                <h3 class="text-start mt-5">Generate and Download Qr Code</h3>
-            </div>
+            <div class="d-flex justify-content-between align-items-end">
+                <div class="pagetitle animate__animated animate__fadeInDown animate__delay-1s mt-4">
+                    <h3>Qr Codes</h3>
+                    <p>| Generate, Print, and Download Qr Codes </p>
+                </div>
+                <div class="align-self-end">
+                    <div class="d-flex justify-content-between align-items-center gap-2">
+                        <form method="POST" action="{{ route('generate-qr-code') }}">
+                            @csrf
+                            <input type="hidden" name="search" value="{{ request('search') }}">
+                            <input type="hidden" name="division" value="{{ request('division') }}">
+                            <input type="hidden" name="role" value="{{ request('role') }}">
+                            <button type="submit" class="btn btn-primary w-auto mb-3"><i class="fa fa-download me-1"
+                                    aria-hidden="true"></i>Generate Qr Codes</button>
+                        </form>
 
-
-            <div
-                class="d-flex justify-content-between align-items-center mt-3  animate__animated  animate__fadeIn  animate__delay-1s">
-                <form method="GET" action="{{ route('qr-code') }}" class="mb-3 w-70">
-                    <div class="row g-2">
-                        <div class="col-lg-4 col-md-12">
-                            <input name="search" type="text" class="form-control" placeholder="Search"
-                                value="{{ request('search') }}">
-                        </div>
-                        <div class="col-lg-4 col-md-12">
-                            <select name="division" class="form-select">
-                                <option value="">Select Division</option>
-                                @foreach ($divisions as $division)
-                                    <option value="{{ $division }}"
-                                        {{ request('division') == $division ? 'selected' : '' }}>
-                                        {{ $division }}</option>
-                                @endforeach
-                            </select>
-                        </div>
-                        <div class="col-lg-3 col-md-12">
-                            <select name="role" class="form-select">
-                                <option value="">Select Role</option>
-                                <option value="student" {{ request('role') == 'student' ? 'selected' : '' }}>Student
-                                </option>
-                                <option value="coach" {{ request('role') == 'coach' ? 'selected' : '' }}>Coach</option>
-                            </select>
-                        </div>
-                        <div class="col-lg-1 col-md-12">
-                            <button class="btn btn-primary h-100" type="submit">
-                                <i class="fa fa-search" aria-hidden="true"></i>
-                            </button>
-                        </div>
                     </div>
-                </form>
 
-                <div class="d-flex justify-content-between align-items-center gap-2">
-                    <form method="POST" action="{{ route('generate-qr-code') }}">
-                        @csrf
-                        <input type="hidden" name="search" value="{{ request('search') }}">
-                        <input type="hidden" name="division" value="{{ request('division') }}">
-                        <input type="hidden" name="role" value="{{ request('role') }}">
-                        <button class="btn btn-primary" type="submit"><i class="fa fa-download" aria-hidden="true"></i>
-                            Generate Qr Code</button>
+                </div>
+            </div>
+            <div class="card px-3 animate__animated animate__fadeIn animate__delay-1s mb-2">
+                <div
+                    class="w-50 mt-3  animate__animated  animate__fadeIn  animate__delay-1s">
+                    <form method="GET" action="{{ route('qr-code') }}" class="mb-3 w-70">
+                        <div class="row g-2">
+                            <div class="col-lg-4 col-md-12">
+                                <input name="search" type="text" class="form-control" placeholder="Search"
+                                    value="{{ request('search') }}">
+                            </div>
+                            <div class="col-lg-4 col-md-12">
+                                <select name="division" class="form-select">
+                                    <option value="">Select Division</option>
+                                    @foreach ($divisions as $division)
+                                        <option value="{{ $division }}"
+                                            {{ request('division') == $division ? 'selected' : '' }}>
+                                            {{ $division }}</option>
+                                    @endforeach
+                                </select>
+                            </div>
+                            <div class="col-lg-3 col-md-12">
+                                <select name="role" class="form-select">
+                                    <option value="">Select Role</option>
+                                    <option value="student" {{ request('role') == 'student' ? 'selected' : '' }}>Student
+                                    </option>
+                                    <option value="coach" {{ request('role') == 'coach' ? 'selected' : '' }}>Coach
+                                    </option>
+                                </select>
+                            </div>
+                            <div class="col-lg-1 col-md-12 d-flex align-items-center">
+                                <button class="btn btn-primary" type="submit">
+                                    <i class="fa fa-search" aria-hidden="true"></i>
+                                </button>
+                            </div>
+                        </div>
                     </form>
+
 
                 </div>
             </div>
         </div>
-        <div class="row p-2">
+        <div class="row">
             @if ($results->isEmpty())
                 <div class="col-12 animate__animated animate__fadeIn animate__delay-1s">
                     <div class="text-center border-top pt-3" role="alert">
@@ -72,7 +80,7 @@
 
                                 <!-- QR Code -->
                                 <div class="d-flex align-items-center">
-                                    {!! QrCode::size(100)->generate($result->participant_id) !!}
+                                    {!! QrCode::size(100)->generate($result->qr_data) !!}
                                 </div>
 
                                 <!-- Student Info & Buttons -->

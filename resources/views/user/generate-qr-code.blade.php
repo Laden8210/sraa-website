@@ -104,7 +104,7 @@
                                                 <br /><img src="{{ asset('image/placeholder.png') }}" width="96px"
                                                     height="96px"></span>
                                                 <br /><br />
-                                                {!! QrCode::size(100)->generate($participant->participant_id) !!}
+                                                {!! QrCode::size(100)->generate($participant->qr_data) !!}
                                                 <br /><span class="fst-italic">{{ $participant->participant_id }}</span>
                                                 <br /><br />
                                                 <span class="h5">{{ $participant->name }}</span>

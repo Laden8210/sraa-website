@@ -4,10 +4,12 @@
 @section('content')
 
     <section class="container ">
-        <div class=" animate__animated  animate__fadeInDown  animate__delay-1s">
-            <h3 class="text-start mt-5">Student List</h3>
-        </div>
-        <div class="row p-2">
+        <div class="pagetitle animate__animated  animate__fadeInDown  animate__delay-1s mt-4">
+            <h3>Attendance</h3>
+            <p>Review attendance records</p>
+         </div>
+
+        <div class="row">
 
             <div class="col-xxl-6 col-md-6">
                 <div class="card info-card student-card  animate__animated  animate__fadeIn  animate__delay-1s">
@@ -64,8 +66,8 @@
                                         </select>
                                     </div>
                                     
-                                    <div class="col-lg-1 col-md-12">
-                                        <button class="btn btn-primary h-100" type="submit">
+                                    <div class="col-lg-1 col-md-12 d-flex align-items-center">
+                                        <button class="btn btn-primary" type="submit">
                                             <i class="fa fa-search" aria-hidden="true"></i>
                                         </button>
                                     </div>

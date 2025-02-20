@@ -4,10 +4,12 @@
 @section('content')
 
     <section class="container ">
-        <div class="animate__animated  animate__fadeInDown  animate__delay-1s">
-            <h3 class="text-start mt-5">Welcome to your dashboard</h3>
+        <div class="pagetitle animate__animated animate__fadeInDown animate__delay-1s mt-4">
+            <h3>Welcome to your dashboard!</h3>
+            <p>| {{Auth::user()->role}}, {{Auth::user()->name}}</p>
         </div>
-        <div class="row p-2">
+       
+        <div class="row">
 
             <div class="col-xxl-4 col-md-6  animate__animated  animate__fadeInDown  animate__delay-1s">
                 <div class="card info-card student-card">

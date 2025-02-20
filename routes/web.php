@@ -12,6 +12,7 @@ use Illuminate\Support\Facades\Auth;
 
 Route::get('', [RouteController::class, 'index'])->name('login');
 Route::get('login', [RouteController::class, 'login'])->name('login');
+Route::get('logout', [RouteController::class, 'logout'])->name('logout');
 Route::get('register', [RouteController::class, 'register'])->name('register');
 Route::post('register', [AuthController::class, 'register'])->name('register');
 Route::get('single-qr-code', [QRController::class, 'generateSingleQrCode'])->name('single-qr-code');

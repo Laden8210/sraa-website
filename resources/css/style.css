@@ -82,8 +82,8 @@ textarea {
 }
 
 #header {
-    background: #ecf0f1;
-    height: 60px;
+    background: #fff;
+    height: 70px;
     padding: 0 15px;
     display: flex;
     align-items: center;

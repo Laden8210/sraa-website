@@ -4,16 +4,14 @@
 @section('content')
 
     <section class="container ">
-        <div class="animate__animated  animate__fadeInDown  animate__delay-1s">
-            <h3 class="text-start mt-5">Welcome to your dashboard</h3>
+        <div class="pagetitle animate__animated animate__fadeInDown animate__delay-1s mt-4">
+            <h3>Welcome to your dashboard!</h3>
+            <p>| {{Auth::user()->role}}, {{Auth::user()->name}}</p>
         </div>
-        <div class="row p-2">
+        <div class="row ">
 
             <div class="col-xxl-4 col-md-6  animate__animated  animate__fadeInDown  animate__delay-1s">
                 <div class="card info-card student-card">
-
-
-
                     <div class="card-body">
                         <h5 class="card-title">Total Student <span></span></h5>
 
@@ -29,7 +27,6 @@
                             </div>
                         </div>
                     </div>
-
                 </div>
             </div>
 
@@ -141,7 +138,6 @@
             <div class="col-12">
                 <div class="card  animate__animated animate__fadeInUp animate__delay-1s">
 
-
                     <div class="card-body">
                         <h5 class="card-title">Attendance <span>/Daily Record</span></h5>
 
@@ -201,12 +197,10 @@
                                                 }
                                             };
 
-                                            // Destroy existing chart if it exists
                                             if (window.attendanceChart) {
                                                 window.attendanceChart.destroy();
                                             }
 
-                                            // Render new chart
                                             window.attendanceChart = new ApexCharts(document.querySelector("#reportsChart"),
                                                 chartOptions);
                                             window.attendanceChart.render();
@@ -217,18 +211,14 @@
                                     });
                                 }
 
-                                // Load attendance on page load with current date
                                 fetchAttendance("{{ request('date', '') }}");
 
-                                // Listen for date change
                                 $('#date-filter').on('change', function() {
                                     fetchAttendance($(this).val());
                                 });
                             });
 
                         </script>
-
-                        <!-- End Line Chart -->
 
                     </div>
 
