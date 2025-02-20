@@ -71,11 +71,11 @@
 
             @if (Auth::user() != null)
                 <div class="d-flex align-items-center">
-                    <a href="" class="btn btn-primary rounded-pill ">Logout</a>
+                    <a href="logout" class="btn btn-primary rounded-pill ">Logout</a>
                 </div>  
             @else
                 <div class="d-flex align-items-center">
-                    <a href="" class="btn btn-primary rounded-pill ">Login Now</a>
+                    <a href="login" class="btn btn-primary rounded-pill ">Login Now</a>
                 </div>  
             @endif
            
