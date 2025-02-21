@@ -28,6 +28,16 @@ Overwrite Bootstrap CSS
     --bs-danger: #e74c3c;
     --default-font-color: #3a3a3a;
 }
+.nav-link{
+    color: var(--default-font-color) !important;
+    font-size: 15px !important;
+}
+.border-dark.active{
+    border-color: #0a58ca !important;
+}
+.nav-link.active {
+    color: #0a58ca !important;
+}
 
 th {
    color: var(--default-font-color) !important;
