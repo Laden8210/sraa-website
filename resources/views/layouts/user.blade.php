@@ -57,7 +57,7 @@
 
 
     <header id="header" class="fixed-top animate__animated  animate__fadeInDown shadow-sm">
-        <div class="container-fluid d-flex align-items-center justify-content-between px-4">
+        <div class="container-fluid d-flex align-items-center justify-content-between px-4 my-0">
             <div>
                 <a href="/" class="d-flex align-items-center">
                     <img src="{{ asset('image/logo.png') }}" alt="Logo" style="height: 32px;">
