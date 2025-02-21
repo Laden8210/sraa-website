@@ -1,0 +1,1 @@
+$(window).on("load",()=>{setTimeout(()=>{$("#preloader").addClass("animate__animated animate__fadeOut preloader-hidden"),setTimeout(()=>$("#preloader").hide(),200)},1e3)});$(document).ready(()=>{s()});const s=()=>{const a=$(".carousel-slide");let e=0;const d=t=>{a.removeClass("active").eq(t).addClass("active")};setInterval(()=>{e=(e+1)%a.length,d(e)},5e3)};
