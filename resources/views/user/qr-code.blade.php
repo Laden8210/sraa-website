@@ -25,7 +25,7 @@
 
                 </div>
             </div>
-            <div class="card px-3 animate__animated animate__fadeIn animate__delay-1s mb-2">
+            <div class="card px-3 animate__animated animate__fadeIn animate__delay-1s mb-4 border shadow-sm shadow">
                 <div
                     class="w-50 mt-3  animate__animated  animate__fadeIn  animate__delay-1s">
                     <form method="GET" action="{{ route('qr-code') }}" class="mb-3 w-70">
@@ -75,7 +75,7 @@
             @else
                 @foreach ($results as $result)
                     <div class="col-xxl-4 col-md-6  animate__animated  animate__fadeIn  animate__delay-1s">
-                        <div class="card info-card student-card w-100">
+                        <div class="card info-card student-card w-100 border shadow-sm shadow">
                             <div class="card-body d-flex align-items-center justify-content-between p-3 rounded-lg">
 
                                 <!-- QR Code -->

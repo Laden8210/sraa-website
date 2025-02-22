@@ -42,8 +42,26 @@
         </div>
     </div>
 
-    <header id="header" class="fixed-top animate__animated  animate__fadeInDown shadow">
+    {{-- <header id="header" class="fixed-top animate__animated  animate__fadeInDown shadow">
         <div class="container d-flex align-items-center justify-content-between px-4">
+            <div>
+                <a href="/" class="d-flex align-items-center">
+                    <img src="{{ asset('image/logo.png') }}" alt="Logo" style="height: 32px;">
+
+                </a>
+            </div>
+
+
+
+
+
+
+
+        </div>
+    </header> --}}
+
+    <header id="header" class="fixed-top animate__animated  animate__fadeInDown shadow-sm">
+        <div class="container-fluid d-flex align-items-center justify-content-between px-4 my-0">
             <div>
                 <a href="/" class="d-flex align-items-center">
                     <img src="{{ asset('image/logo.png') }}" alt="Logo" style="height: 32px;">
@@ -69,17 +87,17 @@
                 </ul>
             </nav>
 
-            @if (Auth::user() != null)
-                <div class="d-flex align-items-center">
-                    <a href="logout" class="btn btn-primary rounded-pill ">Logout</a>
-                </div>  
-            @else
-                <div class="d-flex align-items-center">
-                    <a href="login" class="btn btn-primary rounded-pill ">Login Now</a>
-                </div>  
-            @endif
-           
-
+            <div class="d-flex align-items-center gap-2">
+                @if (Auth::user() != null)
+                    <div class="d-flex align-items-center">
+                        <a href="logout" class="btn btn-primary rounded-pill ">Logout</a>
+                    </div>
+                @else
+                    <div class="d-flex align-items-center">
+                        <a href="login" class="btn btn-primary rounded-pill ">Login Now</a>
+                    </div>
+                @endif
+            </div>
         </div>
     </header>
 

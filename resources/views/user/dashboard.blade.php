@@ -12,7 +12,7 @@
         <div class="row">
 
             <div class="col-xxl-4 col-md-6  animate__animated  animate__fadeInDown  animate__delay-1s">
-                <div class="card info-card student-card">
+                <div class="card info-card student-card border shadow-sm shadow">
 
 
 
@@ -36,7 +36,7 @@
             </div>
 
             <div class="col-xxl-4 col-md-6  animate__animated  animate__fadeInDown  animate__delay-1s">
-                <div class="card info-card student-card">
+                <div class="card info-card student-card border shadow-sm shadow">
                     <div class="card-body">
                         <h5 class="card-title">Total Faculty <span></span></h5>
 
@@ -57,7 +57,7 @@
             </div>
 
             <div class="col-xxl-4 col-md-6  animate__animated  animate__fadeInDown  animate__delay-1s">
-                <div class="card info-card student-card">
+                <div class="card info-card student-card border shadow-sm shadow">
                     <div class="card-body">
                         <h5 class="card-title">Attendance Record <span>| Today</span></h5>
 
@@ -78,7 +78,7 @@
                 </div>
             </div>
 
-            <div class="d-flex align-items-center mb-4">
+            <div class="d-flex align-items-center mb-4 animate__animated  animate__fadeInDown  animate__delay-1s">
                 <h5 class="me-2">Filter Attendance Record by Date |</h5>
 
                 <form method="GET" action="{{ route('dashboard') }}" class="d-flex align-items-center">
@@ -103,7 +103,7 @@
 
             <div class="col-12">
                 <div class="col-12">
-                    <div class="card  animate__animated animate__fadeInUp animate__delay-1s">
+                    <div class="card  animate__animated animate__fadeInUp animate__delay-1s border shadow-sm shadow">
 
                         <div class="card-body">
                             <h5 class="card-title">Attendance <span>/Daily Record</span></h5>
@@ -154,7 +154,7 @@
                 </div>
             </div>
             <div class="col-12">
-                <div class="card  animate__animated animate__fadeInUp animate__delay-1s">
+                <div class="card  animate__animated animate__fadeInUp animate__delay-1s border shadow-sm shadow">
 
 
                     <div class="card-body">

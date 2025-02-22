@@ -17,10 +17,10 @@
         </div>
         <div class="row ">
             <div class="col-12">
-                <div class="card px-2 py-4 animate__animated animate__fadeIn animate__delay-1s">
-                    <div class="card-body">
+                <div class="card animate__animated animate__fadeIn animate__delay-1s border shadow-sm shadow">
+                    <div class="card-header">
                         <div class="w-50">
-                            <form method="GET" action="{{ route('student') }}" class="mb-3 w-70">
+                            <form method="GET" action="{{ route('student') }}" class="w-70">
                                 <div class="row g-2">
                                     <div class="col-lg-5 col-md-12">
                                         <input name="search" type="text" class="form-control" placeholder="Search" value="{{ request('search') }}">
@@ -51,8 +51,11 @@
                                 </div>
                             </form>
                         </div>
+                    </div>
+                    <div class="card-body">
+                        
                         <table class="table">
-                            <thead class="border-top pt-3">
+                            <thead>
                                 <tr>
                                     <th scope="col">#</th>
                                     <th scope="col">Name</th>

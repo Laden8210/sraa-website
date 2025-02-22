@@ -12,7 +12,7 @@
         <div class="row">
 
             <div class="col-xxl-6 col-md-6">
-                <div class="card info-card student-card  animate__animated  animate__fadeIn  animate__delay-1s">
+                <div class="card info-card student-card  animate__animated  animate__fadeIn  animate__delay-1s border shadow-sm shadow">
                     <div class="card-body">
                         <h5 class="card-title">Total Time In <span>| Daily</span></h5>
                         <div class="d-flex align-items-center">
@@ -30,7 +30,7 @@
             </div>
 
             <div class="col-xxl-6 col-md-6">
-                <div class="card info-card student-card  animate__animated  animate__fadeIn  animate__delay-1s">
+                <div class="card info-card student-card  animate__animated  animate__fadeIn  animate__delay-1s border shadow-sm shadow">
                     <div class="card-body">
                         <h5 class="card-title">Total Time Out <span>| Daily</span></h5>
                         <div class="d-flex align-items-center">
@@ -48,10 +48,10 @@
             </div>
 
             <div class="col-12">
-                <div class="card px-2 py-4  animate__animated  animate__fadeIn  animate__delay-1s">
-                    <div class="card-body">
+                <div class="card animate__animated  animate__fadeIn  animate__delay-1s border shadow-sm shadow">
+                    <div class="card-header">
                         <div class="w-50">
-                            <form method="GET" action="{{ route('attendance') }}" class="mb-3 w-70">
+                            <form method="GET" action="{{ route('attendance') }}" class="w-70">
                                 <div class="row g-2">
                                     <div class="col-lg-7 col-md-12">
                                         <input name="search" type="text" class="form-control" placeholder="Search" value="{{ request('search') }}">
@@ -74,6 +74,9 @@
                                 </div>
                             </form>
                         </div>
+                    </div> 
+                    <div class="card-body">
+                        
                         <table class="table">
                             <thead>
                                 <tr>
