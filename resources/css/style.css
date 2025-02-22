@@ -23,24 +23,139 @@ Overwrite Bootstrap CSS
 }
 */
 
+/* CSS */
+.button-clear {
+    background-color: #fff;
+    border: 1px solid #d5d9d9;
+    border-radius: 8px;
+    box-shadow: rgba(213, 217, 217, 0.5) 0 2px 5px 0;
+    box-sizing: border-box;
+    color: #0f1111;
+    cursor: pointer;
+    display: inline-block;
+    font-family: "Amazon Ember", sans-serif;
+    font-size: 13px;
+    line-height: 29px;
+    padding: 6px 14px;
+    position: relative;
+    text-align: center;
+    text-decoration: none;
+    user-select: none;
+    -webkit-user-select: none;
+    touch-action: manipulation;
+    vertical-align: middle;
+}
+
+.button-clear:hover {
+    background-color: #f7fafa;
+}
+
+.button-clear:focus {
+    border-color: #008296;
+    box-shadow: rgba(213, 217, 217, 0.5) 0 2px 5px 0;
+    outline: 0;
+}
+
+.custom-btn {
+    appearance: none;
+    background-color: transparent;
+    border: 2px solid #1a1a1a;
+    border-radius: 15px;
+    box-sizing: border-box;
+    color: #3b3b3b;
+    cursor: pointer;
+    display: inline-block;
+    font-family: Roobert, -apple-system, BlinkMacSystemFont, "Segoe UI",
+        Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji",
+        "Segoe UI Symbol";
+    font-size: 16px;
+    font-weight: 600;
+    line-height: normal;
+    margin: 0;
+    min-height: 60px;
+    min-width: 0;
+    outline: none;
+    padding: 16px 24px;
+    text-align: center;
+    text-decoration: none;
+    transition: all 300ms cubic-bezier(0.23, 1, 0.32, 1);
+    user-select: none;
+    -webkit-user-select: none;
+    touch-action: manipulation;
+    will-change: transform;
+}
+
+.custom-btn:disabled {
+    pointer-events: none;
+}
+.btn-outline-primary {
+    color: var(--bs-primary);
+    border-color: var(--bs-primary);
+}
+.btn-outline-primary:hover {
+    color: #fff;
+    background-color: var(--bs-primary);
+    border-color: var(--bs-primary);
+}
+.text-primary {
+    color: var(--bs-primary) !important;
+}
+
+.custom-btn:hover {
+    color: #fff;
+    background-color: #1a1a1a;
+    box-shadow: rgba(0, 0, 0, 0.25) 0 8px 15px;
+    transform: translateY(-2px);
+}
+
+.custom-btn:active {
+    box-shadow: none;
+    transform: translateY(0);
+}
+
+td {
+    vertical-align: middle;
+}
+
+.btn {
+    padding-block: 10px;
+    padding-inline: 20px;
+    font-size: 14px;
+}
+.btn-primary {
+    background-color: var(--bs-primary);
+    border-color: var(--bs-primary);
+    color: #fff;
+}
+button.btn-primary:hover {
+    border-color: var(--bs-primary) !important;
+    color: var(--bs-primary) !important;
+}
+a.btn-primary.rounded-pill:hover {
+    border-color: var(--bs-primary) !important;
+    color: var(--bs-primary) !important;
+}
+
+
 :root {
-    --bs-primary: #0268aa;
+    --bs-primary: #284777;
     --bs-danger: #e74c3c;
     --default-font-color: #3a3a3a;
+    --primary-color: #284777;
 }
-.nav-link{
+.nav-link {
     color: var(--default-font-color) !important;
     font-size: 15px !important;
 }
-.border-dark.active{
-    border-color: #0a58ca !important;
+.border-dark.active {
+    border-color: var(--bs-primary) !important;
 }
 .nav-link.active {
-    color: #0a58ca !important;
+    color: var(--primary-color) !important;
 }
 
 th {
-   color: var(--default-font-color) !important;
+    color: var(--default-font-color) !important;
 }
 
 body {
@@ -105,27 +220,26 @@ textarea {
     transition: all 0.5s ease-in-out;
 }
 
-
 #hero {
     width: 100%;
     height: 100vh;
 
     position: relative;
-  }
+}
 
-  #hero .container .row div h1 {
+#hero .container .row div h1 {
     font-size: 48px;
     font-weight: 700;
     color: #fff;
     margin: 0;
     padding: 0;
-  }
+}
 
-  #hero .container .row div h2 {
+#hero .container .row div h2 {
     color: #fff;
     margin: 20px 0 30px 0;
     font-size: 20px;
-  }
+}
 
 .carousel-login {
     width: 100%;
@@ -304,7 +418,6 @@ textarea {
     border-color: #0288d1;
 }
 
-
 .form-control.is-invalid {
     border-color: #dc3545 !important;
 }
@@ -382,7 +495,6 @@ textarea {
     color: #888;
 }
 
-
 .btn-primary:hover {
     box-shadow: 0 50px #ffffff inset !important;
     color: #007bff;
@@ -403,7 +515,6 @@ textarea {
     box-shadow: 0 50px #ffffff inset !important;
     color: #dc3545;
 }
-
 
 .alert-danger {
     background-color: rgba(255, 0, 0, 0.1);
@@ -474,7 +585,7 @@ textarea {
     background: #f6f6fe;
 }
 
-.qr-card-title{
+.qr-card-title {
     font-size: 18px;
     font-weight: 500;
     color: #012970;

@@ -17,8 +17,9 @@
 
 
                     <div class="d-flex gap-2">
-                        <a href="" class="btn btn-primary rounded-pill"><i class="fa fa-download"
-                                aria-hidden="true"></i> Download Now</a>
+                        <button class="custom-btn">Donwload Mobile Application</button>
+                        {{-- <a href="" class="btn btn-primary rounded-pill"><i class="fa fa-download"
+                                aria-hidden="true"></i> Download Now</a> --}}
 
                     </div>
                 </div>

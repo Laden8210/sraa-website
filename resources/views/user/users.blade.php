@@ -80,7 +80,7 @@
                                             <td>{{ $user->billeting_quarter }}</td>
                                             <td>{{ $user->role }}</td>
                                             <td>
-                                                <button class="btn btn-primary edit-user" data-id="{{ $user->user_id }}"
+                                                <button class="button-clear edit-user" data-id="{{ $user->user_id }}"
                                                     data-name="{{ $user->name }}" data-username="{{ $user->username }}"
                                                     data-division="{{ $user->division }}"
                                                     data-quarter="{{ $user->billeting_quarter }}"
