@@ -115,18 +115,18 @@
                                 <div class="flex-grow-1">
                                     <div class="row mx-2 w-100">
                                         <div class="col-lg-12 col-md-12">
-                                            <span class="fw-bold">{{ $result->name }} <span class="text-muted"
-                                                    style="font-size: 12px;"> |
+                                            <span class="fw-bold" style="font-size: 15px ">{{ $result->name }} <span class="text-muted"
+                                                    style="font-size: 11px;"> |
                                                     {{ $result->participant_role }}</span></span>
                                         </div>
                                         <div class="col-lg-12 col-md-12">
-                                            <span class="text-muted" style="font-size: 14px">{{ $result->division }}</span>
+                                            <span class="text-muted" style="font-size: 12px">{{ $result->division }}</span>
                                         </div>
                                         <div class="col-lg-12 col-md-12">
-                                            <span class="text-muted" style="font-size: 14px">{{ $result->school }}</span>
+                                            <span class="text-muted" style="font-size: 12px">{{ $result->school }}</span>
                                         </div>
                                         <div class="col-lg-12 col-md-12">
-                                            <span class="text-muted" style="font-size: 14px">{{ $result->event }}</span>
+                                            <span class="text-muted" style="font-size: 12px">{{ $result->event }}</span>
                                         </div>
                                         <div class="col-lg-12 col-md-12 mt-1">
                                             <div class="d-flex justify-content-end gap-2">

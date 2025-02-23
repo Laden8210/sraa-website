@@ -52,8 +52,8 @@
                             <a href="/login" class="btn btn-lg btn-primary rounded-pill order-0"
                                 type="submit">Login</a>
                         @else
-                            <a href="/logout" class="btn btn-lg btn-primary rounded-pill order-0"
-                                type="submit">Logout</a>
+                            <a href="/dashboard" class="btn btn-lg btn-primary rounded-pill order-0"
+                                type="submit">Dashboard</a>
                         @endif
                     </form>
                 </div>
@@ -163,10 +163,8 @@
                         <div class="col-md-5 order-md-1 text-center text-md-start"><img class="img-fluid mb-4"
                                 src="{{ asset('image/no_bg.png') }}" alt="" /></div>
                         <div class="col-md-6 text-center text-md-start">
-                            <h6 class="fw-bold fs-4 display-3 lh-sm">Ultimate features<br />that we built</h6>
-                            <p class="my-4 pe-xl-5"> The rise of mobile devices transforms the way we consume
-                                information
-                                entirely.
+                            <h6 class="fw-bold fs-4 display-3 lh-sm">How to use</h6>
+                            <p class="my-2 pe-xl-5"> Easy steps to use this application.
                             </p>
                             <div class="row">
                                 <div class="col-md-6">
