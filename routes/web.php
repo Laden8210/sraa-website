@@ -18,6 +18,7 @@ Route::post('register', [AuthController::class, 'register'])->name('register');
 Route::get('single-qr-code', [QRController::class, 'generateSingleQrCode'])->name('single-qr-code');
 Route::post('login', [AuthController::class, 'login'])->name('login');
 Route::get('/attendance-data', [AttendanceController::class, 'getAttendanceData']);
+Route::get('/attendance-range-data', [AttendanceController::class, 'getAttendanceRangeData']);
 
 Route::middleware(['check.role:admin'])->group(function () {
     Route::get('dashboard', [RouteController::class, 'dashboard'])->name('dashboard');
@@ -38,6 +39,7 @@ Route::middleware(['check.role:admin'])->group(function () {
     Route::post('update_coach', [CoachController::class, 'update'])->name('update_coach');
     Route::post('save-coach-excel', [CoachController::class, 'createFromExcel'])->name('save-coach-excel');
 
+    Route::post('/generate-qr-id', [QRController::class, 'generateQrID'])->name('generate-qr-id');
     Route::post('/generate-qr-code', [QRController::class, 'generateQrCode'])->name('generate-qr-code');
 });
 
@@ -47,6 +49,7 @@ Route::middleware(['check.role:admin,superintendent'])->group(function () {
     Route::get('qr-code', [QRController::class, 'show'])->name('qr-code');
     Route::get('attendance', [AttendanceController::class, 'show'])->name('attendance');
 
+    Route::post('/generate-qr-id', [QRController::class, 'generateQrID'])->name('generate-qr-id');
     Route::post('/generate-qr-code', [QRController::class, 'generateQrCode'])->name('generate-qr-code');
 });
 
@@ -57,6 +60,7 @@ Route::middleware(['check.role:admin,superintendent'])->group(function () {
     Route::get('qr-code', [QRController::class, 'show'])->name('qr-code');
     Route::get('attendance', [AttendanceController::class, 'show'])->name('attendance');
 
+    Route::post('/generate-qr-id', [QRController::class, 'generateQrID'])->name('generate-qr-id');
     Route::post('/generate-qr-code', [QRController::class, 'generateQrCode'])->name('generate-qr-code');
 });
 

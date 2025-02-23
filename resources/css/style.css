@@ -327,7 +327,7 @@ textarea {
 
 .loader-text {
     font-size: 20px;
-    color: #0269aa;
+    color: var(--bs-primary);
     font-weight: bold;
     margin-top: 10px;
     opacity: 0;
@@ -392,21 +392,17 @@ textarea {
 }
 
 .form-control:focus {
-    border-color: #0268aa;
-    box-shadow: 0 0 8px rgba(2, 104, 170, 0.4);
+    border-color: var(--bs-primary);
+    box-shadow: 0 0 6px rgba(83, 83, 83, 0.3);
 }
 
 .form-control:active {
     border-color: #0268aa;
-    box-shadow: 0 0 6px rgba(2, 104, 170, 0.3);
+    box-shadow: 0 0 6px rgba(83, 83, 83, 0.3);
 }
 
 .form-control:disabled,
 .form-control[readonly] {
-    background-color: #f8f9fa;
-    color: #6c757d;
-    cursor: not-allowed;
-    border-color: #ddd;
 }
 
 .form-control.date {
@@ -415,7 +411,8 @@ textarea {
 }
 
 .form-control:hover {
-    border-color: #0288d1;
+    border-color: var(--bs-primary);
+    box-shadow: 0 0 4px rgba(83, 83, 83, 0.3);
 }
 
 .form-control.is-invalid {
@@ -452,15 +449,21 @@ textarea {
     padding-block: 12px;
     padding-inline: 17px;
 }
+input[readonly] {
+    background-color: white; /* Change background color */
+    color: black; /* Change text color */
+    cursor: default; /* Change cursor */
+    /* Add any other styles you want */
+}
 
 .form-select:focus {
-    border-color: #0268aa;
-    box-shadow: 0 0 8px rgba(2, 104, 170, 0.4);
+    border-color: var(--bs-primary);
+    box-shadow: 0 0 6px rgba(83, 83, 83, 0.3);
 }
 
 .form-select:active {
     border-color: #0268aa;
-    box-shadow: 0 0 6px rgba(2, 104, 170, 0.3);
+    box-shadow: 0 0 6px rgba(83, 83, 83, 0.3);
 }
 
 .form-select:disabled,
@@ -472,7 +475,8 @@ textarea {
 }
 
 .form-select:hover {
-    border-color: #0288d1;
+    border-color: var(--bs-primary);
+    box-shadow: 0 0 6px rgba(83, 83, 83, 0.3);
 }
 
 .form-select.is-invalid {
@@ -581,7 +585,7 @@ textarea {
     flex-grow: 0;
 }
 .student-card .card-icon {
-    color: #4154f1;
+    color: var(--bs-primary);
     background: #f6f6fe;
 }
 

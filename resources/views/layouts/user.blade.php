@@ -20,6 +20,7 @@
     <link rel="icon" type="image/png" href="src/images/logo-with-bg.svg">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.css" />
 
     <script src="https://kit.fontawesome.com/8d62d56333.js" crossorigin="anonymous"></script>
     <script src="https://unpkg.com/boxicons@2.1.4/dist/boxicons.js"></script>
@@ -104,7 +105,7 @@
                             <a class="nav-link {{ Request::routeIs('qr-code') ? 'active fw-semibold border-bottom border-2 border-dark' : '' }}"
                                 href="{{ route('qr-code') }}">QR Code</a>
                         </li>
-                      
+
                         <li class="nav-item position-relative">
                             <a class="nav-link {{ Request::routeIs('attendance') ? 'active fw-semibold border-bottom border-2 border-dark' : '' }}"
                                 href="{{ route('attendance') }}">Attendance</a>
@@ -142,6 +143,10 @@
         @yield('content')
 
     </main>
+
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/jquery/latest/jquery.min.js"></script>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/momentjs/latest/moment.min.js"></script>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.min.js"></script>
 
 
 

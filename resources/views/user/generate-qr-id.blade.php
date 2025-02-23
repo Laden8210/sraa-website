@@ -3,27 +3,10 @@
 
 <head>
     <meta charset="utf-8">
-    <title>
-        @if (isset($division) && isset($role) && isset($event))
-            QR Codes:{{ $division }}, {{ $role }}, {{ $event }}
-        @elseif(isset($division) && isset($role))
-            QR Codes:{{ $division }}, {{ $role }}
-        @elseif(isset($division) && isset($event))
-            QR Codes:{{ $division }}, {{ $event }}
-        @elseif(isset($role) && isset($event))
-            QR Codes:{{ $role }}, {{ $event }}
-        @elseif(isset($division))
-            QR Codes:{{ $division }}
-        @elseif(isset($role))
-            QR Codes:{{ $role }}
-        @elseif(isset($event))
-            QR Codes: {{ $event }}
-        @else
-            All QR Codes
-        @endif
-    </title>
+    <title>Print ID</title>
     <meta name="csrf-token" content="bB0FvSfkMmZzQs8mqjq8sIhFMBg5HJsMGkbKLB4p">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" />
+
     <style>
         @media print {
 
@@ -31,8 +14,6 @@
             #downloadPdfButton {
                 display: none;
             }
-
-        
         }
 
         @media print {
@@ -147,24 +128,36 @@
             <button id="printPageButton" class="custom-btn mt-4 btn-lg w-50" onclick="window.print()">Print or Save
                 as PDF</button>
         </div>
-        @foreach ($participants->chunk(12) as $participantChunk)
+        @foreach ($participants->chunk(2) as $participantChunk)
             <div class="mt-4 paper mb-0">
                 <div class="row">
                     @foreach ($participantChunk as $participant)
-                        <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4 mb-2">
-                            <div class="d-flex justify-content-center">
-                                {!! QrCode::size(200)->generate($participant->qr_data) !!}
-                            </div>
-
-                            <div class="mt-2">
-                                <h6 class="text-center">{{ $participant->name }} <span> |
-                                        {{ $participant->participant_role }}</span></h6>
-                                <div class="" style="font-size: 12px;">
-                                    <div class="text-center">{{ $participant->division }}</div>
-                                    <div class="text-center">{{ $participant->school }}</div>
-                                    <div class="text-center">{{ $participant->event }}</div>
+                        <div class="col-sm-6 meet-id">
+                            <div class="card">
+                                <div class="card-body">
+                                    <table cellpadding="5" class="text-center" width="100%">
+                                        <tr>
+                                            <td>
+                                                <span class="h4">SRAA MEET 2025</span>
+                                                <span class="sub">
+                                                    <br />SOCCSKSARGEN Region
+                                                    <br /> Schools Division of Koronadal City
+                                                    <br /> February 17-24, 2025
+                                                </span>
+                                                <br /><br /><span class="h3">PARTICIPANT</span>
+                                                <br /><span
+                                                    class="h5">{{ $participant->participant_role == 'student' ? 'player' : $participant->participant_role }}</span>
+                                                <br /><img src="{{ asset('image/placeholder.png') }}" width="96px"
+                                                    height="96px"></span>
+                                                <br /><br />
+                                                {!! QrCode::size(100)->generate($participant->qr_data) !!}
+                                                <br /><br />
+                                                <span class="h5">{{ $participant->name }}</span>
+                                                <br /> <span class="h6 text-muted">{{ $participant->division }}</span>
+                                            </td>
+                                        </tr>
+                                    </table>
                                 </div>
-
                             </div>
                         </div>
                     @endforeach

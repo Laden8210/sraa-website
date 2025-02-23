@@ -12,7 +12,7 @@
             </div>
             <div class="align-self-end">
                 <button type="button" class="btn btn-primary w-auto mb-3" id="add-coach"><i class="fa fa-add me-1"></i> Add Coach</button>
-                <button type="button" class="btn btn-primary w-auto mb-3" id="upload-excel"><i class="fa fa-upload me-1"></i> Upload Excel</button>
+                <button type="button" class="btn btn-primary w-auto mb-3" id="upload-excel"><i class="far fa-file-excel me-1"></i> Upload Excel</button>
             </div>
         </div>
         <div class="row">
@@ -71,7 +71,7 @@
                                             <td>{{ $coach->school }}</td>
                                             <td>{{ $coach->username }}</td>
                                             <td>
-                                                <button class="btn btn-primary edit-coach" data-id="{{ $coach->participant_id }}" data-name="{{ $coach->name }}" data-division="{{ $coach->division }}" data-school="{{ $coach->school }}" data-mobile="{{ $coach->mobile_num }}">
+                                                <button class="button-clear edit-coach" data-id="{{ $coach->participant_id }}" data-name="{{ $coach->name }}" data-division="{{ $coach->division }}" data-school="{{ $coach->school }}" data-mobile="{{ $coach->mobile_num }}">
                                                     <i class="fa fa-edit"></i>
                                                 </button>
                                             </td>
