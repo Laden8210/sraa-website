@@ -42,66 +42,6 @@
         </div>
     </div>
 
-    {{-- <header id="header" class="fixed-top animate__animated  animate__fadeInDown shadow">
-        <div class="container d-flex align-items-center justify-content-between px-4">
-            <div>
-                <a href="/" class="d-flex align-items-center">
-                    <img src="{{ asset('image/logo.png') }}" alt="Logo" style="height: 32px;">
-
-                </a>
-            </div>
-
-
-
-
-
-
-
-        </div>
-    </header> --}}
-
-    <header id="header" class="fixed-top animate__animated  animate__fadeInDown shadow-sm">
-        <div class="container-fluid d-flex align-items-center justify-content-between px-4 my-0" style="padding-inline: 2%;">
-            <div>
-                <a href="/" class="d-flex align-items-center">
-                    <img src="{{ asset('image/logo.png') }}" alt="Logo" style="height: 32px;">
-
-                </a>
-            </div>
-
-
-            <nav class="d-none d-md-flex">
-                <ul class="nav">
-                    <li class="nav-item">
-                        <a class="nav-link {{ Request::routeIs('dashboard') ? 'active fw-semibold border-bottom border-2 border-dark' : '' }}"
-                            href="{{ route('dashboard') }}">Home</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link {{ Request::routeIs('qr-code') ? 'active fw-semibold border-bottom border-2 border-dark' : '' }}"
-                            href="{{ route('qr-code') }}">Help Center</a>
-                    </li>
-                    <li class="nav-item border-r-1">
-                        <a class="nav-link {{ Request::routeIs('users') ? 'active fw-semibold border-bottom border-2 border-dark' : '' }}"
-                            href="{{ route('users') }}">About</a>
-                    </li>
-                </ul>
-            </nav>
-
-            <div class="d-flex align-items-center gap-2">
-                @if (Auth::user() != null)
-                    <div class="d-flex align-items-center">
-                        <a href="logout" class="btn btn-primary rounded-pill ">Logout</a>
-                    </div>
-                @else
-                    <div class="d-flex align-items-center">
-                        <a href="login" class="btn btn-primary rounded-pill ">Login Now</a>
-                    </div>
-                @endif
-            </div>
-        </div>
-    </header>
-
-
     <main>
 
         @yield('content')
