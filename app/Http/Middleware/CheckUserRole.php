@@ -22,6 +22,6 @@ class CheckUserRole
             return $next($request);
         }
 
-        return route('login');
+        return redirect()->route('login');
     }
 }
