@@ -21,7 +21,7 @@
                             </div>
                             <div class="ps-3">
                                 <h6>{{ $total_student }}</h6>
-                                <span class="text-success small pt-1 fw-bold">{{$increase_student}}%</span> <span
+                                <span class="text-success small pt-1 fw-bold">{{ $increase_student }}%</span> <span
                                     class="text-muted small pt-2 ps-1">increase</span>
 
                             </div>
@@ -41,7 +41,7 @@
                             </div>
                             <div class="ps-3">
                                 <h6>{{ $total_coach }}</h6>
-                                <span class="text-success small pt-1 fw-bold">{{$increase_coach}}%</span> <span
+                                <span class="text-success small pt-1 fw-bold">{{ $increase_coach }}%</span> <span
                                     class="text-muted small pt-2 ps-1">increase</span>
 
                             </div>
@@ -62,7 +62,7 @@
                             </div>
                             <div class="ps-3">
                                 <h6>{{ $total_attendance }}</h6>
-                                <span class="text-success small pt-1 fw-bold">{{$increase_attendance}}%</span> <span
+                                <span class="text-success small pt-1 fw-bold">{{ $increase_attendance }}%</span> <span
                                     class="text-muted small pt-2 ps-1">increase</span>
 
                             </div>
@@ -88,7 +88,9 @@
                     <div class="card  animate__animated animate__fadeInUp animate__delay-1s">
 
                         <div class="card-body">
-                            <h5 class="card-title">Attendance <span>/Daily Record</span></h5>
+                            <h5 class="card-title">Attendance <span> | Daily Record
+                                    {{ request('date') ? ', ' . \Carbon\Carbon::parse(request('date'))->format('F j, Y') : ', ' . 'Today' }}
+                                    {{", for " . Auth::user()->division }}</span></h5>
 
                             <div class="card-body">
 
@@ -97,6 +99,7 @@
                                         <tr>
                                             <th scope="col">#</th>
                                             <th scope="col">Full Name</th>
+                                            <th scope="col">Role</th>
                                             <th scope="col">Division</th>
                                             <th scope="col">Time Record</th>
                                             <th scope="col">Date Record</th>
@@ -106,7 +109,7 @@
                                     <tbody>
                                         @if ($attendance->isEmpty())
                                             <tr>
-                                                <td colspan="6" class="text-center text-muted">No attendance records for
+                                                <td colspan="7" class="text-center text-muted">No attendance records for
                                                     this date.</td>
                                             </tr>
                                         @else
@@ -114,8 +117,9 @@
                                                 <tr>
                                                     <th scope="row">{{ $loop->iteration }}</th>
                                                     <td>{{ $record->participant->name }}</td>
+                                                    <td>{{ $record->participant->participant_role }}</td>
                                                     <td>{{ $record->participant->division }}</td>
-                                                    <td>{{ $record->time_recorded }}</td>
+                                                    <td>{{ \Carbon\Carbon::parse($record->time_recorded)->format('h:i:s A') }}</td>
                                                     <td>{{ $record->created_at->format('F j, Y') }}</td>
                                                     <td>{{ $record->user->name }}</td>
                                                 </tr>
@@ -139,7 +143,9 @@
                 <div class="card  animate__animated animate__fadeInUp animate__delay-1s">
 
                     <div class="card-body">
-                        <h5 class="card-title">Attendance <span>/Today's Record</span></h5>
+                        <h5 class="card-title">Attendance <span>Daily Record
+                                {{ request('date') ? ', ' . \Carbon\Carbon::parse(request('date'))->format('F j, Y') : ', ' . 'Today' }}
+                                {{", for " . Auth::user()->division }}</span></h5>
 
                         <div id="reportsChart"></div>
 
@@ -151,7 +157,7 @@
                 <div class="card animate__animated animate__fadeInUp animate__delay-1s">
                     <div class="card-body">
                         <div class="d-flex justify-content-between align-items-center">
-                            <h5 class="card-title">Attendance <span>/Selected Date Range</span></h5>
+                            <h5 class="card-title">Attendance <span> | Selected Date Range {{", for " . Auth::user()->division }}</span></h5>
                             <div class="w-25 position-relative">
                                 <input type="text" id="date-range" class="form-control ps-4"
                                     placeholder="Select Date Range">
@@ -216,7 +222,10 @@
                                                     width: 2
                                                 },
                                                 xaxis: {
-                                                    categories: data.categories
+                                                    categories: data.categories.map(function(category) {
+                                                        return moment(category, 'YYYY-MM-DD').format(
+                                                            'MMM D, YYYY');
+                                                    })
                                                 },
                                                 yaxis: {
                                                     labels: {
@@ -303,7 +312,9 @@
                                                     width: 2
                                                 },
                                                 xaxis: {
-                                                    categories: data.categories
+                                                    categories: data.categories.map(function(category) {
+                                                        return moment(category, 'HH:mm').format('hh:mm A');
+                                                    })
                                                 },
                                                 yaxis: {
                                                     labels: {

@@ -60,10 +60,11 @@
     <header id="header" class="fixed-top animate__animated  animate__fadeInDown shadow-sm">
         <div class="container-fluid d-flex align-items-center justify-content-between my-0" style="padding-inline: 2%;">
             <div>
-                <a href="/" class="d-flex align-items-center">
-                    <img src="{{ asset('image/logo.png') }}" alt="Logo" style="height: 32px;">
-
-                </a>
+                <a class="navbar-brand d-flex align-items-center fw-bold fs-5" href="index.html">
+                    <img src="{{ asset('image/logo.png') }}" alt="Logo" style="height: 50px;">
+                    <div class="text-warning" style="color: #8e53fd !important">SRAA</div>
+                    <div class="text-secondary">MEET</div>
+                 </a>
             </div>
 
 

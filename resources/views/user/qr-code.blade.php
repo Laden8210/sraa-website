@@ -5,36 +5,37 @@
 
     <section class="container ">
         <div>
-            <div class="d-flex justify-content-between align-items-end">
+            <div class="d-flex flex-column flex-md-row justify-content-between align-items-md-end">
                 <div class="pagetitle animate__animated animate__fadeInDown animate__delay-1s mt-4">
                     <h3>Qr Codes</h3>
                     <p>| Generate, Print, and Download Qr Codes </p>
                 </div>
-                <div class="align-self-end">
-                    <div class="d-flex justify-content-between align-items-center gap-2">
+                <div class="md:w-100 sm:w-100 mt-3 mt-md-0">
+                    <div class="d-flex flex-column flex-md-row justify-content-md-end align-items-md-center gap-2">
                         <form method="POST" action="{{ route('generate-qr-id') }}">
                             @csrf
                             <input type="hidden" name="search" value="{{ request('search') }}">
                             <input type="hidden" name="division" value="{{ request('division') }}">
                             <input type="hidden" name="role" value="{{ request('role') }}">
-                            <button type="submit" class="btn btn-primary w-auto mb-3"><i class="fas fa-id-card me-1"
-                                    aria-hidden="true"></i>Generate Qr IDs</button>
+                            <button type="submit" class="btn btn-primary w-100 w-md-auto mb-2 mb-md-3">
+                                <i class="fas fa-id-card me-1" aria-hidden="true"></i>Generate Qr IDs
+                            </button>
                         </form>
                         <form method="POST" action="{{ route('generate-qr-code') }}">
                             @csrf
                             <input type="hidden" name="search" value="{{ request('search') }}">
                             <input type="hidden" name="division" value="{{ request('division') }}">
                             <input type="hidden" name="role" value="{{ request('role') }}">
-                            <button type="submit" class="btn btn-primary w-auto mb-3"><i class="fas fa-qrcode me-1"
-                                    aria-hidden="true"></i>Generate Qr Codes</button>
+                            <button type="submit" class="btn btn-primary w-100 w-md-auto mb-3">
+                                <i class="fas fa-qrcode me-1" aria-hidden="true"></i>Generate Qr Codes
+                            </button>
                         </form>
-
                     </div>
-
                 </div>
             </div>
+            
             <div class="card px-3 animate__animated animate__fadeIn animate__delay-1s mb-4 border shadow-sm shadow">
-                <div class="w-75 mt-3  animate__animated  animate__fadeIn  animate__delay-1s">
+                <div class="lg:w-75 md:w-100 mt-3  animate__animated  animate__fadeIn  animate__delay-1s">
                     <form method="GET" action="{{ route('qr-code') }}" class="mb-3 w-70">
                         <div class="row g-2">
                             <div class="col-lg-3 col-md-12">

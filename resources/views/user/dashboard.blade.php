@@ -106,7 +106,7 @@
                     <div class="card  animate__animated animate__fadeInUp animate__delay-1s border shadow-sm shadow">
 
                         <div class="card-body">
-                            <h5 class="card-title">Attendance <span>/Daily Record</span></h5>
+                            <h5 class="card-title">Attendance <span>| Daily Record {{ request('date') ? ', ' . \Carbon\Carbon::parse(request('date'))->format('F j, Y') : ', ' . "Today" }} {{request('division')? ", for " . request('division') : ""}}</span></h5>
 
                             <div class="card-body">
 
@@ -115,6 +115,7 @@
                                         <tr>
                                             <th scope="col">#</th>
                                             <th scope="col">Full Name</th>
+                                            <th scope="col">Role</th>
                                             <th scope="col">Division</th>
                                             <th scope="col">Time Record</th>
                                             <th scope="col">Date Record</th>
@@ -124,7 +125,7 @@
                                     <tbody>
                                         @if ($attendance->isEmpty())
                                             <tr>
-                                                <td colspan="6" class="text-center text-muted">No attendance records for
+                                                <td colspan="7" class="text-center text-muted">No attendance records for
                                                     this date.</td>
                                             </tr>
                                         @else
@@ -132,8 +133,9 @@
                                                 <tr>
                                                     <th scope="row">{{ $loop->iteration }}</th>
                                                     <td>{{ $record->participant->name }}</td>
+                                                    <td>{{ $record->participant->participant_role }}</td>
                                                     <td>{{ $record->participant->division }}</td>
-                                                    <td>{{ $record->time_recorded }}</td>
+                                                    <td>{{ \Carbon\Carbon::parse($record->time_recorded)->format('h:i:s A') }}</td>
                                                     <td>{{ $record->created_at->format('F j, Y') }}</td>
                                                     <td>{{ $record->user->name }}</td>
                                                 </tr>
@@ -158,14 +160,10 @@
 
 
                     <div class="card-body">
-                        <h5 class="card-title">Attendance <span>/Daily Record</span></h5>
+                        <h5 class="card-title">Attendance <span> | Daily Record  {{ request('date') ? ', ' . \Carbon\Carbon::parse(request('date'))->format('F j, Y') : ', ' . "Today" }} {{request('division')? ", for " . request('division') : ""}}</span></h5>
 
                         <!-- Line Chart -->
                         <div id="reportsChart"></div>
-
-
-
-                        <!-- End Line Chart -->
 
                     </div>
 
@@ -235,7 +233,9 @@
                                         width: 2
                                     },
                                     xaxis: {
-                                        categories: data.categories
+                                        categories: data.categories.map(function(category) {
+                                            return moment(category, 'HH:mm').format('hh:mm A');
+                                        })
                                     },
                                     yaxis: {
                                         labels: {
@@ -334,7 +334,9 @@
                                         width: 2
                                     },
                                     xaxis: {
-                                        categories: data.categories
+                                        categories: data.categories.map(function(category) {
+                                            return moment(category, 'YYYY-MM-DD').format('MMM D, YYYY');
+                                        })
                                     },
                                     yaxis: {
                                         labels: {
