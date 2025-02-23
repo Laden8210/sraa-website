@@ -52,50 +52,71 @@
             <div class="col-12">
                 <div class="card animate__animated  animate__fadeIn  animate__delay-1s border shadow-sm shadow">
                     <div class="card-header">
-                        <div class="w-75">
-                            <form method="GET" action="{{ route('attendance') }}" class="w-70">
-                                <div class="row g-2">
-                                    <div class="col-lg-3 col-md-12">
-                                        <input name="search" type="text" class="form-control" placeholder="Search"
-                                            value="{{ request('search') }}">
-                                    </div>
-                                    @if (Auth::user()->role == 'admin')
+                        <div class="row w-100">
+                            <div class="col-lg-10 col-md-8 col-sm-12">
+                                <form method="GET" action="{{ route('attendance') }}" class="w-100">
+                                    <div class="row g-2">
+                                        <div class="col-lg-3 col-md-12">
+                                            <input name="search" type="text" class="form-control" placeholder="Search"
+                                                value="{{ request('search') }}">
+                                        </div>
+                                        @if (Auth::user()->role == 'admin')
+                                            <div class="col-lg-2 col-md-12">
+                                                <select name="division" class="form-select">
+                                                    <option value="">Select Division</option>
+                                                    @foreach ($divisions as $division)
+                                                        <option value="{{ $division }}"
+                                                            {{ request('division') == $division ? 'selected' : '' }}>
+                                                            {{ $division }}</option>
+                                                    @endforeach
+                                                </select>
+                                            </div>
+                                        @endif
+
                                         <div class="col-lg-2 col-md-12">
-                                            <select name="division" class="form-select">
-                                                <option value="">Select Division</option>
-                                                @foreach ($divisions as $division)
-                                                    <option value="{{ $division }}"
-                                                        {{ request('division') == $division ? 'selected' : '' }}>
-                                                        {{ $division }}</option>
-                                                @endforeach
+                                            <select name="role" class="form-select">
+                                                <option value="">Select Role</option>
+                                                <option value="student"
+                                                    {{ request('role') == 'student' ? 'selected' : '' }}>Student</option>
+                                                <option value="coach" {{ request('role') == 'coach' ? 'selected' : '' }}>
+                                                    Coach</option>
                                             </select>
                                         </div>
-                                        
-                                    @endif
 
-                                    <div class="col-lg-2 col-md-12">
-                                        <select name="role" class="form-select">
-                                            <option value="">Select Role</option>
-                                            <option value="student" {{ request('role') == "student" ? 'selected' : '' }}>Student</option>
-                                            <option value="coach" {{ request('role') == "coach" ? 'selected' : '' }}>Coach</option>
-                                        </select>
+                                        <div class="col-lg-3 col-md-12">
+                                            {{-- <input name="date" type="text" class="form-control date_range" placeholder="Select Date Range"
+                                                value="{{ request('date') }}" readonly> --}}
+
+                                                <div class="position-relative">
+                                                    <input name="date" type="text" class="form-control ps-4 date_range"
+                                                        placeholder="Select Date Range" value="{{ request('date') }}" readonly>
+                                                    <i class="far fa-calendar position-absolute top-50 end-0 translate-middle-y pe-3"></i>
+                                                </div>
+                                        </div>
+                                        <div class="col-lg-2 col-md-12 d-flex align-items-center gap-2">
+                                            <button class="btn btn-primary" type="submit">
+                                                <i class="fa fa-search" aria-hidden="true"></i>
+                                            </button>
+                                            <a href="{{ route('attendance') }}" class="btn btn-secondary">
+                                                <i class="fa fa-times" aria-hidden="true"></i>
+                                            </a>
+                                        </div>
                                     </div>
-                                  
-                                    <div class="col-lg-3 col-md-12">
-                                        <input name="date" type="text" class="form-control" placeholder="Search"
-                                            value="{{ request('date') }}" readonly>
-                                    </div>
-                                    <div class="col-lg-2 col-md-12 d-flex align-items-center gap-2">
-                                        <button class="btn btn-primary" type="submit">
-                                            <i class="fa fa-search" aria-hidden="true"></i>
-                                        </button> 
-                                        <a href="{{ route('attendance') }}" class="btn btn-secondary">
-                                            <i class="fa fa-times" aria-hidden="true"></i>
-                                        </a>
-                                        
-                                    </div>
-                                </div>
-                            </form>
+                                </form>
+                            </div>
+                            <div class="col-lg-2 col-md-4 col-sm-12">
+                                <form method="GET" action="{{ route('generate-attendance-report') }}" class="w-100 d-flex justify-content-end">
+                                    <input type="hidden" name="search" value="{{ request('search') }}">
+                                    @if (Auth::user()->role == 'admin')
+                                        <input type="hidden" name="division" value="{{ request('division') }}">
+                                    @endif
+                                    <input type="hidden" name="role" value="{{ request('role') }}">
+                                    <input type="text" name="date" value="{{ request('date') }}" hidden>
+                                    <button class="btn btn-primary" type="submit">
+                                        <i class="fa fa-print" aria-hidden="true"></i> Print Report
+                                    </button>
+                                </form>
+                            </div>
                         </div>
                     </div>
                     <div class="card-body">
@@ -125,7 +146,7 @@
                                     </tr>
                                 @empty
                                     <tr>
-                                        <td colspan="6" class="text-center">No attendance record found</td>
+                                        <td colspan="7" class="text-center">No attendance record found</td>
                                     </tr>
                                 @endforelse
                             </tbody>
@@ -137,17 +158,27 @@
                     </div>
                 </div>
             </div>
-        </div>
-        <script>
-            $(function() {
-                $('input[name="date"]').daterangepicker({
-                    opens: 'left'
-                }, function(start, end, label) {
-                    console.log("A new date selection was made: " + start.format('YYYY-MM-DD') + ' to ' + end
-                        .format('YYYY-MM-DD'));
+            <script>
+                $(function() {
+                    $('.date_range').daterangepicker({
+                        opens: 'left',
+                        autoUpdateInput: false,
+                        locale: {
+                            format: 'MM/DD/YYYY'
+                        }
+                    }, function(start, end, label) {
+                        console.log("A new date selection was made: " + start.format('MM/DD/YYYY') + ' - ' + end.format('MM/DD/YYYY'));
+                    });
+
+                    $('.date_range').on('apply.daterangepicker', function(ev, picker) {
+                        $(this).val(picker.startDate.format('MM/DD/YYYY') + ' - ' + picker.endDate.format('MM/DD/YYYY'));
+                    });
+
+                    $('.date_range').on('cancel.daterangepicker', function(ev, picker) {
+                        $(this).val('');
+                    });
                 });
-            });
-        </script>
+            </script>
     </section>
 
 @endsection

@@ -91,11 +91,11 @@
                             alt="" />
                     </div>
                     <div class="col-md-6 text-center text-md-start offset-md-1">
-                        <h6 class="fw-bold fs-4 display-3 lh-sm">SOCCSKSARGEN Athlete Attendance System</h6>
+                        <h6 class="fw-bold fs-4 display-3 lh-sm">About the System</h6>
                         <p class="my-4 pe-xl-5">
-                            The SOCCSKSARGEN Athlete Attendance System is designed to streamline and automate attendance
+                            Participant Attendance System is designed to streamline and automate attendance
                             tracking
-                            for all athletes participating in the 2025 regional games. With real-time monitoring,
+                            for all athletes and coaches participating in the 2025 regional games. With real-time monitoring,
                             digital
                             records,
                             and QR-based check-ins, we ensure accurate and hassle-free attendance management.
@@ -173,11 +173,8 @@
                                                 src="{{ asset('image/number_1.png') }}" width="90"
                                                 alt="" />
                                         </div>
-                                        <h5 class="fw-bold text-undefined">Delegate Logs In</h5>
-                                        <p class="mt-2 mb-0">Get your blood tests delivered at home collect a sample
-                                            from the news
-                                            your
-                                            blood tests.</p>
+                                        <h5 class="fw-bold text-undefined">User Logs In</h5>
+                                        <p class="mt-2 mb-0">User sign in to the mobile application to manage attendance.</p>
                                     </div>
                                 </div>
                                 <div class="col-md-6">
@@ -187,10 +184,7 @@
                                                 alt="" />
                                         </div>
                                         <h5 class="fw-bold text-undefined">Athlete Scans QR Code</h5>
-                                        <p class="mt-2 mb-0">Get your blood tests delivered at home collect a sample
-                                            from the news
-                                            your
-                                            blood tests.</p>
+                                        <p class="mt-2 mb-0">Athletes scan their QR codes using the delegate's mobile device.</p>
                                     </div>
                                 </div>
                                 <div class="col-md-6">
@@ -198,11 +192,8 @@
                                         <div class="py-4"><img class="img-fluid"
                                                 src="{{ asset('image/number_3.png') }}" width="90"
                                                 alt="" /></div>
-                                        <h5 class="fw-bold text-undefined">Attendance is Recorded</h5>
-                                        <p class="mt-2 mb-0">Get your blood tests delivered at home collect a sample
-                                            from the news
-                                            your
-                                            blood tests.</p>
+                                        <h5 class="fw-bold">Attendance is Recorded</h5>
+                                        <p class="mt-2 mb-0">Attendance is logged in the local device storage.</p>
                                     </div>
                                 </div>
                                 <div class="col-md-6">
@@ -211,10 +202,7 @@
                                                 src="{{ asset('image/number_4.png') }}" width="90"
                                                 alt="" /></div>
                                         <h5 class="fw-bold text-undefined">Sync Recorded Attendance</h5>
-                                        <p class="mt-2 mb-0">Get your blood tests delivered at home collect a sample
-                                            from the news
-                                            your
-                                            blood tests.</p>
+                                        <p class="mt-2 mb-0">Sync the attendance recorded in the local device to the server for centralized tracking and reporting.</p>
                                     </div>
                                 </div>
                             </div>

@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use App\Utils\AccommodationManager;
 use Carbon\Carbon;
 use Illuminate\Support\Facades\Auth;
+use Barryvdh\DomPDF\Facade\Pdf;
 
 class AttendanceController extends Controller
 {
@@ -42,7 +43,7 @@ class AttendanceController extends Controller
         }
 
         if ($request->has('date') && $request->date != '') {
-            [$startDate, $endDate] = explode(' - ', urldecode($request->date));
+            [$startDate, $endDate] = explode(' - ', urldecode(urldecode($request->date)));
             $startDate = Carbon::createFromFormat('m/d/Y', trim($startDate))->startOfDay();
             $endDate = Carbon::createFromFormat('m/d/Y', trim($endDate))->endOfDay();
             $query->whereBetween('date_recorded', [$startDate, $endDate]);
@@ -55,7 +56,7 @@ class AttendanceController extends Controller
 
         return view('user.attendance', compact('attendance', 'divisions'));
     }
-    
+
     public function getAttendanceData(Request $request)
     {
         $date = $request->query('date', Carbon::today()->toDateString()); // Get date from request or default to today
@@ -103,19 +104,19 @@ class AttendanceController extends Controller
     {
         $endDate = Carbon::createFromFormat('m/d/Y', $request->query('end_date', Carbon::today()->format('m/d/Y')))->format('Y-m-d');
         $startDate = Carbon::createFromFormat('m/d/Y', $request->query('start_date', Carbon::parse($endDate)->subDays(10)->format('m/d/Y')))->format('Y-m-d');
-        
+
         if (Auth::user()->role == "superintendent") {
             $query = Attendance::whereBetween('created_at', [
-                Carbon::parse($startDate)->startOfDay(), 
+                Carbon::parse($startDate)->startOfDay(),
                 Carbon::parse($endDate)->endOfDay()
             ])
-            ->with('participant')
-            ->whereHas('participant', function ($q) {
-                $q->where('division', Auth::user()->division);
-            })
-            ->selectRaw('DATE(created_at) as date, COUNT(*) as count')
-            ->groupBy('date')
-            ->orderBy('date');
+                ->with('participant')
+                ->whereHas('participant', function ($q) {
+                    $q->where('division', Auth::user()->division);
+                })
+                ->selectRaw('DATE(created_at) as date, COUNT(*) as count')
+                ->groupBy('date')
+                ->orderBy('date');
         } else {
             $query = Attendance::whereBetween('created_at', [$startDate, $endDate])
                 ->with('participant')
@@ -138,13 +139,63 @@ class AttendanceController extends Controller
 
         while ($current <= $end) {
             $formattedDate = $current->format('Y-m-d');
-            $allDates[$formattedDate] = $attendanceData[$formattedDate] ?? 0; 
+            $allDates[$formattedDate] = $attendanceData[$formattedDate] ?? 0;
             $current->addDay();
         }
 
         return response()->json([
-            'categories' => array_keys($allDates), 
-            'data' => array_values($allDates) 
+            'categories' => array_keys($allDates),
+            'data' => array_values($allDates)
         ]);
+    }
+
+    public function generateAttendancereport(Request $request)
+    {
+        $startDate = "";
+        $endDate = "";
+
+        if (Auth::user()->role == "superintendent") {
+            $query = Attendance::whereHas('participant', function ($q) {
+                $q->where('division', Auth::user()->division);
+            })->with(["participant", "user"]);
+        } else {
+            $query = Attendance::with(["participant", "user"]);
+        }
+
+        if ($request->has('search') && $request->search != '') {
+            $searchTerm = '%' . $request->search . '%';
+
+            $query->whereHas('participant', function ($q) use ($searchTerm) {
+                $q->where('participants.name', 'like', $searchTerm);
+            })->orWhereHas('user', function ($q) use ($searchTerm) {
+                $q->where('users.name', 'like', $searchTerm);
+            });
+        }
+
+        if ($request->has('division') && $request->division != '') {
+            $query->whereHas('participant', function ($q) use ($request) {
+                $q->where('division', $request->division);
+            });
+        }
+        if ($request->has('role') && $request->role != '') {
+            $query->whereHas('participant', function ($q) use ($request) {
+                $q->where('participant_role', $request->role);
+            });
+        }
+
+        if ($request->has('date') && $request->date != '') {
+            [$startDate, $endDate] = explode(' - ', urldecode(urldecode($request->date)));
+            $startDate = Carbon::createFromFormat('m/d/Y', trim($startDate))->startOfDay()->format('Y-m-d');
+            $endDate = Carbon::createFromFormat('m/d/Y', trim($endDate))->endOfDay()->format('Y-m-d');
+            $query->whereBetween('created_at', [$startDate, $endDate]);
+        }
+
+        $division = $request->division;
+        $role = $request->role;
+
+        $attendances = $query->get();
+        $pdf = Pdf::loadView('user.attendance_report_pdf', compact('attendances', 'startDate', 'endDate', 'division', 'role'));
+
+        return $pdf->stream('attendance_report.pdf');
     }
 }

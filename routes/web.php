@@ -64,3 +64,4 @@ Route::middleware(['check.role:admin,superintendent'])->group(function () {
     Route::post('/generate-qr-code', [QRController::class, 'generateQrCode'])->name('generate-qr-code');
 });
 
+Route::get('generate-attendance-report', [AttendanceController::class, 'generateAttendancereport'])->name('generate-attendance-report');
