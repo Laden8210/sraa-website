@@ -35,7 +35,7 @@
             </div>
             
             <div class="card px-3 animate__animated animate__fadeIn animate__delay-1s mb-4 border shadow-sm shadow">
-                <div class="lg:w-75 md:w-100 mt-3  animate__animated  animate__fadeIn  animate__delay-1s">
+                <div class="w-75 md:w-100 mt-3  animate__animated  animate__fadeIn  animate__delay-1s">
                     <form method="GET" action="{{ route('qr-code') }}" class="mb-3 w-70">
                         <div class="row g-2">
                             <div class="col-lg-3 col-md-12">
