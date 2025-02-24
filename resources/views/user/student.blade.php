@@ -11,7 +11,7 @@
                 <p>| Manage student records</p>
             </div>
             <div class="align-self-end">
-                <button type="button" class="btn btn-primary w-auto mb-3" id="add-student"><i class="fa fa-add me-1"></i> Add Student</button>
+                <button type="button" class="btn btn-primary w-auto mb-3 me-2" id="add-student"><i class="fa fa-add me-1"></i> Add Student</button>
                 <button type="button" class="btn btn-primary w-auto mb-3" id="upload-excel"><i class="far fa-file-excel me-1"></i> Upload Excel</button>
             </div>
         </div>
