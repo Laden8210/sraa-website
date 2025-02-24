@@ -75,7 +75,9 @@
                         <p class="mt-3 mb-4 fs-1">Embracing the Spirit of Sportsmanship and Excellence – 2025
                             SOCCSKSARGEN
                             Athletes, Rising to Greatness! <br class="d-none d-lg-block" /></p><a
-                            class="btn btn-lg btn-primary rounded-pill hover-top" href="{{ asset('mobile_application/SRAA ATTENDANCE APPLICATION.apk') }}" role="button">Download
+                            class="btn btn-lg btn-primary rounded-pill hover-top"
+                            href="{{ asset('mobile_application/SRAA ATTENDANCE APPLICATION.apk') }}"
+                            role="button">Download
                             Mobile App</a>
                     </div>
                 </div>
@@ -95,7 +97,8 @@
                         <p class="my-4 pe-xl-5">
                             Participant Attendance System is designed to streamline and automate attendance
                             tracking
-                            for all athletes and coaches participating in the 2025 regional games. With real-time monitoring,
+                            for all athletes and coaches participating in the 2025 regional games. With real-time
+                            monitoring,
                             digital
                             records,
                             and QR-based check-ins, we ensure accurate and hassle-free attendance management.
@@ -174,7 +177,8 @@
                                                 alt="" />
                                         </div>
                                         <h5 class="fw-bold text-undefined">User Logs In</h5>
-                                        <p class="mt-2 mb-0">User sign in to the mobile application to manage attendance.</p>
+                                        <p class="mt-2 mb-0">User sign in to the mobile application to manage
+                                            attendance.</p>
                                     </div>
                                 </div>
                                 <div class="col-md-6">
@@ -184,7 +188,8 @@
                                                 alt="" />
                                         </div>
                                         <h5 class="fw-bold text-undefined">Athlete Scans QR Code</h5>
-                                        <p class="mt-2 mb-0">Athletes scan their QR codes using the delegate's mobile device.</p>
+                                        <p class="mt-2 mb-0">Athletes scan their QR codes using the delegate's mobile
+                                            device.</p>
                                     </div>
                                 </div>
                                 <div class="col-md-6">
@@ -202,7 +207,8 @@
                                                 src="{{ asset('image/number_4.png') }}" width="90"
                                                 alt="" /></div>
                                         <h5 class="fw-bold text-undefined">Sync Recorded Attendance</h5>
-                                        <p class="mt-2 mb-0">Sync the attendance recorded in the local device to the server for centralized tracking and reporting.</p>
+                                        <p class="mt-2 mb-0">Sync the attendance recorded in the local device to the
+                                            server for centralized tracking and reporting.</p>
                                     </div>
                                 </div>
                             </div>
@@ -229,8 +235,12 @@
                                                 src="{{ asset('image/gettyimages-517443904.jpg') }}" width="100"
                                                 alt="" />
                                             <div class="w-lg-50 my-3">
-                                                <h5 class="mb-0 fw-bold">Jhon Doe</h5>
-                                                <p class="fw-normal mb-0">Web Developer</p>
+                                                <h5 class="mb-0 fw-bold"> <a
+                                                        class="text-dark text-decoration-none"
+                                                        target="_blank"
+                                                        href="https://www.facebook.com/NasaPh8210">John Michael D.
+                                                        Domingo</a></h5>
+                                                <p class="fw-normal mb-0">Full Stack Developer</p>
                                             </div>
                                         </div>
                                     </div>
@@ -242,8 +252,12 @@
                                                 src="{{ asset('image/gettyimages-517443904.jpg') }}" width="100"
                                                 alt="" />
                                             <div class="w-lg-50 my-3">
-                                                <h5 class="mb-0 fw-bold">Jhon Doe</h5>
-                                                <p class="fw-normal mb-0">Web Developer</p>
+                                                <h5 class="mb-0 fw-bold">
+                                                    <a
+                                                    class="text-dark text-decoration-none"
+                                                    target="_blank"
+                                                    href="https://www.facebook.com/brian.gulac">Brian John Gulac </a></h5>
+                                                <p class="fw-normal mb-0">Full Stack Developer</p>
                                             </div>
                                         </div>
                                     </div>
@@ -255,8 +269,11 @@
                                                 src="{{ asset('image/gettyimages-517443904.jpg') }}" width="100"
                                                 alt="" />
                                             <div class="w-lg-50 my-3">
-                                                <h5 class="mb-0 fw-bold">Jhon Doe</h5>
-                                                <p class="fw-normal mb-0">Web Developer</p>
+                                                <h5 class="mb-0 fw-bold"><a
+                                                    class="text-dark text-decoration-none"
+                                                    target="_blank"
+                                                    href="https://www.facebook.com/Lastlastacc1`">Machrys Mondejar</a></h5>
+                                                <p class="fw-normal mb-0">Full Stack Developer</p>
                                             </div>
                                         </div>
                                     </div>
