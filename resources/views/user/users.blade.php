@@ -21,12 +21,10 @@
         <div class="row">
 
             <div class="col-12">
-                <div class="card px-2 py-4 animate__animated animate__fadeIn animate__delay-1s">
-
-                    <div class="card-body mb-3">
-
+                <div class="card animate__animated animate__fadeIn animate__delay-1s border shadow-sm shadow">
+                    <div class="card-header">
                         <div class="w-50">
-                            <form method="GET" action="{{ route('users') }}" class="mb-3 w-70">
+                            <form method="GET" action="{{ route('users') }}" class=" w-70">
                                 <div class="row g-2">
                                     <div class="col-lg-5 col-md-12">
                                         <input name="search" type="text" class="form-control" placeholder="Search"
@@ -51,8 +49,12 @@
                             </form>
                             
                         </div>
+                    </div>
+                    <div class="card-body mb-3">
+
+                       
                         <table class="table ">
-                            <thead class="border-top pt-3">
+                            <thead>
                                 <tr>
                                     <th scope="col">#</th>
                                     <th scope="col">Name</th>
@@ -78,7 +80,7 @@
                                             <td>{{ $user->billeting_quarter }}</td>
                                             <td>{{ $user->role }}</td>
                                             <td>
-                                                <button class="btn btn-primary edit-user" data-id="{{ $user->user_id }}"
+                                                <button class="button-clear edit-user" data-id="{{ $user->user_id }}"
                                                     data-name="{{ $user->name }}" data-username="{{ $user->username }}"
                                                     data-division="{{ $user->division }}"
                                                     data-quarter="{{ $user->billeting_quarter }}"

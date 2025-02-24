@@ -25,13 +25,18 @@ class CoachController extends Controller
         if ($request->has('division') && $request->division != '') {
             $query->where('division', $request->division);
         }
+        
+        if ($request->has('event') && $request->event != '') {
+            $query->where('event', $request->event);
+        }
 
         $coaches = $query->paginate(10);
 
         $manager = new AccommodationManager();
         $divisions = $manager->getDivisions();
+        $events = $manager->getEvents();
 
-        return view('user.faculty', compact('coaches', 'divisions'));
+        return view('user.faculty', compact('coaches', 'divisions', 'events'));
     }
 
     public function store(Request $request) {
@@ -39,6 +44,7 @@ class CoachController extends Controller
             'name' => 'required|string|max:255',
             'division' => 'required|string|max:255',
             'school' => 'required|string|max:255',
+            'event' => 'required|string|max:255',
         ]);
 
         if ($validator->fails()) {
@@ -52,7 +58,7 @@ class CoachController extends Controller
             'username' => $username,
             'division' => $request->division,
             'school' => $request->school,
-            'event' => 'N/A',
+            'event' => $request->event,
             'participant_role' => 'coach',
             'password' => Hash::make("!".$username),
             'is_deleted' => false,
@@ -66,6 +72,7 @@ class CoachController extends Controller
             'name' => 'required|string|max:255',
             'division' => 'required|string|max:255',
             'school' => 'required|string|max:255',
+            'event' => 'required|string|max:255',
         ]);
 
         if ($validator->fails()) {
@@ -81,6 +88,7 @@ class CoachController extends Controller
         $coach->name = $request->name;
         $coach->division = $request->division;
         $coach->school = $request->school;
+        $coach->event = $request->event;
         $coach->save();
 
         return response()->json(['success' => true]);
@@ -104,6 +112,7 @@ class CoachController extends Controller
         $request->validate([
             'excel_file' => 'required|file|mimes:xlsx,csv|max:2048',
             'division' => 'required|string|max:255',
+            'event' => 'required|string|max:255',
         ]);
 
         try {
@@ -132,7 +141,7 @@ class CoachController extends Controller
                     'username' => $username,
                     'school' => $data[1] ?? null,
                     'division' => $request->division,
-                    'event' => 'N/A',
+                    'event' => $request->event,
                     'participant_role' => 'coach',
                     'password' => Hash::make("!".$username), 
                     'is_deleted' => false,

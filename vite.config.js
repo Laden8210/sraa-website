@@ -9,6 +9,8 @@ export default defineConfig({
                 'resources/css/style.css', // Add your missing file here
                 'resources/js/app.js',
                 'resources/js/main.js',
+                'resources/css/theme.css',
+                'resources/js/theme.js',
             ],
             refresh: true,
         }),

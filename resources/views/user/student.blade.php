@@ -12,15 +12,15 @@
             </div>
             <div class="align-self-end">
                 <button type="button" class="btn btn-primary w-auto mb-3" id="add-student"><i class="fa fa-add me-1"></i> Add Student</button>
-                <button type="button" class="btn btn-primary w-auto mb-3" id="upload-excel"><i class="fa fa-upload me-1"></i> Upload Excel</button>
+                <button type="button" class="btn btn-primary w-auto mb-3" id="upload-excel"><i class="far fa-file-excel me-1"></i> Upload Excel</button>
             </div>
         </div>
         <div class="row ">
             <div class="col-12">
-                <div class="card px-2 py-4 animate__animated animate__fadeIn animate__delay-1s">
-                    <div class="card-body">
+                <div class="card animate__animated animate__fadeIn animate__delay-1s border shadow-sm shadow">
+                    <div class="card-header">
                         <div class="w-50">
-                            <form method="GET" action="{{ route('student') }}" class="mb-3 w-70">
+                            <form method="GET" action="{{ route('student') }}" class="w-70">
                                 <div class="row g-2">
                                     <div class="col-lg-5 col-md-12">
                                         <input name="search" type="text" class="form-control" placeholder="Search" value="{{ request('search') }}">
@@ -51,8 +51,11 @@
                                 </div>
                             </form>
                         </div>
-                        <table class="table">
-                            <thead class="border-top pt-3">
+                    </div>
+                    <div class="card-body">
+                        
+                        <table class="table table-responsive">
+                            <thead>
                                 <tr>
                                     <th scope="col">#</th>
                                     <th scope="col">Name</th>
@@ -78,7 +81,7 @@
                                             <td>{{ $student->event }}</td>
                                             <td>{{ $student->username }}</td>
                                             <td>
-                                                <button class="btn btn-primary edit-student" data-id="{{ $student->participant_id }}" data-name="{{ $student->name }}" data-division="{{ $student->division }}" data-school="{{ $student->school }}" data-event="{{ $student->event }}" data-mobile="{{ $student->mobile_num }}">
+                                                <button class="button-clear edit-student" data-id="{{ $student->participant_id }}" data-name="{{ $student->name }}" data-division="{{ $student->division }}" data-school="{{ $student->school }}" data-event="{{ $student->event }}" data-mobile="{{ $student->mobile_num }}">
                                                     <i class="fa fa-edit"></i>
                                                 </button>
                                             </td>
@@ -173,13 +176,13 @@
                             </div>
                             <div class="col-lg-12">
                                 <label for="event" class="form-label">Event</label>
-                                <select class="form-select form-control" id="event" name="event" required>
+                                <select class="form-select form-control" id="uploadEvent" name="event" required>
                                     <option value="">Select Event</option>
                                     @foreach ($events as $event)
                                         <option value="{{ $event }}">{{ $event }}</option>
                                     @endforeach
                                 </select>
-                                <span class="text-danger" id="eventError"></span>
+                                <span class="text-danger" id="uploadEventError"></span>
                             </div>
                             <div class="col-lg-12">
                                 <label for="excelFile" class="form-label">Excel File</label>
@@ -268,18 +271,7 @@
                             $('#event').addClass('is-invalid');
                             $('#eventError').text(errors.event[0]);
                         }
-                        if (errors.mobile_num) {
-                            $('#mobile_num').addClass('is-invalid');
-                            $('#mobileNumError').text(errors.mobile_num[0]);
-                        }
-                        if (errors.password) {
-                            $('#password').addClass('is-invalid');
-                            $('#passwordError').text(errors.password[0]);
-                        }
-                        if (errors.password_confirmation) {
-                            $('#password_confirmation').addClass('is-invalid');
-                            $('#passwordConfirmationError').text(errors.password_confirmation[0]);
-                        }
+                        
                     }
                 });
             });
@@ -320,6 +312,10 @@
                         if (errors.excel_file) {
                             $('#excelFile').addClass('is-invalid');
                             $('#excelFileError').text(errors.excel_file[0]);
+                        }
+                        if (errors.event) {
+                            $('#uploadEvent').addClass('is-invalid');
+                            $('#uploadEventError').text(errors.event[0]);
                         }
                     }
                 });

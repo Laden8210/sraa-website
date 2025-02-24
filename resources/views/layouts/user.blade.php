@@ -20,6 +20,7 @@
     <link rel="icon" type="image/png" href="src/images/logo-with-bg.svg">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.css" />
 
     <script src="https://kit.fontawesome.com/8d62d56333.js" crossorigin="anonymous"></script>
     <script src="https://unpkg.com/boxicons@2.1.4/dist/boxicons.js"></script>
@@ -46,7 +47,7 @@
 
 </head>
 
-<body>
+<body class="bg-light">
 
     <div id="preloader">
         <div class="loader-container">
@@ -57,12 +58,13 @@
 
 
     <header id="header" class="fixed-top animate__animated  animate__fadeInDown shadow-sm">
-        <div class="container-fluid d-flex align-items-center justify-content-between px-4 my-0">
+        <div class="container-fluid d-flex align-items-center justify-content-between my-0" style="padding-inline: 2%;">
             <div>
-                <a href="/" class="d-flex align-items-center">
-                    <img src="{{ asset('image/logo.png') }}" alt="Logo" style="height: 32px;">
-
-                </a>
+                <a class="navbar-brand d-flex align-items-center fw-bold fs-5" href="index.html">
+                    <img src="{{ asset('image/logo.png') }}" alt="Logo" style="height: 50px;">
+                    <div class="text-warning" style="color: #8e53fd !important">SRAA</div>
+                    <div class="text-secondary">MEET</div>
+                 </a>
             </div>
 
 
@@ -104,7 +106,7 @@
                             <a class="nav-link {{ Request::routeIs('qr-code') ? 'active fw-semibold border-bottom border-2 border-dark' : '' }}"
                                 href="{{ route('qr-code') }}">QR Code</a>
                         </li>
-                      
+
                         <li class="nav-item position-relative">
                             <a class="nav-link {{ Request::routeIs('attendance') ? 'active fw-semibold border-bottom border-2 border-dark' : '' }}"
                                 href="{{ route('attendance') }}">Attendance</a>
@@ -137,11 +139,15 @@
 
 
 
-    <main style="padding-top: 80px">
+    <main style="padding-top: 80px" class="bg-light">
 
         @yield('content')
 
     </main>
+
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/jquery/latest/jquery.min.js"></script>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/momentjs/latest/moment.min.js"></script>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.min.js"></script>
 
 
 

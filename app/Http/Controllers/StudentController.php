@@ -77,7 +77,7 @@ class StudentController extends Controller
         $username = $baseUsername;
         $counter = 1;
 
-        while (User::where('username', $username)->exists()) {
+        while (Participant::where('username', $username)->exists()) {
             $username = $baseUsername . $counter;
             $counter++;
         }

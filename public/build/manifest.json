@@ -1,12 +1,17 @@
 {
   "resources/css/app.css": {
-    "file": "assets/app-CCxW4HIr.css",
+    "file": "assets/app-BEhljoBV.css",
     "src": "resources/css/app.css",
     "isEntry": true
   },
   "resources/css/style.css": {
-    "file": "assets/style-H5vmalIM.css",
+    "file": "assets/style-BCP9Gihh.css",
     "src": "resources/css/style.css",
+    "isEntry": true
+  },
+  "resources/css/theme.css": {
+    "file": "assets/theme-Cn2fUylt.css",
+    "src": "resources/css/theme.css",
     "isEntry": true
   },
   "resources/js/app.js": {
@@ -19,6 +24,12 @@
     "file": "assets/main-fNKEmvGU.js",
     "name": "main",
     "src": "resources/js/main.js",
+    "isEntry": true
+  },
+  "resources/js/theme.js": {
+    "file": "assets/theme-C5glJSW_.js",
+    "name": "theme",
+    "src": "resources/js/theme.js",
     "isEntry": true
   }
 }

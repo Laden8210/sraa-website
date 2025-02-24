@@ -1,293 +1,362 @@
-@extends('layouts.app')
+<!DOCTYPE html>
+<html lang="en-US" dir="ltr">
 
-@section('title', 'Welcome')
-@section('content')
-
-
-
-
-    <section id="hero" class="d-flex align-items-center bg-light">
-
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-7 d-flex flex-column justify-content-center pt-4 pt-lg-0 order-2 order-lg-1">
-                    <h1 class="text-dark animate__animated  animate__fadeInDown">SOCCSKSARGEN REGIONAL ATHLETIC ASSOCIATION</h1>
-                    <h2 class="text-secondary">"Embracing the Spirit of Sportsmanship and Excellence – 2025 SOCCSKSARGEN
-                        Athletes, Rising to Greatness!"</h2>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
 
 
-                    <div class="d-flex gap-2">
-                        <a href="" class="btn btn-primary rounded-pill"><i class="fa fa-download"
-                                aria-hidden="true"></i> Download Now</a>
+    <title>SRAAMEET2025</title>
 
-                    </div>
-                </div>
-                <div class="col-lg-5 order-1 order-lg-2 hero-img d-flex justify-content-center align-items-center">
-                    <div class="position-relative">
-                        <!-- Overlayed Card -->
-                        <div class="card position-absolute shadow-lg"
-                            style="z-index: 2; transform: translate(30px, 20px); top: 30px;
-                            right: 150px; overflow: hidden;">
-                            <div class="card-body p-2">
-                                <img src="{{ asset('image/app-login.jpg') }}" alt="" width="200px"
-                                    class="overlay-img">
-                            </div>
-                        </div>
+    <link rel="apple-touch-icon" sizes="180x180" href="assets/img/favicons/apple-touch-icon.png">
+    <link rel="icon" type="image/png" href="{{ asset('image/logo.png') }}">
+    <meta name="theme-color" content="#ffffff">
 
-                        <!-- Base Card -->
-                        <div class="card shadow-sm overflow-hidden" style="z-index: 1;">
-                            <div class="card-body p-2">
-                                <img src="{{ asset('image/app-dashboard.jpg') }}" alt="" width="200px"
-                                    class="overlay-img">
-                            </div>
-                        </div>
-                    </div>
-                </div>
+    @vite(['resources/css/theme.css', 'resources/js/theme.js'])
 
-                <style>
-                    .overlay-img {
-                        transition: transform 0.3s ease-in-out;
-                    }
+</head>
 
-                    .overlay-img:hover {
-                        transform: scale(1.1);
-                    }
-                </style>
 
-            </div>
+<body>
+    <div id="preloader">
+        <div class="loader-container">
+            <img src="{{ asset('image/logo.png') }}" alt="Lakbay Philippine Logo" class="loader-logo">
+            <p class="loader-text">SRAA South Cotabato</p>
         </div>
+    </div>
+    <main class="main" id="top">
+        <nav class="navbar navbar-expand-lg navbar-light fixed-top py-3" data-navbar-on-scroll="data-navbar-on-scroll">
+            <div class="container">
+                <a href="/" class="navbar-brand d-flex align-items-center fw-bold fs-2" href="index.html">
+                    <img src="{{ asset('image/logo.png') }}" alt="Logo" style="height: 60px;">
+                    <div class="text-warning">SRAA</div>
+                    <div class="text-secondary">MEET</div>
+                </a>
+                <button class="navbar-toggler collapsed" type="button" data-bs-toggle="collapse"
+                    data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+                    aria-expanded="false" aria-label="Toggle navigation"><span
+                        class="navbar-toggler-icon"></span></button>
+                <div class="collapse navbar-collapse border-top border-lg-0 mt-4 mt-lg-0" id="navbarSupportedContent">
+                    <ul class="navbar-nav ms-auto pt-2 pt-lg-0">
+                        <li class="nav-item" data-anchor="data-anchor"><a class="nav-link fw-medium active"
+                                aria-current="page" href="#home">Home</a></li>
+                        <li class="nav-item" data-anchor="data-anchor"><a class="nav-link fw-medium" href="#features">
+                                Features</a></li>
+                        <li class="nav-item" data-anchor="data-anchor"><a class="nav-link fw-medium"
+                                href="#devs">Devs</a>
+                        </li>
+                    </ul>
+                    <form class="ps-lg-5">
+                        @if (Auth::user() == null)
+                            <a href="/login" class="btn btn-lg btn-primary rounded-pill order-0"
+                                type="submit">Login</a>
+                        @else
+                            <a href="/dashboard" class="btn btn-lg btn-primary rounded-pill order-0"
+                                type="submit">Dashboard</a>
+                        @endif
+                    </form>
+                </div>
+            </div>
+        </nav>
+        <section class="py-0" id="home">
+            <div class="bg-holder"
+                style="background-image:url('{{ asset('image/hero-bg.png') }}');background-position:bottom;background-size:cover;">
+            </div>
 
-    </section>
+            <div class="container position-relative">
+                <div class="row align-items-center py-8">
+                    <div class="col-md-5 col-lg-6 order-md-1 text-center text-md-end"><img class="img-fluid"
+                            src="{{ asset('image/mobile_hero.png') }}" width="650" alt="" /></div>
+                    <div class="col-md-7 col-lg-6 text-center text-md-start">
+                        <h1 class="mb-4 display-3 fw-bold lh-sm">SOCCSKSARGEN <br
+                                class="d-block d-lg-none d-xl-block" />REGIONAL
+                            ATHLETIC ASSOCIATION</h1>
+                        <p class="mt-3 mb-4 fs-1">Embracing the Spirit of Sportsmanship and Excellence – 2025
+                            SOCCSKSARGEN
+                            Athletes, Rising to Greatness! <br class="d-none d-lg-block" /></p><a
+                            class="btn btn-lg btn-primary rounded-pill hover-top" href="{{ asset('mobile_application/SRAA ATTENDANCE APPLICATION.apk') }}" role="button">Download
+                            Mobile App</a>
+                    </div>
+                </div>
+            </div>
+        </section>
 
-    <!-- Features Section -->
-    <section id="features" class="py-5 bg-white">
-        <div class="container text-center">
-            <h2 class="text-primary">App Features</h2>
-            <div class="row mt-4">
-                <div class="col-lg-4">
-                    <div class="card p-3 shadow-sm">
-                        <i class="fas fa-wifi fa-3x text-primary"></i>
-                        <h5 class="mt-3">Offline Mode</h5>
-                        <p class="text-muted">Supports offline attendance tracking for areas with low internet connectivity.
+        <section class="py-6">
+
+            <div class="container">
+                <div class="row align-items-center">
+                    <div class="col-md-5 order-md-0 text-center text-md-start">
+                        <img class="img-fluid mb-4" src="{{ asset('image/attendance_vector.png') }}" width="550"
+                            alt="" />
+                    </div>
+                    <div class="col-md-6 text-center text-md-start offset-md-1">
+                        <h6 class="fw-bold fs-4 display-3 lh-sm">About the System</h6>
+                        <p class="my-4 pe-xl-5">
+                            Participant Attendance System is designed to streamline and automate attendance
+                            tracking
+                            for all athletes and coaches participating in the 2025 regional games. With real-time monitoring,
+                            digital
+                            records,
+                            and QR-based check-ins, we ensure accurate and hassle-free attendance management.
+                        </p>
+                        <p class="my-4 pe-xl-5">
+                            Our goal is to provide an efficient, paperless solution for managing athlete participation,
+                            helping
+                            coaches and organizers track attendance with ease.
+                        </p>
+                        <a class="btn btn-lg btn-primary rounded-pill hover-top" href="#" role="button">Learn
+                            more</a>
+                    </div>
+                </div>
+            </div>
+
+
+        </section>
+
+        <section class="py-5" id="features">
+            <div class="container-lg">
+                <div class="row align-items-center">
+
+                    <div class=" px-sm-5 px-md-0">
+                        <h6 class="fw-bold fs-4 display-3 lh-sm mb-5 text-center">Awesome apps features</h6>
+                        <div class="row">
+                            <div class="d-flex align-items-center mb-5 col-4">
+                                <div><img class="img-fluid" src="{{ asset('image/no_wifi.png') }}" width="90"
+                                        alt="" />
+                                </div>
+                                <div class="px-4">
+                                    <h5 class="fw-bold text-danger">Offline Mode</h5>
+                                    <p>Supports offline attendance tracking for areas with low internet connectivity.
+                                    </p>
+                                </div>
+                            </div>
+                            <div class="d-flex align-items-center mb-5 col-4">
+                                <div><img class="img-fluid" src="{{ asset('image/sync.png') }}" width="90"
+                                        alt="" />
+                                </div>
+                                <div class="px-4">
+                                    <h5 class="fw-bold text-primary">Server-Sync</h5>
+                                    <p>Attendance data syncs automatically once the device is online.</p>
+                                </div>
+                            </div>
+                            <div class="d-flex align-items-center mb-5 col-4">
+                                <div><img class="img-fluid" src="{{ asset('image/business_report.png') }}"
+                                        width="90" alt="" />
+                                </div>
+                                <div class="px-4">
+                                    <h5 class="fw-bold text-success">Reports & Insights</h5>
+                                    <p>Generate real-time attendance reports for better monitoring.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="py-6">
+
+            <div class="container">
+                <div class="container">
+                    <div class="row align-items-center">
+                        <div class="col-md-5 order-md-1 text-center text-md-start"><img class="img-fluid mb-4"
+                                src="{{ asset('image/no_bg.png') }}" alt="" /></div>
+                        <div class="col-md-6 text-center text-md-start">
+                            <h6 class="fw-bold fs-4 display-3 lh-sm">How to use</h6>
+                            <p class="my-2 pe-xl-5"> Easy steps to use this application.
+                            </p>
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="mb-4">
+                                        <div class="py-4"><img class="img-fluid"
+                                                src="{{ asset('image/number_1.png') }}" width="90"
+                                                alt="" />
+                                        </div>
+                                        <h5 class="fw-bold text-undefined">User Logs In</h5>
+                                        <p class="mt-2 mb-0">User sign in to the mobile application to manage attendance.</p>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="mb-4">
+                                        <div class="py-4"><img class="img-fluid"
+                                                src="{{ asset('image/number_2.png') }}" width="90"
+                                                alt="" />
+                                        </div>
+                                        <h5 class="fw-bold text-undefined">Athlete Scans QR Code</h5>
+                                        <p class="mt-2 mb-0">Athletes scan their QR codes using the delegate's mobile device.</p>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="mb-4">
+                                        <div class="py-4"><img class="img-fluid"
+                                                src="{{ asset('image/number_3.png') }}" width="90"
+                                                alt="" /></div>
+                                        <h5 class="fw-bold">Attendance is Recorded</h5>
+                                        <p class="mt-2 mb-0">Attendance is logged in the local device storage.</p>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="mb-4">
+                                        <div class="py-4"><img class="img-fluid"
+                                                src="{{ asset('image/number_4.png') }}" width="90"
+                                                alt="" /></div>
+                                        <h5 class="fw-bold text-undefined">Sync Recorded Attendance</h5>
+                                        <p class="mt-2 mb-0">Sync the attendance recorded in the local device to the server for centralized tracking and reporting.</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class=" bg-gray" id="devs">
+            <div class="container">
+                <div class="container">
+                    <div class="row align-items-center">
+                        <div class="text-center text-md-start">
+                            <h6 class="fw-bold fs-4 display-3 lh-sm text-center">Meet Our Development Team</h6>
+                            <p class="mt-3 text-center"> Get to know the talented developers behind our innovative
+                                solutions.
+                            </p>
+                            <div class="row mx-5">
+                                <div class="col-lg-4">
+                                    <div class="pt-4 d-flex d-sm-block flex-center">
+                                        <div class="d-flex align-items-md-center">
+                                            <img class="img-fluid me-4 me-md-3 me-lg-4 rounded-circle"
+                                                src="{{ asset('image/gettyimages-517443904.jpg') }}" width="100"
+                                                alt="" />
+                                            <div class="w-lg-50 my-3">
+                                                <h5 class="mb-0 fw-bold">Jhon Doe</h5>
+                                                <p class="fw-normal mb-0">Web Developer</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-lg-4">
+                                    <div class="pt-4 d-flex d-sm-block flex-center">
+                                        <div class="d-flex align-items-md-center">
+                                            <img class="img-fluid me-4 me-md-3 me-lg-4 rounded-circle"
+                                                src="{{ asset('image/gettyimages-517443904.jpg') }}" width="100"
+                                                alt="" />
+                                            <div class="w-lg-50 my-3">
+                                                <h5 class="mb-0 fw-bold">Jhon Doe</h5>
+                                                <p class="fw-normal mb-0">Web Developer</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-lg-4">
+                                    <div class="pt-4 d-flex d-sm-block flex-center">
+                                        <div class="d-flex align-items-md-center">
+                                            <img class="img-fluid me-4 me-md-3 me-lg-4 rounded-circle"
+                                                src="{{ asset('image/gettyimages-517443904.jpg') }}" width="100"
+                                                alt="" />
+                                            <div class="w-lg-50 my-3">
+                                                <h5 class="mb-0 fw-bold">Jhon Doe</h5>
+                                                <p class="fw-normal mb-0">Web Developer</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="py-8 bg-1000">
+
+            <div class="container">
+                <div class="row flex-center">
+                    <div class="col-auto mb-5"><a
+                            class="pe-2 d-flex align-items-center text-decoration-none fw-bold fs-3" href="#">
+                            <img src="{{ asset('image/logo.png') }}" alt="Logo" style="height: 60px;">
+                            <div class="text-warning">SRAA</div>
+                            <div class="text-white">MEET 2025</div>
+                        </a></div>
+                </div>
+                <div class="row flex-center">
+                    <div class="col-auto mb-5">
+                        <ul class="list-unstyled list-inline mb-0">
+                            <li class="list-inline-item me3 me-sm-4"><a class="text-light text-decoration-none"
+                                    href="#!">Home</a>
+                            </li>
+                            <li class="list-inline-item me3 me-sm-4"><a class="text-light text-decoration-none"
+                                    href="#!">
+                                    Features</a></li>
+                            <li class="list-inline-item me3 me-sm-4"><a class="text-light text-decoration-none"
+                                    href="#!">Devs</a>
+                            </li>
+
+                        </ul>
+                    </div>
+                </div>
+                <div class="row flex-center">
+                    <div class="col-auto mb-5">
+                        <ul class="list-unstyled list-inline">
+                            <li class="list-inline-item me-3"><a class="text-decoration-none" href="#!">
+                                    <svg class="bi bi-facebook" xmlns="http://www.w3.org/2000/svg" width="32"
+                                        height="32" fill="#7D7987" viewBox="0 0 16 16">
+                                        <path
+                                            d="M16 8.049c0-4.446-3.582-8.05-8-8.05C3.58 0-.002 3.603-.002 8.05c0 4.017 2.926 7.347 6.75 7.951v-5.625h-2.03V8.05H6.75V6.275c0-2.017 1.195-3.131 3.022-3.131.876 0 1.791.157 1.791.157v1.98h-1.009c-.993 0-1.303.621-1.303 1.258v1.51h2.218l-.354 2.326H9.25V16c3.824-.604 6.75-3.934 6.75-7.951z">
+                                        </path>
+                                    </svg></a></li>
+                            <li class="list-inline-item me-3"><a href="#!">
+                                    <svg class="bi bi-twitter" xmlns="http://www.w3.org/2000/svg" width="32"
+                                        height="32" fill="#7D7987" viewBox="0 0 16 16">
+                                        <path
+                                            d="M5.026 15c6.038 0 9.341-5.003 9.341-9.334 0-.14 0-.282-.006-.422A6.685 6.685 0 0 0 16 3.542a6.658 6.658 0 0 1-1.889.518 3.301 3.301 0 0 0 1.447-1.817 6.533 6.533 0 0 1-2.087.793A3.286 3.286 0 0 0 7.875 6.03a9.325 9.325 0 0 1-6.767-3.429 3.289 3.289 0 0 0 1.018 4.382A3.323 3.323 0 0 1 .64 6.575v.045a3.288 3.288 0 0 0 2.632 3.218 3.203 3.203 0 0 1-.865.115 3.23 3.23 0 0 1-.614-.057 3.283 3.283 0 0 0 3.067 2.277A6.588 6.588 0 0 1 .78 13.58a6.32 6.32 0 0 1-.78-.045A9.344 9.344 0 0 0 5.026 15z">
+                                        </path>
+                                    </svg></a></li>
+                            <li class="list-inline-item me-3"><a href="#!">
+                                    <svg class="bi bi-hash" xmlns="http://www.w3.org/2000/svg" width="32"
+                                        height="32" fill="#ffffff" viewBox="0 0 16 16">
+                                        <path
+                                            d="M8.39 12.648a1.32 1.32 0 0 0-.015.18c0 .305.21.508.5.508.266 0 .492-.172.555-.477l.554-2.703h1.204c.421 0 .617-.234.617-.547 0-.312-.188-.53-.617-.53h-.985l.516-2.524h1.265c.43 0 .618-.227.618-.547 0-.313-.188-.524-.618-.524h-1.046l.476-2.304a1.06 1.06 0 0 0 .016-.164.51.51 0 0 0-.516-.516.54.54 0 0 0-.539.43l-.523 2.554H7.617l.477-2.304c.008-.04.015-.118.015-.164a.512.512 0 0 0-.523-.516.539.539 0 0 0-.531.43L6.53 5.484H5.414c-.43 0-.617.22-.617.532 0 .312.187.539.617.539h.906l-.515 2.523H4.609c-.421 0-.609.219-.609.531 0 .313.188.547.61.547h.976l-.516 2.492c-.008.04-.015.125-.015.18 0 .305.21.508.5.508.265 0 .492-.172.554-.477l.555-2.703h2.242l-.515 2.492zm-1-6.109h2.266l-.515 2.563H6.859l.532-2.563z">
+                                        </path>
+                                    </svg></a></li>
+                            <li class="list-inline-item me-3"><a href="#!">
+                                    <svg class="bi bi-instagram" xmlns="http://www.w3.org/2000/svg" width="32"
+                                        height="32" fill="#7D7987" viewBox="0 0 16 16">
+                                        <path
+                                            d="M8 0C5.829 0 5.556.01 4.703.048 3.85.088 3.269.222 2.76.42a3.917 3.917 0 0 0-1.417.923A3.927 3.927 0 0 0 .42 2.76C.222 3.268.087 3.85.048 4.7.01 5.555 0 5.827 0 8.001c0 2.172.01 2.444.048 3.297.04.852.174 1.433.372 1.942.205.526.478.972.923 1.417.444.445.89.719 1.416.923.51.198 1.09.333 1.942.372C5.555 15.99 5.827 16 8 16s2.444-.01 3.298-.048c.851-.04 1.434-.174 1.943-.372a3.916 3.916 0 0 0 1.416-.923c.445-.445.718-.891.923-1.417.197-.509.332-1.09.372-1.942C15.99 10.445 16 10.173 16 8s-.01-2.445-.048-3.299c-.04-.851-.175-1.433-.372-1.941a3.926 3.926 0 0 0-.923-1.417A3.911 3.911 0 0 0 13.24.42c-.51-.198-1.092-.333-1.943-.372C10.443.01 10.172 0 7.998 0h.003zm-.717 1.442h.718c2.136 0 2.389.007 3.232.046.78.035 1.204.166 1.486.275.373.145.64.319.92.599.28.28.453.546.598.92.11.281.24.705.275 1.485.039.843.047 1.096.047 3.231s-.008 2.389-.047 3.232c-.035.78-.166 1.203-.275 1.485a2.47 2.47 0 0 1-.599.919c-.28.28-.546.453-.92.598-.28.11-.704.24-1.485.276-.843.038-1.096.047-3.232.047s-2.39-.009-3.233-.047c-.78-.036-1.203-.166-1.485-.276a2.478 2.478 0 0 1-.92-.598 2.48 2.48 0 0 1-.6-.92c-.109-.281-.24-.705-.275-1.485-.038-.843-.046-1.096-.046-3.233 0-2.136.008-2.388.046-3.231.036-.78.166-1.204.276-1.486.145-.373.319-.64.599-.92.28-.28.546-.453.92-.598.282-.11.705-.24 1.485-.276.738-.034 1.024-.044 2.515-.045v.002zm4.988 1.328a.96.96 0 1 0 0 1.92.96.96 0 0 0 0-1.92zm-4.27 1.122a4.109 4.109 0 1 0 0 8.217 4.109 4.109 0 0 0 0-8.217zm0 1.441a2.667 2.667 0 1 1 0 5.334 2.667 2.667 0 0 1 0-5.334z">
+                                        </path>
+                                    </svg></a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="row flex-center">
+                    <div class="col-auto">
+                        <p class="mb-0 fs--1 text-700">&copy; SRAAMEET2025&nbsp;
                         </p>
                     </div>
                 </div>
-                <div class="col-lg-4">
-                    <div class="card p-3 shadow-sm">
-                        <i class="fa fa-sync fa-3x text-primary"></i>
-                        <h5 class="mt-3">Auto-Sync</h5>
-                        <p class="text-muted">Attendance data syncs automatically once the device is online.</p>
-                    </div>
-                </div>
-                <div class="col-lg-4">
-                    <div class="card p-3 shadow-sm">
-                        <i class="fa fa-file-alt fa-3x text-primary"></i>
-                        <h5 class="mt-3">Reports & Insights</h5>
-                        <p class="text-muted">Generate real-time attendance reports for better monitoring.</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-
-    <section id="about" class="py-5 bg-light">
-        <div class="container">
-            <div class="row align-items-center">
-                <div class="col-lg-6">
-                    <img src="{{ asset('image/app-dashboard.jpg') }}" alt="About System" class="img-fluid rounded shadow" width="240px">
-                </div>
-                <div class="col-lg-6">
-                    <h2 class="text-primary">About the System</h2>
-                    <p class="text-muted">
-                        The SOCCSKSARGEN Athlete Attendance System is designed to streamline and automate attendance
-                        tracking
-                        for all athletes participating in the 2025 regional games. With real-time monitoring, digital
-                        records,
-                        and QR-based check-ins, we ensure accurate and hassle-free attendance management.
-                    </p>
-                    <p class="text-muted">
-                        Our goal is to provide an efficient, paperless solution for managing athlete participation, helping
-                        coaches and organizers track attendance with ease.
-                    </p>
-                    <a href="#" class="btn btn-outline-primary">Learn More</a>
-                </div>
-            </div>
-        </div>
-    </section>
-
-
-    <!-- How It Works -->
-    <section id="how-it-works" class="py-5 bg-white">
-        <div class="container text-center">
-            <h2 class="text-primary">How It Works</h2>
-            <div class="row mt-4">
-                <div class="col-lg-4">
-                    <div class="card p-3 shadow-sm">
-                        <i class="fa fa-user fa-3x text-primary"></i>
-                        <h5 class="mt-3">Step 1: Delegate Logs In</h5>
-                        <p class="text-muted">Delegates sign in to the mobile application to manage attendance.</p>
-                    </div>
-                </div>
-                <div class="col-lg-4">
-                    <div class="card p-3 shadow-sm">
-                        <i class="fa fa-qrcode fa-3x text-primary"></i>
-                        <h5 class="mt-3">Step 2: Athlete Scans QR Code</h5>
-                        <p class="text-muted">Athletes scan their QR codes using the delegate's mobile device.</p>
-                    </div>
-                </div>
-                <div class="col-lg-4">
-                    <div class="card p-3 shadow-sm">
-                        <i class="fa fa-database fa-3x text-primary"></i>
-                        <h5 class="mt-3">Step 3: Attendance is Recorded</h5>
-                        <p class="text-muted">Attendance is logged and will sync automatically when online.</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Contact Us -->
-
-    <section id="contact" class="py-5 bg-light">
-        <div class="container">
-            <h2 class="text-primary text-center">Contact Us</h2>
-            <p class="text-muted text-center">Need help? Get in touch with us!</p>
-
-            <div class="row mt-4">
-                <!-- Left Side: Contact Information -->
-                <div class="col-lg-6">
-                    <div class="p-4  rounded">
-                        <h4 class="text-primary">Get in Touch</h4>
-                        <p class="text-muted">Feel free to reach out to us through any of the channels below.</p>
-                        <div class="d-flex align-items-center mb-3">
-                            <i class="fa fa-phone fa-2x text-primary me-3"></i>
-                            <p class="mb-0">+63 912 345 6789</p>
-                        </div>
-                        <div class="d-flex align-items-center mb-3">
-                            <i class="fa fa-envelope fa-2x text-primary me-3"></i>
-                            <p class="mb-0">support@sraa-attendance.com</p>
-                        </div>
-                        <div class="d-flex align-items-center">
-                            <i class="fa fa-map-marker-alt fa-2x text-primary me-3"></i>
-                            <p class="mb-0">General Santos City, Philippines</p>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Right Side: Contact Form -->
-                <div class="col-lg-6">
-                    <div class="p-4 bg-white shadow-sm rounded">
-                        <h4 class="text-primary">Send Us a Message</h4>
-                        <form  method="POST">
-                            @csrf
-                            <div class="mb-3">
-                                <label for="name" class="form-label">Full Name</label>
-                                <input type="text" name="name" id="name" class="form-control" placeholder="Your Name" required>
-                            </div>
-
-                            <div class="mb-3">
-                                <label for="email" class="form-label">Email Address</label>
-                                <input type="email" name="email" id="email" class="form-control" placeholder="Your Email" required>
-                            </div>
-
-                            <div class="mb-3">
-                                <label for="message" class="form-label">Your Message</label>
-                                <textarea name="message" id="message" class="form-control" rows="4" placeholder="Your Message" required></textarea>
-                            </div>
-
-                            <button type="submit" class="btn btn-primary w-100">Send Message</button>
-                        </form>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-
-<section id="help-center" class="py-5">
-    <div class="container">
-        <h2 class="text-primary text-center">Help Center</h2>
-        <p class="text-muted text-center">Find answers to common questions and support resources.</p>
-
-        <div class="row mt-4">
-            <!-- FAQ Section -->
-            <div class="col-lg-4">
-                <div class="p-4 bg-light shadow-sm rounded">
-                    <h5 class="text-primary"><i class="fa fa-question-circle me-2"></i> Frequently Asked Questions</h5>
-                    <p class="text-muted">Browse our FAQ section for quick answers.</p>
-                    <a href="" class="btn btn-sm btn-outline-primary">View FAQs</a>
-                </div>
             </div>
 
-            <!-- Support Ticket Section -->
-            <div class="col-lg-4">
-                <div class="p-4 bg-light shadow-sm rounded">
-                    <h5 class="text-primary"><i class="fa fa-life-ring me-2"></i> Support Tickets</h5>
-                    <p class="text-muted">Need assistance? Open a support ticket and our team will help you.</p>
-                    <a href="" class="btn btn-sm btn-outline-primary">Submit Ticket</a>
-                </div>
-            </div>
-
-            <!-- Knowledge Base -->
-            <div class="col-lg-4">
-                <div class="p-4 bg-light shadow-sm rounded">
-                    <h5 class="text-primary"><i class="fa fa-book me-2"></i> Knowledge Base</h5>
-                    <p class="text-muted">Read articles and guides about the system.</p>
-                    <a href="" class="btn btn-sm btn-outline-primary">View Articles</a>
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
-
-<!-- Footer Section -->
-<footer class="bg-light text-light py-4">
-    <div class="container">
-        <div class="row">
-            <!-- About -->
-            <div class="col-lg-4">
-                <h5 class="text-primary">About SRAA Attendance System</h5>
-                <p class="text-muted">
-                    A digital solution for tracking athlete attendance during events, ensuring accurate monitoring and seamless reporting.
-                </p>
-            </div>
-
-            <!-- Quick Links -->
-            <div class="col-lg-4">
-                <h5 class="text-primary">Quick Links</h5>
-                <ul class="list-unstyled">
-                    <li><a href="#hero" class="text-dark">Home</a></li>
-                    <li><a href="#features" class="text-dark">Features</a></li>
-                    <li><a href="#how-it-works" class="text-dark">How It Works</a></li>
-                    <li><a href="#contact" class="text-dark">Contact Us</a></li>
-                    <li><a href="#help-center" class="text-dark">Help Center</a></li>
-                </ul>
-            </div>
-
-            <!-- Contact Info -->
-            <div class="col-lg-4">
-                <h5 class="text-primary">Contact Us</h5>
-                <p class="mb-1"><i class="fa fa-phone me-2"></i> +63 912 345 6789</p>
-                <p class="mb-1"><i class="fa fa-envelope me-2"></i> support@sraa-attendance.com</p>
-                <p><i class="fa fa-map-marker-alt me-2"></i> General Santos City, Philippines</p>
-
-                <!-- Social Media Links -->
-                <div class="mt-3">
-                    <a href="#" class="text-light me-3"><i class="fab fa-facebook fa-2x"></i></a>
-                    <a href="#" class="text-light me-3"><i class="fab fa-twitter fa-2x"></i></a>
-                    <a href="#" class="text-light"><i class="fab fa-instagram fa-2x"></i></a>
-                </div>
-            </div>
-        </div>
-
-        <!-- Copyright -->
-        <div class="text-center mt-4">
-            <p class="mb-0">&copy; 2025 SRAA Attendance System. All Rights Reserved.</p>
-        </div>
-    </div>
-</footer>
+        </section>
 
 
+    </main>
+    <!-- ===============================================-->
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+        integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous">
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js"
+        integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous">
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js"
+        integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous">
+    </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/is_js/0.9.0/is.min.js"></script>
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=window.scroll"></script>
 
-@endsection
+    <link
+        href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,200;1,300;1,400&amp;display=swap"
+        rel="stylesheet">
+</body>
+
+</html>
