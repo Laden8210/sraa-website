@@ -53,7 +53,7 @@ class UserController extends Controller
         if ($validator->fails()) {
             return response()->json(['success' => false, 'errors' => $validator->errors()], 422);
         }
-
+        
         $username = $this->generateUniqueUsername($request->name);
 
         User::create([
@@ -68,6 +68,7 @@ class UserController extends Controller
 
         return response()->json(['success' => true]);
     }
+
     private function generateUniqueUsername($name)
     {
         $baseUsername = strtolower(preg_replace('/\s+/', '', $name));

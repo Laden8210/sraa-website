@@ -105,13 +105,10 @@
                         <div class="card info-card student-card w-100 border shadow-sm shadow">
                             <div class="card-body d-flex align-items-center justify-content-between p-3 rounded-lg">
 
-                                <!-- QR Code -->
                                 <div class="d-flex align-items-center">
-                                    {!! QrCode::size(150)->generate($result->qr_data) !!}
+                                    {!! QrCode::size(135)->generate($result->qr_data) !!}
                                 </div>
 
-
-                                <!-- Student Info & Buttons -->
                                 <div class="flex-grow-1">
                                     <div class="row mx-2 w-100">
                                         <div class="col-lg-12 col-md-12">
