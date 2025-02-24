@@ -11,41 +11,44 @@
 
         <div class="row">
 
-            <div class="col-xxl-6 col-md-6">
-                <div
-                    class="card info-card student-card  animate__animated  animate__fadeIn  animate__delay-1s border shadow-sm shadow">
+            <div class="col-xxl-6 col-md-6  animate__animated  animate__fadeInDown  animate__delay-1s">
+                <div class="card info-card student-card">
                     <div class="card-body">
-                        <h5 class="card-title">Total Time In <span>| Daily</span></h5>
+                        <h5 class="card-title">Total Student Attendance<span> | Today</span></h5>
+
                         <div class="d-flex align-items-center">
                             <div class="card-icon rounded-circle d-flex align-items-center justify-content-center">
-                                <i class='bx bx-cart'></i>
+                                <i class='bx bx-user'></i>
                             </div>
                             <div class="ps-3">
-                                <h6>145</h6>
-                                <span class="text-success small pt-1 fw-bold">12%</span> <span
-                                    class="text-muted small pt-2 ps-1">increase </span>
+                                <h6>{{ $total_student }}</h6>
+                                <span class="text-success small pt-1 fw-bold">{{ $increase_student }}%</span> <span
+                                    class="text-muted small pt-2 ps-1">increase</span>
+
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
 
-            <div class="col-xxl-6 col-md-6">
-                <div
-                    class="card info-card student-card  animate__animated  animate__fadeIn  animate__delay-1s border shadow-sm shadow">
+            <div class="col-xxl-6 col-md-6  animate__animated  animate__fadeInDown  animate__delay-1s">
+                <div class="card info-card student-card">
                     <div class="card-body">
-                        <h5 class="card-title">Total Time Out <span>| Daily</span></h5>
+                        <h5 class="card-title">Total Faculty Attendance<span> | Today</span></h5>
+
                         <div class="d-flex align-items-center">
                             <div class="card-icon rounded-circle d-flex align-items-center justify-content-center">
-                                <i class='bx bx-cart'></i>
+                                <i class='bx bx-user'></i>
                             </div>
                             <div class="ps-3">
-                                <h6>145</h6>
-                                <span class="text-success small pt-1 fw-bold">12%</span> <span
+                                <h6>{{ $total_coach }}</h6>
+                                <span class="text-success small pt-1 fw-bold">{{ $increase_coach }}%</span> <span
                                     class="text-muted small pt-2 ps-1">increase</span>
+
                             </div>
                         </div>
                     </div>
+
                 </div>
             </div>
 

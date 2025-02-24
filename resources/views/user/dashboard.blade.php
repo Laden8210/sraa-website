@@ -25,7 +25,7 @@
                             </div>
                             <div class="ps-3">
                                 <h6>{{ $total_student }}</h6>
-                                <span class="text-success small pt-1 fw-bold">{{$increase_coach}}%</span> <span
+                                <span class="text-success small pt-1 fw-bold">{{$increase_student}}%</span> <span
                                     class="text-muted small pt-2 ps-1">increase</span>
 
                             </div>
@@ -46,7 +46,7 @@
                             </div>
                             <div class="ps-3">
                                 <h6>{{ $total_coach }}</h6>
-                                <span class="text-success small pt-1 fw-bold">{{$increase_student}}%</span> <span
+                                <span class="text-success small pt-1 fw-bold">{{$increase_coach}}%</span> <span
                                     class="text-muted small pt-2 ps-1">increase</span>
 
                             </div>
