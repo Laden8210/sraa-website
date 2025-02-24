@@ -176,13 +176,13 @@
                             </div>
                             <div class="col-lg-12">
                                 <label for="event" class="form-label">Event</label>
-                                <select class="form-select form-control" id="event" name="event" required>
+                                <select class="form-select form-control" id="uploadEvent" name="event" required>
                                     <option value="">Select Event</option>
                                     @foreach ($events as $event)
                                         <option value="{{ $event }}">{{ $event }}</option>
                                     @endforeach
                                 </select>
-                                <span class="text-danger" id="eventError"></span>
+                                <span class="text-danger" id="uploadEventError"></span>
                             </div>
                             <div class="col-lg-12">
                                 <label for="excelFile" class="form-label">Excel File</label>
@@ -271,18 +271,7 @@
                             $('#event').addClass('is-invalid');
                             $('#eventError').text(errors.event[0]);
                         }
-                        if (errors.mobile_num) {
-                            $('#mobile_num').addClass('is-invalid');
-                            $('#mobileNumError').text(errors.mobile_num[0]);
-                        }
-                        if (errors.password) {
-                            $('#password').addClass('is-invalid');
-                            $('#passwordError').text(errors.password[0]);
-                        }
-                        if (errors.password_confirmation) {
-                            $('#password_confirmation').addClass('is-invalid');
-                            $('#passwordConfirmationError').text(errors.password_confirmation[0]);
-                        }
+                        
                     }
                 });
             });
@@ -323,6 +312,10 @@
                         if (errors.excel_file) {
                             $('#excelFile').addClass('is-invalid');
                             $('#excelFileError').text(errors.excel_file[0]);
+                        }
+                        if (errors.event) {
+                            $('#uploadEvent').addClass('is-invalid');
+                            $('#uploadEventError').text(errors.event[0]);
                         }
                     }
                 });

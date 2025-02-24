@@ -25,12 +25,21 @@
                                     <div class="col-lg-5 col-md-12">
                                         <input name="search" type="text" class="form-control" placeholder="Search" value="{{ request('search') }}">
                                     </div>
-                                    <div class="col-lg-5 col-md-12">
+                                    <div class="col-lg-3 col-md-12">
                                         <select name="division" class="form-select">
                                             <option value="">Select Division</option>
                                             @foreach ($divisions as $division)
                                                 <option value="{{ $division }}" {{ request('division') == $division ? 'selected' : '' }}>
                                                     {{ $division }}</option>
+                                            @endforeach
+                                        </select>
+                                    </div>
+                                    <div class="col-lg-3 col-md-12">
+                                        <select name="event" class="form-select">
+                                            <option value="">Select Event</option>
+                                            @foreach ($events as $event)
+                                                <option value="{{ $event }}" {{ request('event') == $event ? 'selected' : '' }}>
+                                                    {{ $event }}</option>
                                             @endforeach
                                         </select>
                                     </div>
@@ -53,6 +62,7 @@
                                     <th scope="col">Name</th>
                                     <th scope="col">Division</th>
                                     <th scope="col">School</th>
+                                    <th scope="col">Event</th>
                                     <th scope="col">Username</th>
                                     <th scope="col">Action</th>
                                 </tr>
@@ -69,9 +79,10 @@
                                             <td>{{ $coach->name }}</td>
                                             <td>{{ $coach->division }}</td>
                                             <td>{{ $coach->school }}</td>
+                                            <td>{{ $coach->event }}</td>
                                             <td>{{ $coach->username }}</td>
                                             <td>
-                                                <button class="button-clear edit-coach" data-id="{{ $coach->participant_id }}" data-name="{{ $coach->name }}" data-division="{{ $coach->division }}" data-school="{{ $coach->school }}" data-mobile="{{ $coach->mobile_num }}">
+                                                <button class="button-clear edit-coach" data-id="{{ $coach->participant_id }}" data-name="{{ $coach->name }}" data-division="{{ $coach->division }}" data-school="{{ $coach->school }}" data-event="{{ $coach->event }}">
                                                     <i class="fa fa-edit"></i>
                                                 </button>
                                             </td>
@@ -117,6 +128,16 @@
                                 <span class="text-danger" id="divisionError"></span>
                             </div>
                             <div class="col-lg-12 mb-2">
+                                <label for="event" class="form-label">Event</label>
+                                <select class="form-select form-control" id="event" name="event" required>
+                                    <option value="">Select Event</option>
+                                    @foreach ($events as $event)
+                                        <option value="{{ $event }}">{{ $event }}</option>
+                                    @endforeach
+                                </select>
+                                <span class="text-danger" id="eventError"></span>
+                            </div>
+                            <div class="col-lg-12 mb-2">
                                 <label for="school" class="form-label">School</label>
                                 <input type="text" class="form-control" id="school" name="school" required>
                                 <span class="text-danger" id="schoolError"></span>
@@ -154,6 +175,16 @@
                                 </select>
                                 <span class="text-danger" id="uploadDivisionError"></span>
                             </div>
+                            <div class="col-lg-12 mb-2">
+                                <label for="event" class="form-label">Event</label>
+                                <select class="form-select form-control" id="uploadEvent" name="event" required>
+                                    <option value="">Select Event</option>
+                                    @foreach ($events as $event)
+                                        <option value="{{ $event }}">{{ $event }}</option>
+                                    @endforeach
+                                </select>
+                                <span class="text-danger" id="uploadEventError"></span>
+                            </div>
                             <div class="col-lg-12">
                                 <label for="excelFile" class="form-label">Excel File</label>
                                 <input type="file" class="form-control" id="excelFile" name="excel_file" accept=".xlsx, .xls" required>
@@ -189,6 +220,7 @@
                 var coachName = $(this).data('name');
                 var coachDivision = $(this).data('division');
                 var coachSchool = $(this).data('school');
+                var coachEvent = $(this).data('event');
 
                 $('#CoachModal').modal('show');
                 $('#CoachModal .modal-title').text('Edit Coach');
@@ -196,6 +228,7 @@
                 $('#name').val(coachName);
                 $('#division').val(coachDivision);
                 $('#school').val(coachSchool);
+                $('#event').val(coachEvent);
             });
 
             $('#submitCoachForm').on('click', function() {
@@ -234,6 +267,10 @@
                         if (errors.school) {
                             $('#school').addClass('is-invalid');
                             $('#schoolError').text(errors.school[0]);
+                        }
+                        if (errors.event) {
+                            $('#event').addClass('is-invalid');
+                            $('#eventError').text(errors.event[0]);
                         }
                        
                     }
@@ -274,6 +311,10 @@
                         if (errors.excel_file) {
                             $('#excelFile').addClass('is-invalid');
                             $('#excelFileError').text(errors.excel_file[0]);
+                        }
+                        if (errors.event) {
+                            $('#uploadEvent').addClass('is-invalid');
+                            $('#uploadEventError').text(errors.event[0]);
                         }
                     }
                 });
