@@ -102,14 +102,11 @@ class AttendanceController extends Controller
 
     public function getAttendanceRangeData(Request $request)
     {
-        $endDate = Carbon::createFromFormat('m/d/Y', $request->query('end_date', Carbon::today()->format('m/d/Y')))->format('Y-m-d');
-        $startDate = Carbon::createFromFormat('m/d/Y', $request->query('start_date', Carbon::parse($endDate)->subDays(10)->format('m/d/Y')))->format('Y-m-d');
-
+        $endDate = Carbon::createFromFormat('m/d/Y', $request->query('end_date', Carbon::today()->format('m/d/Y')))->endOfDay();
+        $startDate = Carbon::createFromFormat('m/d/Y', $request->query('start_date', Carbon::parse($endDate)->subDays(10)->format('m/d/Y')))->startOfDay();
+    
         if (Auth::user()->role == "superintendent") {
-            $query = Attendance::whereBetween('created_at', [
-                Carbon::parse($startDate)->startOfDay(),
-                Carbon::parse($endDate)->endOfDay()
-            ])
+            $query = Attendance::whereBetween('created_at', [$startDate, $endDate])
                 ->with('participant')
                 ->whereHas('participant', function ($q) {
                     $q->where('division', Auth::user()->division);
@@ -124,25 +121,25 @@ class AttendanceController extends Controller
                 ->groupBy('date')
                 ->orderBy('date');
         }
-
+    
         if ($request->has('division') && $request->division != '') {
             $query->whereHas('participant', function ($q) use ($request) {
                 $q->where('division', $request->division);
             });
         }
-
+    
         $attendanceData = $query->pluck('count', 'date');
-
+    
         $allDates = [];
         $current = Carbon::parse($startDate);
         $end = Carbon::parse($endDate);
-
+    
         while ($current <= $end) {
             $formattedDate = $current->format('Y-m-d');
             $allDates[$formattedDate] = $attendanceData[$formattedDate] ?? 0;
             $current->addDay();
         }
-
+    
         return response()->json([
             'categories' => array_keys($allDates),
             'data' => array_values($allDates)

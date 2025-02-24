@@ -115,7 +115,7 @@
                                 <div class="flex-grow-1">
                                     <div class="row mx-2 w-100">
                                         <div class="col-lg-12 col-md-12">
-                                            <span class="fw-bold" style="font-size: 15px ">{{ $result->name }} <span class="text-muted"
+                                            <span class="fw-bold" style="font-size: 12px ">{{ $result->name }} <span class="text-muted"
                                                     style="font-size: 11px;"> |
                                                     {{ $result->participant_role }}</span></span>
                                         </div>
