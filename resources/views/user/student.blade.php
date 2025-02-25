@@ -164,7 +164,7 @@
                     <form id="uploadExcelForm" enctype="multipart/form-data">
                         @csrf
                         <div class="row">
-                            <div class="col-lg-12">
+                            <div class="col-lg-12 mb-2">
                                 <label for="uploadDivision" class="form-label">Division</label>
                                 <select class="form-select" id="uploadDivision" name="division" required>
                                     <option value="">Select Division</option>
