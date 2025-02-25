@@ -203,6 +203,7 @@
     <script>
         $(document).ready(function() {
             $('#add-student').on('click', function() {
+                $('.modal-body .alert-danger').remove();
                 $('#StudentModal').modal('show');
                 $('#StudentModal .modal-title').text('Add Student');
                 $('#addStudentForm')[0].reset();
@@ -210,11 +211,13 @@
             });
 
             $('#upload-excel').on('click', function() {
+                $('.modal-body .alert-danger').remove();
                 $('#UploadExcelModal').modal('show');
                 $('#uploadExcelForm')[0].reset();
             });
 
             $('.edit-student').on('click', function() {
+                $('.modal-body .alert-danger').remove();
                 var studentId = $(this).data('id');
                 var studentName = $(this).data('name');
                 var studentDivision = $(this).data('division');
@@ -303,8 +306,12 @@
                     },
                     error: function(xhr) {
                         var errors = xhr.responseJSON.errors;
+                        var message = xhr.responseJSON.message;
                         console.log(xhr);
-                        console.log(xhr);
+                        if (message) {
+                            $('.modal-body .alert-danger').remove();
+                            $('.modal-body').prepend('<div class="alert alert-danger">' + message + '</div>');
+                        }
                         if (errors.division) {
                             $('#uploadDivision').addClass('is-invalid');
                             $('#uploadDivisionError').text(errors.division[0]);

@@ -46,7 +46,7 @@ class AccommodationManager
         'Football',
         'Futsal',
         'Gymnastics',
-        'Vallleyball',
+        'Volleyball',
         'Tennis',
         'Swimming',
         'Table Tennis',
@@ -57,10 +57,10 @@ class AccommodationManager
         'Softball',
         'Taekwondo',
         'Athletics',
-        'Swimming',
         'BOCCE',
-        'Goal Ball',
+        'Goalball',
     ];
+    
 
     public function getQuarters()
     {

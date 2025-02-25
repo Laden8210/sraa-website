@@ -22,7 +22,7 @@
                             </div>
                             <div class="ps-3">
                                 <h6>{{ $total_student }}</h6>
-                                <span class="text-success small pt-1 fw-bold">{{ $increase_student }}%</span> <span
+                                <span class="text-success small pt-1 fw-bold">{{ number_format($increase_student, 2)}}%</span> <span
                                     class="text-muted small pt-2 ps-1">increase</span>
 
                             </div>
@@ -34,7 +34,7 @@
             <div class="col-xxl-6 col-md-6  animate__animated  animate__fadeInDown  animate__delay-1s">
                 <div class="card info-card student-card">
                     <div class="card-body">
-                        <h5 class="card-title">Total Faculty Attendance<span> | Today</span></h5>
+                        <h5 class="card-title">Total Coach Attendance<span> | Today</span></h5>
 
                         <div class="d-flex align-items-center">
                             <div class="card-icon rounded-circle d-flex align-items-center justify-content-center">
@@ -42,7 +42,7 @@
                             </div>
                             <div class="ps-3">
                                 <h6>{{ $total_coach }}</h6>
-                                <span class="text-success small pt-1 fw-bold">{{ $increase_coach }}%</span> <span
+                                <span class="text-success small pt-1 fw-bold">{{ number_format($increase_coach, 2) }}%</span> <span
                                     class="text-muted small pt-2 ps-1">increase</span>
 
                             </div>
