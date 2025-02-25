@@ -174,16 +174,7 @@
                                 </select>
                                 <span class="text-danger" id="uploadDivisionError"></span>
                             </div>
-                            <div class="col-lg-12">
-                                <label for="event" class="form-label">Event</label>
-                                <select class="form-select form-control" id="uploadEvent" name="event" required>
-                                    <option value="">Select Event</option>
-                                    @foreach ($events as $event)
-                                        <option value="{{ $event }}">{{ $event }}</option>
-                                    @endforeach
-                                </select>
-                                <span class="text-danger" id="uploadEventError"></span>
-                            </div>
+                          
                             <div class="col-lg-12">
                                 <label for="excelFile" class="form-label">Excel File</label>
                                 <input type="file" class="form-control" id="excelFile" name="excel_file" accept=".xlsx, .xls" required>
@@ -319,10 +310,6 @@
                         if (errors.excel_file) {
                             $('#excelFile').addClass('is-invalid');
                             $('#excelFileError').text(errors.excel_file[0]);
-                        }
-                        if (errors.event) {
-                            $('#uploadEvent').addClass('is-invalid');
-                            $('#uploadEventError').text(errors.event[0]);
                         }
                     }
                 });
