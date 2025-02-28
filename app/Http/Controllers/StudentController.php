@@ -160,12 +160,12 @@ class StudentController extends Controller
                 }
 
                 if (empty($data[1])) {
-                    return response()->json(['success' => false, 'message' => "Event is missing for participant '{$data[0]}'."], 422);
+                    return response()->json(['success' => false, 'message' => "Event is missing for participant '{$data[0]}' at row {$row->getRowIndex()}."], 422);
                 }
 
                 $eventName = strtolower(preg_replace('/\s+/', '', $data[1] ?? ''));
                 if (!in_array($eventName, $eventNames)) {
-                    return response()->json(['success' => false, 'message' =>  "Event '{$data[1]}' does not exist for participant '{$data[0]}'."], 422);
+                    return response()->json(['success' => false, 'message' =>  "Event '{$data[1]}' does not exist for participant '{$data[0]}' at row {$row->getRowIndex()}."], 422);
                 }
             }
 
