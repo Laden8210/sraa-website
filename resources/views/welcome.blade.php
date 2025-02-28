@@ -41,11 +41,20 @@
                     <ul class="navbar-nav ms-auto pt-2 pt-lg-0">
                         <li class="nav-item" data-anchor="data-anchor"><a class="nav-link fw-medium active"
                                 aria-current="page" href="#home">Home</a></li>
+                        
+
+                        <li class="nav-item" data-anchor="data-anchor"><a class="nav-link fw-medium"
+                                href="#medals">Medal Tallies</a>
+                        </li>
+                        <li class="nav-item" data-anchor="data-anchor"><a class="nav-link fw-medium"
+                                href="#results">Events Result</a>
+                        </li>
                         <li class="nav-item" data-anchor="data-anchor"><a class="nav-link fw-medium" href="#features">
-                                Features</a></li>
+                            Features</a></li>   
                         <li class="nav-item" data-anchor="data-anchor"><a class="nav-link fw-medium"
                                 href="#devs">Devs</a>
                         </li>
+                        
                     </ul>
                     <form class="ps-lg-5">
                         @if (Auth::user() == null)
@@ -86,357 +95,348 @@
         <section class="py-7">
 
             <div class="container">
-              
-              <div class="row align-items-center justify-content-center justify-content-lg-around">
-                <div class="col-6 col-sm-4 col-md-3 col-lg-2 px-md-0 mb-5 mb-lg-0 text-center"><img src="assets/img/gallery/company-1.png" alt="" /></div>
-                <div class="col-6 col-sm-4 col-md-3 col-lg-2 px-md-0 mb-5 mb-lg-0 text-center"><img src="assets/img/gallery/company-2.png" alt="" /></div>
-                <div class="col-6 col-sm-4 col-md-3 col-lg-2 px-md-0 mb-5 mb-lg-0 text-center"><img src="assets/img/gallery/company-3.png" alt="" /></div>
-                <div class="col-6 col-sm-4 col-md-3 col-lg-2 px-md-0 mb-5 mb-lg-0 text-center"><img src="assets/img/gallery/company-4.png" alt="" /></div>
-                <div class="col-6 col-sm-4 col-md-3 col-lg-2 px-md-0 mb-5 mb-lg-0 text-center"><img src="assets/img/gallery/company-5.png" alt="" /></div>
-                <div class="col-6 col-sm-4 col-md-3 col-lg-2 px-md-0 mb-5 mb-lg-0 text-center"><img src="assets/img/gallery/company-6.png" alt="" /></div>
-                <div class="col-6 col-sm-4 col-md-3 col-lg-2 px-md-0 mb-5 mb-lg-0 text-center"><img src="assets/img/gallery/company-7.png" alt="" /></div>
-                <div class="col-6 col-sm-4 col-md-3 col-lg-2 px-md-0 mb-5 mb-lg-0 text-center"><img src="assets/img/gallery/company-8.png" alt="" /></div>
-              </div>
+
+                <div class="row align-items-center justify-content-center justify-content-lg-around">
+                    <div class="col-12 text-center"><img src="{{ asset('image/divisions.png') }}" class="w-100"
+                            alt="" /></div>
+                </div>
             </div>
-    
+
         </section>
 
-        <section class=" bg-gray" id="devs">
+        <section class=" bg-gray pt-5" id="medals">
             <div class="container">
                 <div class="container">
                     <div class="row align-items-center">
                         <div class="text-center text-md-start">
                             <h6 class="fw-bold fs-4 display-3 lh-sm text-center">Current Medal Tally and Standings</h6>
-                            <p class="mt-3 text-center"> Get to know the talented developers behind our innovative
-                                solutions.
-                            </p>
-                            <div class="row mx-5">
+                            <p class="mt-3 text-center"> Track the latest medal standings of each schools division and see how they rank in the competition.</p>
+                            <div class="row ">
                                 <div class="col-lg-12">
                                     <div class="pt-4 d-flex d-sm-block flex-center">
                                         <div class="d-flex align-items-md-center p-3 bg-white rounded-3">
                                             <img class="img-fluid me-4 me-md-3 me-lg-4 rounded-circle"
                                                 src="{{ asset('image/number_1.png') }}" width="100"
                                                 alt="" />
-                                                <div class="w-25">
-                                                    <a
-                                                    class="text-dark text-decoration-none">Brian John Gulac </a></h5>
-                                                <p class="fw-normal mb-0">Full Stack Developer</p>
-                                                </div>
-                                                <div class="w-lg-75 my-3">
-                                                    <div class="row align-items-center">
-                                                        <div class="col-3 text-center">
-                                                            <h5 class="fw-bold">Gold</h5>
-                                                            <p class="fw-normal mb-0">10</p>
-                                                        </div>
-                                                        <div class="col-3 text-center">
-                                                            <h5 class="fw-bold">Silver</h5>
-                                                            <p class="fw-normal mb-0">8</p>
-                                                        </div>
-                                                        <div class="col-3 text-center">
-                                                            <h5 class="fw-bold">Bronze</h5>
-                                                            <p class="fw-normal mb-0">5</p>
-                                                        </div>
-                                                        <div class="col-3 d-flex justify-content-end">
-                                                            <div class="p-2 h-100 bg-gray rounded-2 text-center me-2" style="width: 100px; height: 100px;">
-                                                                <h5 class="fw-bold">Total</h5>
-                                                                <p class="fw-normal mb-0">23</p>
-                                                            </div>
+                                            <div class="w-25">
+                                                <a class="text-dark text-decoration-none">Koronadal CIty </a></h5>
+                                                <p class="fw-normal mb-0">Schools Division</p>
+                                            </div>
+                                            <div class="w-lg-75 my-3">
+                                                <div class="row align-items-center">
+                                                    <div class="col-3 text-center">
+                                                        <h5 class="fw-bold">Gold</h5>
+                                                        <p class="fw-normal mb-0">10</p>
+                                                    </div>
+                                                    <div class="col-3 text-center">
+                                                        <h5 class="fw-bold">Silver</h5>
+                                                        <p class="fw-normal mb-0">8</p>
+                                                    </div>
+                                                    <div class="col-3 text-center">
+                                                        <h5 class="fw-bold">Bronze</h5>
+                                                        <p class="fw-normal mb-0">5</p>
+                                                    </div>
+                                                    <div class="col-3 d-flex justify-content-end">
+                                                        <div class="p-2 h-100 bg-gray rounded-2 text-center me-2"
+                                                            style="width: 100px; height: 100px;">
+                                                            <h5 class="fw-bold">Total</h5>
+                                                            <p class="fw-normal mb-0">23</p>
                                                         </div>
                                                     </div>
                                                 </div>
-                                                
+                                            </div>
+
                                         </div>
                                     </div>
                                 </div>
-                            </div>
-                            <div class="row mx-5">
                                 <div class="col-lg-12">
                                     <div class="pt-4 d-flex d-sm-block flex-center">
                                         <div class="d-flex align-items-md-center p-3 bg-white rounded-3">
                                             <img class="img-fluid me-4 me-md-3 me-lg-4 rounded-circle"
                                                 src="{{ asset('image/number_1.png') }}" width="100"
                                                 alt="" />
-                                                <div class="w-25">
-                                                    <a
-                                                    class="text-dark text-decoration-none">Brian John Gulac </a></h5>
-                                                <p class="fw-normal mb-0">Full Stack Developer</p>
-                                                </div>
-                                                <div class="w-lg-75 my-3">
-                                                    <div class="row align-items-center">
-                                                        <div class="col-3 text-center">
-                                                            <h5 class="fw-bold">Gold</h5>
-                                                            <p class="fw-normal mb-0">10</p>
-                                                        </div>
-                                                        <div class="col-3 text-center">
-                                                            <h5 class="fw-bold">Silver</h5>
-                                                            <p class="fw-normal mb-0">8</p>
-                                                        </div>
-                                                        <div class="col-3 text-center">
-                                                            <h5 class="fw-bold">Bronze</h5>
-                                                            <p class="fw-normal mb-0">5</p>
-                                                        </div>
-                                                        <div class="col-3 d-flex justify-content-end">
-                                                            <div class="p-2 h-100 bg-gray rounded-2 text-center me-2" style="width: 100px; height: 100px;">
-                                                                <h5 class="fw-bold">Total</h5>
-                                                                <p class="fw-normal mb-0">23</p>
-                                                            </div>
+                                            <div class="w-25">
+                                                <a class="text-dark text-decoration-none">General Santos CIty </a></h5>
+                                                <p class="fw-normal mb-0">Schools Division</p>
+                                            </div>
+                                            <div class="w-lg-75 my-3">
+                                                <div class="row align-items-center">
+                                                    <div class="col-3 text-center">
+                                                        <h5 class="fw-bold">Gold</h5>
+                                                        <p class="fw-normal mb-0">10</p>
+                                                    </div>
+                                                    <div class="col-3 text-center">
+                                                        <h5 class="fw-bold">Silver</h5>
+                                                        <p class="fw-normal mb-0">8</p>
+                                                    </div>
+                                                    <div class="col-3 text-center">
+                                                        <h5 class="fw-bold">Bronze</h5>
+                                                        <p class="fw-normal mb-0">5</p>
+                                                    </div>
+                                                    <div class="col-3 d-flex justify-content-end">
+                                                        <div class="p-2 h-100 bg-gray rounded-2 text-center me-2"
+                                                            style="width: 100px; height: 100px;">
+                                                            <h5 class="fw-bold">Total</h5>
+                                                            <p class="fw-normal mb-0">23</p>
                                                         </div>
                                                     </div>
                                                 </div>
-                                                
+                                            </div>
+
                                         </div>
                                     </div>
                                 </div>
-                            </div>
-                            <div class="row mx-5">
                                 <div class="col-lg-12">
                                     <div class="pt-4 d-flex d-sm-block flex-center">
                                         <div class="d-flex align-items-md-center p-3 bg-white rounded-3">
                                             <img class="img-fluid me-4 me-md-3 me-lg-4 rounded-circle"
                                                 src="{{ asset('image/number_1.png') }}" width="100"
                                                 alt="" />
-                                                <div class="w-25">
-                                                    <a
-                                                    class="text-dark text-decoration-none">Brian John Gulac </a></h5>
-                                                <p class="fw-normal mb-0">Full Stack Developer</p>
-                                                </div>
-                                                <div class="w-lg-75 my-3">
-                                                    <div class="row align-items-center">
-                                                        <div class="col-3 text-center">
-                                                            <h5 class="fw-bold">Gold</h5>
-                                                            <p class="fw-normal mb-0">10</p>
-                                                        </div>
-                                                        <div class="col-3 text-center">
-                                                            <h5 class="fw-bold">Silver</h5>
-                                                            <p class="fw-normal mb-0">8</p>
-                                                        </div>
-                                                        <div class="col-3 text-center">
-                                                            <h5 class="fw-bold">Bronze</h5>
-                                                            <p class="fw-normal mb-0">5</p>
-                                                        </div>
-                                                        <div class="col-3 d-flex justify-content-end">
-                                                            <div class="p-2 h-100 bg-gray rounded-2 text-center me-2" style="width: 100px; height: 100px;">
-                                                                <h5 class="fw-bold">Total</h5>
-                                                                <p class="fw-normal mb-0">23</p>
-                                                            </div>
+                                            <div class="w-25">
+                                                <a class="text-dark text-decoration-none">Cotabato Province</a></h5>
+                                                <p class="fw-normal mb-0">Schools Division</p>
+                                            </div>
+                                            <div class="w-lg-75 my-3">
+                                                <div class="row align-items-center">
+                                                    <div class="col-3 text-center">
+                                                        <h5 class="fw-bold">Gold</h5>
+                                                        <p class="fw-normal mb-0">10</p>
+                                                    </div>
+                                                    <div class="col-3 text-center">
+                                                        <h5 class="fw-bold">Silver</h5>
+                                                        <p class="fw-normal mb-0">8</p>
+                                                    </div>
+                                                    <div class="col-3 text-center">
+                                                        <h5 class="fw-bold">Bronze</h5>
+                                                        <p class="fw-normal mb-0">5</p>
+                                                    </div>
+                                                    <div class="col-3 d-flex justify-content-end">
+                                                        <div class="p-2 h-100 bg-gray rounded-2 text-center me-2"
+                                                            style="width: 100px; height: 100px;">
+                                                            <h5 class="fw-bold">Total</h5>
+                                                            <p class="fw-normal mb-0">23</p>
                                                         </div>
                                                     </div>
                                                 </div>
-                                                
+                                            </div>
+
                                         </div>
                                     </div>
                                 </div>
-                            </div>
-                            <div class="row mx-5">
                                 <div class="col-lg-12">
                                     <div class="pt-4 d-flex d-sm-block flex-center">
                                         <div class="d-flex align-items-md-center p-3 bg-white rounded-3">
                                             <img class="img-fluid me-4 me-md-3 me-lg-4 rounded-circle"
                                                 src="{{ asset('image/number_1.png') }}" width="100"
                                                 alt="" />
-                                                <div class="w-25">
-                                                    <a
-                                                    class="text-dark text-decoration-none">Brian John Gulac </a></h5>
-                                                <p class="fw-normal mb-0">Full Stack Developer</p>
-                                                </div>
-                                                <div class="w-lg-75 my-3">
-                                                    <div class="row align-items-center">
-                                                        <div class="col-3 text-center">
-                                                            <h5 class="fw-bold">Gold</h5>
-                                                            <p class="fw-normal mb-0">10</p>
-                                                        </div>
-                                                        <div class="col-3 text-center">
-                                                            <h5 class="fw-bold">Silver</h5>
-                                                            <p class="fw-normal mb-0">8</p>
-                                                        </div>
-                                                        <div class="col-3 text-center">
-                                                            <h5 class="fw-bold">Bronze</h5>
-                                                            <p class="fw-normal mb-0">5</p>
-                                                        </div>
-                                                        <div class="col-3 d-flex justify-content-end">
-                                                            <div class="p-2 h-100 bg-gray rounded-2 text-center me-2" style="width: 100px; height: 100px;">
-                                                                <h5 class="fw-bold">Total</h5>
-                                                                <p class="fw-normal mb-0">23</p>
-                                                            </div>
+                                            <div class="w-25">
+                                                <a class="text-dark text-decoration-none"> South Cotabato</a></h5>
+                                                <p class="fw-normal mb-0">Schools Division</p>
+                                            </div>
+                                            <div class="w-lg-75 my-3">
+                                                <div class="row align-items-center">
+                                                    <div class="col-3 text-center">
+                                                        <h5 class="fw-bold">Gold</h5>
+                                                        <p class="fw-normal mb-0">10</p>
+                                                    </div>
+                                                    <div class="col-3 text-center">
+                                                        <h5 class="fw-bold">Silver</h5>
+                                                        <p class="fw-normal mb-0">8</p>
+                                                    </div>
+                                                    <div class="col-3 text-center">
+                                                        <h5 class="fw-bold">Bronze</h5>
+                                                        <p class="fw-normal mb-0">5</p>
+                                                    </div>
+                                                    <div class="col-3 d-flex justify-content-end">
+                                                        <div class="p-2 h-100 bg-gray rounded-2 text-center me-2"
+                                                            style="width: 100px; height: 100px;">
+                                                            <h5 class="fw-bold">Total</h5>
+                                                            <p class="fw-normal mb-0">23</p>
                                                         </div>
                                                     </div>
                                                 </div>
-                                                
+                                            </div>
+
                                         </div>
                                     </div>
                                 </div>
-                            </div>
-                            <div class="row mx-5">
                                 <div class="col-lg-12">
                                     <div class="pt-4 d-flex d-sm-block flex-center">
                                         <div class="d-flex align-items-md-center p-3 bg-white rounded-3">
                                             <img class="img-fluid me-4 me-md-3 me-lg-4 rounded-circle"
                                                 src="{{ asset('image/number_1.png') }}" width="100"
                                                 alt="" />
-                                                <div class="w-25">
-                                                    <a
-                                                    class="text-dark text-decoration-none">Brian John Gulac </a></h5>
-                                                <p class="fw-normal mb-0">Full Stack Developer</p>
-                                                </div>
-                                                <div class="w-lg-75 my-3">
-                                                    <div class="row align-items-center">
-                                                        <div class="col-3 text-center">
-                                                            <h5 class="fw-bold">Gold</h5>
-                                                            <p class="fw-normal mb-0">10</p>
-                                                        </div>
-                                                        <div class="col-3 text-center">
-                                                            <h5 class="fw-bold">Silver</h5>
-                                                            <p class="fw-normal mb-0">8</p>
-                                                        </div>
-                                                        <div class="col-3 text-center">
-                                                            <h5 class="fw-bold">Bronze</h5>
-                                                            <p class="fw-normal mb-0">5</p>
-                                                        </div>
-                                                        <div class="col-3 d-flex justify-content-end">
-                                                            <div class="p-2 h-100 bg-gray rounded-2 text-center me-2" style="width: 100px; height: 100px;">
-                                                                <h5 class="fw-bold">Total</h5>
-                                                                <p class="fw-normal mb-0">23</p>
-                                                            </div>
+                                            <div class="w-25">
+                                                <a class="text-dark text-decoration-none">Tacurong City </a></h5>
+                                                <p class="fw-normal mb-0">Schools Division</p>
+                                            </div>
+                                            <div class="w-lg-75 my-3">
+                                                <div class="row align-items-center">
+                                                    <div class="col-3 text-center">
+                                                        <h5 class="fw-bold">Gold</h5>
+                                                        <p class="fw-normal mb-0">10</p>
+                                                    </div>
+                                                    <div class="col-3 text-center">
+                                                        <h5 class="fw-bold">Silver</h5>
+                                                        <p class="fw-normal mb-0">8</p>
+                                                    </div>
+                                                    <div class="col-3 text-center">
+                                                        <h5 class="fw-bold">Bronze</h5>
+                                                        <p class="fw-normal mb-0">5</p>
+                                                    </div>
+                                                    <div class="col-3 d-flex justify-content-end">
+                                                        <div class="p-2 h-100 bg-gray rounded-2 text-center me-2"
+                                                            style="width: 100px; height: 100px;">
+                                                            <h5 class="fw-bold">Total</h5>
+                                                            <p class="fw-normal mb-0">23</p>
                                                         </div>
                                                     </div>
                                                 </div>
-                                                
+                                            </div>
+
                                         </div>
                                     </div>
                                 </div>
-                            </div>
-                            <div class="row mx-5">
                                 <div class="col-lg-12">
                                     <div class="pt-4 d-flex d-sm-block flex-center">
                                         <div class="d-flex align-items-md-center p-3 bg-white rounded-3">
                                             <img class="img-fluid me-4 me-md-3 me-lg-4 rounded-circle"
                                                 src="{{ asset('image/number_1.png') }}" width="100"
                                                 alt="" />
-                                                <div class="w-25">
-                                                    <a
-                                                    class="text-dark text-decoration-none">Brian John Gulac </a></h5>
-                                                <p class="fw-normal mb-0">Full Stack Developer</p>
-                                                </div>
-                                                <div class="w-lg-75 my-3">
-                                                    <div class="row align-items-center">
-                                                        <div class="col-3 text-center">
-                                                            <h5 class="fw-bold">Gold</h5>
-                                                            <p class="fw-normal mb-0">10</p>
-                                                        </div>
-                                                        <div class="col-3 text-center">
-                                                            <h5 class="fw-bold">Silver</h5>
-                                                            <p class="fw-normal mb-0">8</p>
-                                                        </div>
-                                                        <div class="col-3 text-center">
-                                                            <h5 class="fw-bold">Bronze</h5>
-                                                            <p class="fw-normal mb-0">5</p>
-                                                        </div>
-                                                        <div class="col-3 d-flex justify-content-end">
-                                                            <div class="p-2 h-100 bg-gray rounded-2 text-center me-2" style="width: 100px; height: 100px;">
-                                                                <h5 class="fw-bold">Total</h5>
-                                                                <p class="fw-normal mb-0">23</p>
-                                                            </div>
+                                            <div class="w-25">
+                                                <a class="text-dark text-decoration-none">Koronadal CIty </a></h5>
+                                                <p class="fw-normal mb-0">Schools Division</p>
+                                            </div>
+                                            <div class="w-lg-75 my-3">
+                                                <div class="row align-items-center">
+                                                    <div class="col-3 text-center">
+                                                        <h5 class="fw-bold">Gold</h5>
+                                                        <p class="fw-normal mb-0">10</p>
+                                                    </div>
+                                                    <div class="col-3 text-center">
+                                                        <h5 class="fw-bold">Silver</h5>
+                                                        <p class="fw-normal mb-0">8</p>
+                                                    </div>
+                                                    <div class="col-3 text-center">
+                                                        <h5 class="fw-bold">Bronze</h5>
+                                                        <p class="fw-normal mb-0">5</p>
+                                                    </div>
+                                                    <div class="col-3 d-flex justify-content-end">
+                                                        <div class="p-2 h-100 bg-gray rounded-2 text-center me-2"
+                                                            style="width: 100px; height: 100px;">
+                                                            <h5 class="fw-bold">Total</h5>
+                                                            <p class="fw-normal mb-0">23</p>
                                                         </div>
                                                     </div>
                                                 </div>
-                                                
+                                            </div>
+
                                         </div>
                                     </div>
                                 </div>
-                            </div>
-                            <div class="row mx-5">
                                 <div class="col-lg-12">
                                     <div class="pt-4 d-flex d-sm-block flex-center">
                                         <div class="d-flex align-items-md-center p-3 bg-white rounded-3">
                                             <img class="img-fluid me-4 me-md-3 me-lg-4 rounded-circle"
                                                 src="{{ asset('image/number_1.png') }}" width="100"
                                                 alt="" />
-                                                <div class="w-25">
-                                                    <a
-                                                    class="text-dark text-decoration-none">Brian John Gulac </a></h5>
-                                                <p class="fw-normal mb-0">Full Stack Developer</p>
-                                                </div>
-                                                <div class="w-lg-75 my-3">
-                                                    <div class="row align-items-center">
-                                                        <div class="col-3 text-center">
-                                                            <h5 class="fw-bold">Gold</h5>
-                                                            <p class="fw-normal mb-0">10</p>
-                                                        </div>
-                                                        <div class="col-3 text-center">
-                                                            <h5 class="fw-bold">Silver</h5>
-                                                            <p class="fw-normal mb-0">8</p>
-                                                        </div>
-                                                        <div class="col-3 text-center">
-                                                            <h5 class="fw-bold">Bronze</h5>
-                                                            <p class="fw-normal mb-0">5</p>
-                                                        </div>
-                                                        <div class="col-3 d-flex justify-content-end">
-                                                            <div class="p-2 h-100 bg-gray rounded-2 text-center me-2" style="width: 100px; height: 100px;">
-                                                                <h5 class="fw-bold">Total</h5>
-                                                                <p class="fw-normal mb-0">23</p>
-                                                            </div>
+                                            <div class="w-25">
+                                                <a class="text-dark text-decoration-none">Koronadal CIty </a></h5>
+                                                <p class="fw-normal mb-0">Schools Division</p>
+                                            </div>
+                                            <div class="w-lg-75 my-3">
+                                                <div class="row align-items-center">
+                                                    <div class="col-3 text-center">
+                                                        <h5 class="fw-bold">Gold</h5>
+                                                        <p class="fw-normal mb-0">10</p>
+                                                    </div>
+                                                    <div class="col-3 text-center">
+                                                        <h5 class="fw-bold">Silver</h5>
+                                                        <p class="fw-normal mb-0">8</p>
+                                                    </div>
+                                                    <div class="col-3 text-center">
+                                                        <h5 class="fw-bold">Bronze</h5>
+                                                        <p class="fw-normal mb-0">5</p>
+                                                    </div>
+                                                    <div class="col-3 d-flex justify-content-end">
+                                                        <div class="p-2 h-100 bg-gray rounded-2 text-center me-2"
+                                                            style="width: 100px; height: 100px;">
+                                                            <h5 class="fw-bold">Total</h5>
+                                                            <p class="fw-normal mb-0">23</p>
                                                         </div>
                                                     </div>
                                                 </div>
-                                                
+                                            </div>
+
                                         </div>
                                     </div>
                                 </div>
-                            </div>
-                            <div class="row mx-5">
                                 <div class="col-lg-12">
                                     <div class="pt-4 d-flex d-sm-block flex-center">
                                         <div class="d-flex align-items-md-center p-3 bg-white rounded-3">
                                             <img class="img-fluid me-4 me-md-3 me-lg-4 rounded-circle"
                                                 src="{{ asset('image/number_1.png') }}" width="100"
                                                 alt="" />
-                                                <div class="w-25">
-                                                    <a
-                                                    class="text-dark text-decoration-none">Brian John Gulac </a></h5>
-                                                <p class="fw-normal mb-0">Full Stack Developer</p>
-                                                </div>
-                                                <div class="w-lg-75 my-3">
-                                                    <div class="row align-items-center">
-                                                        <div class="col-3 text-center">
-                                                            <h5 class="fw-bold">Gold</h5>
-                                                            <p class="fw-normal mb-0">10</p>
-                                                        </div>
-                                                        <div class="col-3 text-center">
-                                                            <h5 class="fw-bold">Silver</h5>
-                                                            <p class="fw-normal mb-0">8</p>
-                                                        </div>
-                                                        <div class="col-3 text-center">
-                                                            <h5 class="fw-bold">Bronze</h5>
-                                                            <p class="fw-normal mb-0">5</p>
-                                                        </div>
-                                                        <div class="col-3 d-flex justify-content-end">
-                                                            <div class="p-2 h-100 bg-gray rounded-2 text-center me-2" style="width: 100px; height: 100px;">
-                                                                <h5 class="fw-bold">Total</h5>
-                                                                <p class="fw-normal mb-0">23</p>
-                                                            </div>
+                                            <div class="w-25">
+                                                <a class="text-dark text-decoration-none">Koronadal CIty </a></h5>
+                                                <p class="fw-normal mb-0">Schools Division</p>
+                                            </div>
+                                            <div class="w-lg-75 my-3">
+                                                <div class="row align-items-center">
+                                                    <div class="col-3 text-center">
+                                                        <h5 class="fw-bold">Gold</h5>
+                                                        <p class="fw-normal mb-0">10</p>
+                                                    </div>
+                                                    <div class="col-3 text-center">
+                                                        <h5 class="fw-bold">Silver</h5>
+                                                        <p class="fw-normal mb-0">8</p>
+                                                    </div>
+                                                    <div class="col-3 text-center">
+                                                        <h5 class="fw-bold">Bronze</h5>
+                                                        <p class="fw-normal mb-0">5</p>
+                                                    </div>
+                                                    <div class="col-3 d-flex justify-content-end">
+                                                        <div class="p-2 h-100 bg-gray rounded-2 text-center me-2"
+                                                            style="width: 100px; height: 100px;">
+                                                            <h5 class="fw-bold">Total</h5>
+                                                            <p class="fw-normal mb-0">23</p>
                                                         </div>
                                                     </div>
                                                 </div>
-                                                
+                                            </div>
+
                                         </div>
                                     </div>
                                 </div>
                             </div>
+
                         </div>
                     </div>
                 </div>
             </div>
         </section>
 
-        <section class=" bg-gray" id="devs">
+        <section class=" bg-gray pt-2" id="results">
             <div class="container">
                 <div class="container">
-                    <div class="row align-items-center mx-md-5" >
+                    <div class="row align-items-center">
                         <div class="text-center text-md-start">
                             <h6 class="fw-bold fs-4 display-3 lh-sm text-center">Sports Events Results</h6>
-                            <p class="mt-3 text-center"> Get to know the talented developers behind our innovative
-                                solutions.
+                            <p class="mt-3 text-center"> Stay updated with the latest scores, rankings, and highlights
+                                from your favorite sports events."
                             </p>
+                            <div class="container p-5 w-50">
+
+                                <select name="" class="form-select">
+                                    <option value="Select">Select Event</option>
+                                    <option value="India">Basketball</option>
+                                    <option value="Nepal">Football</option>
+                                    <option value="Bangladesh">Sepak Takraw</option>
+                                    <option value="Sri Lanka">Baseball</option>
+                                </select>
+
+
+                            </div>
                             <div class="w-100 mx-md-4 row">
                                 <div class="col-lg-4 col-md-12">
                                     <div class="pt-4 d-flex d-sm-block flex-center">
@@ -445,10 +445,10 @@
                                                 src="{{ asset('image/number_1.png') }}" width="100"
                                                 alt="" />
                                             <div class="w-lg-50 my-3">
-                                                <h5 class="mb-0 fw-bold"> <a
-                                                        class="text-dark text-decoration-none"
+                                                <h5 class="mb-0 fw-bold"> <a class="text-dark text-decoration-none"
                                                         target="_blank"
-                                                        href="https://www.facebook.com/NasaPh8210">Brian John M. Gulac</a></h5>
+                                                        href="https://www.facebook.com/NasaPh8210">Brian John M.
+                                                        Gulac</a></h5>
                                                 <p class="fw-normal mb-0">Koronadal City</p>
                                             </div>
                                         </div>
@@ -461,10 +461,10 @@
                                                 src="{{ asset('image/number_2.png') }}" width="100"
                                                 alt="" />
                                             <div class="w-lg-50 my-3">
-                                                <h5 class="mb-0 fw-bold"> <a
-                                                        class="text-dark text-decoration-none"
+                                                <h5 class="mb-0 fw-bold"> <a class="text-dark text-decoration-none"
                                                         target="_blank"
-                                                        href="https://www.facebook.com/NasaPh8210">Brian John M. Gulac</a></h5>
+                                                        href="https://www.facebook.com/NasaPh8210">Brian John M.
+                                                        Gulac</a></h5>
                                                 <p class="fw-normal mb-0">Koronadal City</p>
                                             </div>
                                         </div>
@@ -477,10 +477,10 @@
                                                 src="{{ asset('image/number_3.png') }}" width="100"
                                                 alt="" />
                                             <div class="w-lg-50 my-3">
-                                                <h5 class="mb-0 fw-bold"> <a
-                                                        class="text-dark text-decoration-none"
+                                                <h5 class="mb-0 fw-bold"> <a class="text-dark text-decoration-none"
                                                         target="_blank"
-                                                        href="https://www.facebook.com/NasaPh8210">Brian John M. Gulac</a></h5>
+                                                        href="https://www.facebook.com/NasaPh8210">Brian John M.
+                                                        Gulac</a></h5>
                                                 <p class="fw-normal mb-0">Koronadal City</p>
                                             </div>
                                         </div>
@@ -644,8 +644,7 @@
                                                 src="{{ asset('image/gettyimages-517443904.jpg') }}" width="100"
                                                 alt="" />
                                             <div class="w-lg-50 my-3">
-                                                <h5 class="mb-0 fw-bold"> <a
-                                                        class="text-dark text-decoration-none"
+                                                <h5 class="mb-0 fw-bold"> <a class="text-dark text-decoration-none"
                                                         target="_blank"
                                                         href="https://www.facebook.com/NasaPh8210">John Michael D.
                                                         Domingo</a></h5>
@@ -662,10 +661,10 @@
                                                 alt="" />
                                             <div class="w-lg-50 my-3">
                                                 <h5 class="mb-0 fw-bold">
-                                                    <a
-                                                    class="text-dark text-decoration-none"
-                                                    target="_blank"
-                                                    href="https://www.facebook.com/brian.gulac">Brian John Gulac </a></h5>
+                                                    <a class="text-dark text-decoration-none" target="_blank"
+                                                        href="https://www.facebook.com/brian.gulac">Brian John Gulac
+                                                    </a>
+                                                </h5>
                                                 <p class="fw-normal mb-0">Full Stack Developer</p>
                                             </div>
                                         </div>
@@ -678,10 +677,10 @@
                                                 src="{{ asset('image/gettyimages-517443904.jpg') }}" width="100"
                                                 alt="" />
                                             <div class="w-lg-50 my-3">
-                                                <h5 class="mb-0 fw-bold"><a
-                                                    class="text-dark text-decoration-none"
-                                                    target="_blank"
-                                                    href="https://www.facebook.com/Lastlastacc1`">Machrys Mondejar</a></h5>
+                                                <h5 class="mb-0 fw-bold"><a class="text-dark text-decoration-none"
+                                                        target="_blank"
+                                                        href="https://www.facebook.com/Lastlastacc1`">Machrys
+                                                        Mondejar</a></h5>
                                                 <p class="fw-normal mb-0">Full Stack Developer</p>
                                             </div>
                                         </div>
@@ -700,7 +699,8 @@
                 <div class="row flex-center">
                     <div class="col-auto mb-5"><a
                             class="pe-2 d-flex align-items-center text-decoration-none fw-bold fs-3" href="#">
-                            <img class="m-2" src="{{ asset('image/logo.png') }}" alt="Logo" style="height:45px;">
+                            <img class="m-2" src="{{ asset('image/logo.png') }}" alt="Logo"
+                                style="height:45px;">
                             <div class="text-warning">SRAA</div>
                             <div class="text-white">MEET 2025</div>
                         </a></div>
@@ -767,6 +767,7 @@
 
 
     </main>
+
     <!-- ===============================================-->
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
         integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous">
@@ -779,6 +780,7 @@
     </script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/is_js/0.9.0/is.min.js"></script>
     <script src="https://polyfill.io/v3/polyfill.min.js?features=window.scroll"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 
     <link
         href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,200;1,300;1,400&amp;display=swap"

@@ -20,6 +20,8 @@ var docReady = function docReady(fn) {
   }
 };
 
+
+
 var resize = function resize(fn) {
   return window.addEventListener('resize', fn);
 };
