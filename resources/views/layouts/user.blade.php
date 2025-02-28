@@ -85,7 +85,7 @@
                         </li>
                         <li class="nav-item">
                             <a class="nav-link {{ Request::routeIs('faculty') ? 'active fw-semibold border-bottom border-2 border-dark' : '' }}"
-                                href="{{ route('faculty') }}">Faculty</a>
+                                href="{{ route('faculty') }}">Coaches</a>
                         </li>
                         <li class="nav-item position-relative">
                             <a class="nav-link {{ Request::routeIs('student') ? 'active fw-semibold border-bottom border-2 border-dark' : '' }}"

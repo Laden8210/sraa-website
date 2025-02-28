@@ -164,7 +164,7 @@
                     <form id="uploadExcelForm" enctype="multipart/form-data">
                         @csrf
                         <div class="row">
-                            <div class="col-lg-12">
+                            <div class="col-lg-12 mb-2">
                                 <label for="uploadDivision" class="form-label">Division</label>
                                 <select class="form-select" id="uploadDivision" name="division" required>
                                     <option value="">Select Division</option>
@@ -174,16 +174,7 @@
                                 </select>
                                 <span class="text-danger" id="uploadDivisionError"></span>
                             </div>
-                            <div class="col-lg-12">
-                                <label for="event" class="form-label">Event</label>
-                                <select class="form-select form-control" id="uploadEvent" name="event" required>
-                                    <option value="">Select Event</option>
-                                    @foreach ($events as $event)
-                                        <option value="{{ $event }}">{{ $event }}</option>
-                                    @endforeach
-                                </select>
-                                <span class="text-danger" id="uploadEventError"></span>
-                            </div>
+                          
                             <div class="col-lg-12">
                                 <label for="excelFile" class="form-label">Excel File</label>
                                 <input type="file" class="form-control" id="excelFile" name="excel_file" accept=".xlsx, .xls" required>
@@ -203,6 +194,7 @@
     <script>
         $(document).ready(function() {
             $('#add-student').on('click', function() {
+                $('.modal-body .alert-danger').remove();
                 $('#StudentModal').modal('show');
                 $('#StudentModal .modal-title').text('Add Student');
                 $('#addStudentForm')[0].reset();
@@ -210,11 +202,13 @@
             });
 
             $('#upload-excel').on('click', function() {
+                $('.modal-body .alert-danger').remove();
                 $('#UploadExcelModal').modal('show');
                 $('#uploadExcelForm')[0].reset();
             });
 
             $('.edit-student').on('click', function() {
+                $('.modal-body .alert-danger').remove();
                 var studentId = $(this).data('id');
                 var studentName = $(this).data('name');
                 var studentDivision = $(this).data('division');
@@ -303,8 +297,12 @@
                     },
                     error: function(xhr) {
                         var errors = xhr.responseJSON.errors;
+                        var message = xhr.responseJSON.message;
                         console.log(xhr);
-                        console.log(xhr);
+                        if (message) {
+                            $('.modal-body .alert-danger').remove();
+                            $('.modal-body').prepend('<div class="alert alert-danger">' + message + '</div>');
+                        }
                         if (errors.division) {
                             $('#uploadDivision').addClass('is-invalid');
                             $('#uploadDivisionError').text(errors.division[0]);
@@ -312,10 +310,6 @@
                         if (errors.excel_file) {
                             $('#excelFile').addClass('is-invalid');
                             $('#excelFileError').text(errors.excel_file[0]);
-                        }
-                        if (errors.event) {
-                            $('#uploadEvent').addClass('is-invalid');
-                            $('#uploadEventError').text(errors.event[0]);
                         }
                     }
                 });

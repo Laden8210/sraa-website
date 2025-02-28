@@ -67,6 +67,20 @@ class CoachController extends Controller
         return response()->json(['success' => true]);
     }
 
+
+    public function getParticipantEvent($event) {
+        $manager = new AccommodationManager();
+        $events = $manager->getEvents();
+
+        $event = strtolower(preg_replace('/\s+/', '', $event));
+        foreach ($events as $e) {
+            if (strtolower(preg_replace('/\s+/', '', $e)) == $event) {
+                return $e;
+            }
+        }
+        return null;
+    }
+
     public function update(Request $request) {
         $validator = Validator::make($request->all(), [
             'name' => 'required|string|max:255',
@@ -93,6 +107,7 @@ class CoachController extends Controller
 
         return response()->json(['success' => true]);
     }
+    
 
     private function generateUniqueUsername($name)
     {
@@ -112,7 +127,6 @@ class CoachController extends Controller
         $request->validate([
             'excel_file' => 'required|file|mimes:xlsx,csv|max:2048',
             'division' => 'required|string|max:255',
-            'event' => 'required|string|max:255',
         ]);
 
         try {
@@ -120,9 +134,34 @@ class CoachController extends Controller
             $spreadsheet = IOFactory::load($file->getPathname());
             $worksheet = $spreadsheet->getActiveSheet();
 
+            $manager = new AccommodationManager();
+            $events = $manager->getEvents();
+            $eventNames = array_map(function($event) {
+                return strtolower(preg_replace('/\s+/', '', $event));
+            }, $events);
+
             $coaches = [];
             $totalRows = iterator_count($worksheet->getRowIterator()) - 1;
             $batchSize = ceil($totalRows / 2); 
+            
+            foreach ($worksheet->getRowIterator(2) as $row) { 
+                $cellIterator = $row->getCellIterator();
+                $cellIterator->setIterateOnlyExistingCells(false); 
+
+                $data = [];
+                foreach ($cellIterator as $cell) {
+                    $data[] = $cell->getValue(); 
+                }
+
+                if (empty($data[1])) {
+                    return response()->json(['success' => false, 'message' => "Event is missing for participant '{$data[0]}'."], 422);
+                }
+
+                $eventName = strtolower(preg_replace('/\s+/', '', $data[1] ?? ''));
+                if (!in_array($eventName, $eventNames)) {
+                    return response()->json(['success' => false, 'message' =>  "Event '{$data[1]}' does not exist for participant '{$data[0]}'."], 422);
+                }
+            }
             
 
             foreach ($worksheet->getRowIterator(2) as $row) { 
@@ -135,13 +174,14 @@ class CoachController extends Controller
                 }
 
                 $username = $this->generateUniqueUsername($data[0]);
+                $event = $this->getParticipantEvent($data[1]);
 
                 $coaches[] = [
                     'name' => $data[0] ?? null,
                     'username' => $username,
-                    'school' => $data[1] ?? null,
+                    'school' => $data[2] ?? null,
                     'division' => $request->division,
-                    'event' => $request->event,
+                    'event' => $event,
                     'participant_role' => 'coach',
                     'password' => Hash::make("!".$username), 
                     'is_deleted' => false,

@@ -71,6 +71,19 @@ class StudentController extends Controller
         return response()->json(['success' => true]);
     }
 
+    public function getParticipantEvent($event) {
+        $manager = new AccommodationManager();
+        $events = $manager->getEvents();
+
+        $event = strtolower(preg_replace('/\s+/', '', $event));
+        foreach ($events as $e) {
+            if (strtolower(preg_replace('/\s+/', '', $e)) == $event) {
+                return $e;
+            }
+        }
+        return null;
+    }
+
     private function generateUniqueUsername($name)
     {
         $baseUsername = strtolower(preg_replace('/\s+/', '', $name));
@@ -119,7 +132,6 @@ class StudentController extends Controller
         $request->validate([
             'excel_file' => 'required|file|mimes:xlsx,csv|max:2048',
             'division' => 'required|string|max:255',
-            'event' => 'required|string|max:255',
         ]);
 
         try {
@@ -127,7 +139,15 @@ class StudentController extends Controller
             $spreadsheet = IOFactory::load($file->getPathname());
             $worksheet = $spreadsheet->getActiveSheet();
 
-            $batchSize = 100; 
+            $manager = new AccommodationManager();
+            $events = $manager->getEvents();
+            $eventNames = array_map(function($event) {
+                return strtolower(preg_replace('/\s+/', '', $event));
+            }, $events);
+
+
+            $totalRows = iterator_count($worksheet->getRowIterator()) - 1;
+            $batchSize = ceil($totalRows / 2); 
             $batchData = [];
 
             foreach ($worksheet->getRowIterator(2) as $row) { 
@@ -138,7 +158,28 @@ class StudentController extends Controller
                 foreach ($cellIterator as $cell) {
                     $data[] = $cell->getValue(); 
                 }
+
+                if (empty($data[1])) {
+                    return response()->json(['success' => false, 'message' => "Event is missing for participant '{$data[0]}'."], 422);
+                }
+
+                $eventName = strtolower(preg_replace('/\s+/', '', $data[1] ?? ''));
+                if (!in_array($eventName, $eventNames)) {
+                    return response()->json(['success' => false, 'message' =>  "Event '{$data[1]}' does not exist for participant '{$data[0]}'."], 422);
+                }
+            }
+
+            foreach ($worksheet->getRowIterator(2) as $row) { 
+                $cellIterator = $row->getCellIterator();
+                $cellIterator->setIterateOnlyExistingCells(false); 
+
+                $data = [];
+                foreach ($cellIterator as $cell) {
+                    $data[] = $cell->getValue(); 
+                }
+
                 $username = $this->generateUniqueUsername($data[0]); 
+                $event = $this->getParticipantEvent($data[1]);
                 
                 $name = $data[0] ?? null;
 
@@ -146,8 +187,8 @@ class StudentController extends Controller
                     'name' => $name,
                     'username' => $username,
                     'division' => $request->division, 
-                    'school' => $data[1] ?? null,
-                    'event' => $request->event,
+                    'school' => $data[2] ?? null,
+                    'event' => $event,
                     'participant_role' => 'student',
                     'password' => Hash::make("!".$username), 
                     'is_deleted' => false,
@@ -169,15 +210,5 @@ class StudentController extends Controller
         }
     }
 
-    private function generatePassword($name)
-    {
-        $initials = '';
-        if ($name) {
-            $nameParts = explode(' ', $name);
-            foreach ($nameParts as $part) {
-                $initials .= strtoupper($part[0]);
-            }
-        }
-        return $initials;
-    }
+  
 }

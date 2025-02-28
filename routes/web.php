@@ -10,7 +10,7 @@ use App\Http\Controllers\CoachController;
 use App\Http\Controllers\QRController;
 use Illuminate\Support\Facades\Auth;
 
-Route::get('', [RouteController::class, 'index'])->name('login');
+Route::get('', [RouteController::class, 'index']);
 Route::get('login', [RouteController::class, 'login'])->name('login');
 Route::get('logout', [RouteController::class, 'logout'])->name('logout');
 Route::get('register', [RouteController::class, 'register'])->name('register');
