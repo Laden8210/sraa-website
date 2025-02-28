@@ -40,6 +40,9 @@
   --bs-font-monospace: "SFMono-Regular", Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
   --bs-gradient: linear-gradient(180deg, rgba(255, 255, 255, 0.15), rgba(255, 255, 255, 0));
 }
+.bg-total {
+  background-color: var(--bs-gray) !important;
+}
 .bg-gray {
   background-color: #f5f7fa !important  ;
 }

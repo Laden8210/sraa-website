@@ -67,7 +67,7 @@
             <div class="container position-relative">
                 <div class="row align-items-center py-8">
                     <div class="col-md-5 col-lg-6 order-md-1 text-center text-md-end"><img class="img-fluid"
-                            src="{{ asset('image/mobile_hero.png') }}" width="650" alt="" /></div>
+                            src="{{ asset('image/SRAALOGO.png') }}" width="500" alt="" /></div>
                     <div class="col-md-7 col-lg-6 text-center text-md-start">
                         <h1 class="mb-4 display-3 fw-bold lh-sm">SOCCSKSARGEN <br
                                 class="d-block d-lg-none d-xl-block" />REGIONAL
@@ -79,6 +79,415 @@
                             href="{{ asset('mobile_application/SRAA ATTENDANCE APPLICATION.apk') }}"
                             role="button">Download
                             Mobile App</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section class="py-7">
+
+            <div class="container">
+              
+              <div class="row align-items-center justify-content-center justify-content-lg-around">
+                <div class="col-6 col-sm-4 col-md-3 col-lg-2 px-md-0 mb-5 mb-lg-0 text-center"><img src="assets/img/gallery/company-1.png" alt="" /></div>
+                <div class="col-6 col-sm-4 col-md-3 col-lg-2 px-md-0 mb-5 mb-lg-0 text-center"><img src="assets/img/gallery/company-2.png" alt="" /></div>
+                <div class="col-6 col-sm-4 col-md-3 col-lg-2 px-md-0 mb-5 mb-lg-0 text-center"><img src="assets/img/gallery/company-3.png" alt="" /></div>
+                <div class="col-6 col-sm-4 col-md-3 col-lg-2 px-md-0 mb-5 mb-lg-0 text-center"><img src="assets/img/gallery/company-4.png" alt="" /></div>
+                <div class="col-6 col-sm-4 col-md-3 col-lg-2 px-md-0 mb-5 mb-lg-0 text-center"><img src="assets/img/gallery/company-5.png" alt="" /></div>
+                <div class="col-6 col-sm-4 col-md-3 col-lg-2 px-md-0 mb-5 mb-lg-0 text-center"><img src="assets/img/gallery/company-6.png" alt="" /></div>
+                <div class="col-6 col-sm-4 col-md-3 col-lg-2 px-md-0 mb-5 mb-lg-0 text-center"><img src="assets/img/gallery/company-7.png" alt="" /></div>
+                <div class="col-6 col-sm-4 col-md-3 col-lg-2 px-md-0 mb-5 mb-lg-0 text-center"><img src="assets/img/gallery/company-8.png" alt="" /></div>
+              </div>
+            </div>
+    
+        </section>
+
+        <section class=" bg-gray" id="devs">
+            <div class="container">
+                <div class="container">
+                    <div class="row align-items-center">
+                        <div class="text-center text-md-start">
+                            <h6 class="fw-bold fs-4 display-3 lh-sm text-center">Current Medal Tally and Standings</h6>
+                            <p class="mt-3 text-center"> Get to know the talented developers behind our innovative
+                                solutions.
+                            </p>
+                            <div class="row mx-5">
+                                <div class="col-lg-12">
+                                    <div class="pt-4 d-flex d-sm-block flex-center">
+                                        <div class="d-flex align-items-md-center p-3 bg-white rounded-3">
+                                            <img class="img-fluid me-4 me-md-3 me-lg-4 rounded-circle"
+                                                src="{{ asset('image/number_1.png') }}" width="100"
+                                                alt="" />
+                                                <div class="w-25">
+                                                    <a
+                                                    class="text-dark text-decoration-none">Brian John Gulac </a></h5>
+                                                <p class="fw-normal mb-0">Full Stack Developer</p>
+                                                </div>
+                                                <div class="w-lg-75 my-3">
+                                                    <div class="row align-items-center">
+                                                        <div class="col-3 text-center">
+                                                            <h5 class="fw-bold">Gold</h5>
+                                                            <p class="fw-normal mb-0">10</p>
+                                                        </div>
+                                                        <div class="col-3 text-center">
+                                                            <h5 class="fw-bold">Silver</h5>
+                                                            <p class="fw-normal mb-0">8</p>
+                                                        </div>
+                                                        <div class="col-3 text-center">
+                                                            <h5 class="fw-bold">Bronze</h5>
+                                                            <p class="fw-normal mb-0">5</p>
+                                                        </div>
+                                                        <div class="col-3 d-flex justify-content-end">
+                                                            <div class="p-2 h-100 bg-gray rounded-2 text-center me-2" style="width: 100px; height: 100px;">
+                                                                <h5 class="fw-bold">Total</h5>
+                                                                <p class="fw-normal mb-0">23</p>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row mx-5">
+                                <div class="col-lg-12">
+                                    <div class="pt-4 d-flex d-sm-block flex-center">
+                                        <div class="d-flex align-items-md-center p-3 bg-white rounded-3">
+                                            <img class="img-fluid me-4 me-md-3 me-lg-4 rounded-circle"
+                                                src="{{ asset('image/number_1.png') }}" width="100"
+                                                alt="" />
+                                                <div class="w-25">
+                                                    <a
+                                                    class="text-dark text-decoration-none">Brian John Gulac </a></h5>
+                                                <p class="fw-normal mb-0">Full Stack Developer</p>
+                                                </div>
+                                                <div class="w-lg-75 my-3">
+                                                    <div class="row align-items-center">
+                                                        <div class="col-3 text-center">
+                                                            <h5 class="fw-bold">Gold</h5>
+                                                            <p class="fw-normal mb-0">10</p>
+                                                        </div>
+                                                        <div class="col-3 text-center">
+                                                            <h5 class="fw-bold">Silver</h5>
+                                                            <p class="fw-normal mb-0">8</p>
+                                                        </div>
+                                                        <div class="col-3 text-center">
+                                                            <h5 class="fw-bold">Bronze</h5>
+                                                            <p class="fw-normal mb-0">5</p>
+                                                        </div>
+                                                        <div class="col-3 d-flex justify-content-end">
+                                                            <div class="p-2 h-100 bg-gray rounded-2 text-center me-2" style="width: 100px; height: 100px;">
+                                                                <h5 class="fw-bold">Total</h5>
+                                                                <p class="fw-normal mb-0">23</p>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row mx-5">
+                                <div class="col-lg-12">
+                                    <div class="pt-4 d-flex d-sm-block flex-center">
+                                        <div class="d-flex align-items-md-center p-3 bg-white rounded-3">
+                                            <img class="img-fluid me-4 me-md-3 me-lg-4 rounded-circle"
+                                                src="{{ asset('image/number_1.png') }}" width="100"
+                                                alt="" />
+                                                <div class="w-25">
+                                                    <a
+                                                    class="text-dark text-decoration-none">Brian John Gulac </a></h5>
+                                                <p class="fw-normal mb-0">Full Stack Developer</p>
+                                                </div>
+                                                <div class="w-lg-75 my-3">
+                                                    <div class="row align-items-center">
+                                                        <div class="col-3 text-center">
+                                                            <h5 class="fw-bold">Gold</h5>
+                                                            <p class="fw-normal mb-0">10</p>
+                                                        </div>
+                                                        <div class="col-3 text-center">
+                                                            <h5 class="fw-bold">Silver</h5>
+                                                            <p class="fw-normal mb-0">8</p>
+                                                        </div>
+                                                        <div class="col-3 text-center">
+                                                            <h5 class="fw-bold">Bronze</h5>
+                                                            <p class="fw-normal mb-0">5</p>
+                                                        </div>
+                                                        <div class="col-3 d-flex justify-content-end">
+                                                            <div class="p-2 h-100 bg-gray rounded-2 text-center me-2" style="width: 100px; height: 100px;">
+                                                                <h5 class="fw-bold">Total</h5>
+                                                                <p class="fw-normal mb-0">23</p>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row mx-5">
+                                <div class="col-lg-12">
+                                    <div class="pt-4 d-flex d-sm-block flex-center">
+                                        <div class="d-flex align-items-md-center p-3 bg-white rounded-3">
+                                            <img class="img-fluid me-4 me-md-3 me-lg-4 rounded-circle"
+                                                src="{{ asset('image/number_1.png') }}" width="100"
+                                                alt="" />
+                                                <div class="w-25">
+                                                    <a
+                                                    class="text-dark text-decoration-none">Brian John Gulac </a></h5>
+                                                <p class="fw-normal mb-0">Full Stack Developer</p>
+                                                </div>
+                                                <div class="w-lg-75 my-3">
+                                                    <div class="row align-items-center">
+                                                        <div class="col-3 text-center">
+                                                            <h5 class="fw-bold">Gold</h5>
+                                                            <p class="fw-normal mb-0">10</p>
+                                                        </div>
+                                                        <div class="col-3 text-center">
+                                                            <h5 class="fw-bold">Silver</h5>
+                                                            <p class="fw-normal mb-0">8</p>
+                                                        </div>
+                                                        <div class="col-3 text-center">
+                                                            <h5 class="fw-bold">Bronze</h5>
+                                                            <p class="fw-normal mb-0">5</p>
+                                                        </div>
+                                                        <div class="col-3 d-flex justify-content-end">
+                                                            <div class="p-2 h-100 bg-gray rounded-2 text-center me-2" style="width: 100px; height: 100px;">
+                                                                <h5 class="fw-bold">Total</h5>
+                                                                <p class="fw-normal mb-0">23</p>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row mx-5">
+                                <div class="col-lg-12">
+                                    <div class="pt-4 d-flex d-sm-block flex-center">
+                                        <div class="d-flex align-items-md-center p-3 bg-white rounded-3">
+                                            <img class="img-fluid me-4 me-md-3 me-lg-4 rounded-circle"
+                                                src="{{ asset('image/number_1.png') }}" width="100"
+                                                alt="" />
+                                                <div class="w-25">
+                                                    <a
+                                                    class="text-dark text-decoration-none">Brian John Gulac </a></h5>
+                                                <p class="fw-normal mb-0">Full Stack Developer</p>
+                                                </div>
+                                                <div class="w-lg-75 my-3">
+                                                    <div class="row align-items-center">
+                                                        <div class="col-3 text-center">
+                                                            <h5 class="fw-bold">Gold</h5>
+                                                            <p class="fw-normal mb-0">10</p>
+                                                        </div>
+                                                        <div class="col-3 text-center">
+                                                            <h5 class="fw-bold">Silver</h5>
+                                                            <p class="fw-normal mb-0">8</p>
+                                                        </div>
+                                                        <div class="col-3 text-center">
+                                                            <h5 class="fw-bold">Bronze</h5>
+                                                            <p class="fw-normal mb-0">5</p>
+                                                        </div>
+                                                        <div class="col-3 d-flex justify-content-end">
+                                                            <div class="p-2 h-100 bg-gray rounded-2 text-center me-2" style="width: 100px; height: 100px;">
+                                                                <h5 class="fw-bold">Total</h5>
+                                                                <p class="fw-normal mb-0">23</p>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row mx-5">
+                                <div class="col-lg-12">
+                                    <div class="pt-4 d-flex d-sm-block flex-center">
+                                        <div class="d-flex align-items-md-center p-3 bg-white rounded-3">
+                                            <img class="img-fluid me-4 me-md-3 me-lg-4 rounded-circle"
+                                                src="{{ asset('image/number_1.png') }}" width="100"
+                                                alt="" />
+                                                <div class="w-25">
+                                                    <a
+                                                    class="text-dark text-decoration-none">Brian John Gulac </a></h5>
+                                                <p class="fw-normal mb-0">Full Stack Developer</p>
+                                                </div>
+                                                <div class="w-lg-75 my-3">
+                                                    <div class="row align-items-center">
+                                                        <div class="col-3 text-center">
+                                                            <h5 class="fw-bold">Gold</h5>
+                                                            <p class="fw-normal mb-0">10</p>
+                                                        </div>
+                                                        <div class="col-3 text-center">
+                                                            <h5 class="fw-bold">Silver</h5>
+                                                            <p class="fw-normal mb-0">8</p>
+                                                        </div>
+                                                        <div class="col-3 text-center">
+                                                            <h5 class="fw-bold">Bronze</h5>
+                                                            <p class="fw-normal mb-0">5</p>
+                                                        </div>
+                                                        <div class="col-3 d-flex justify-content-end">
+                                                            <div class="p-2 h-100 bg-gray rounded-2 text-center me-2" style="width: 100px; height: 100px;">
+                                                                <h5 class="fw-bold">Total</h5>
+                                                                <p class="fw-normal mb-0">23</p>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row mx-5">
+                                <div class="col-lg-12">
+                                    <div class="pt-4 d-flex d-sm-block flex-center">
+                                        <div class="d-flex align-items-md-center p-3 bg-white rounded-3">
+                                            <img class="img-fluid me-4 me-md-3 me-lg-4 rounded-circle"
+                                                src="{{ asset('image/number_1.png') }}" width="100"
+                                                alt="" />
+                                                <div class="w-25">
+                                                    <a
+                                                    class="text-dark text-decoration-none">Brian John Gulac </a></h5>
+                                                <p class="fw-normal mb-0">Full Stack Developer</p>
+                                                </div>
+                                                <div class="w-lg-75 my-3">
+                                                    <div class="row align-items-center">
+                                                        <div class="col-3 text-center">
+                                                            <h5 class="fw-bold">Gold</h5>
+                                                            <p class="fw-normal mb-0">10</p>
+                                                        </div>
+                                                        <div class="col-3 text-center">
+                                                            <h5 class="fw-bold">Silver</h5>
+                                                            <p class="fw-normal mb-0">8</p>
+                                                        </div>
+                                                        <div class="col-3 text-center">
+                                                            <h5 class="fw-bold">Bronze</h5>
+                                                            <p class="fw-normal mb-0">5</p>
+                                                        </div>
+                                                        <div class="col-3 d-flex justify-content-end">
+                                                            <div class="p-2 h-100 bg-gray rounded-2 text-center me-2" style="width: 100px; height: 100px;">
+                                                                <h5 class="fw-bold">Total</h5>
+                                                                <p class="fw-normal mb-0">23</p>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row mx-5">
+                                <div class="col-lg-12">
+                                    <div class="pt-4 d-flex d-sm-block flex-center">
+                                        <div class="d-flex align-items-md-center p-3 bg-white rounded-3">
+                                            <img class="img-fluid me-4 me-md-3 me-lg-4 rounded-circle"
+                                                src="{{ asset('image/number_1.png') }}" width="100"
+                                                alt="" />
+                                                <div class="w-25">
+                                                    <a
+                                                    class="text-dark text-decoration-none">Brian John Gulac </a></h5>
+                                                <p class="fw-normal mb-0">Full Stack Developer</p>
+                                                </div>
+                                                <div class="w-lg-75 my-3">
+                                                    <div class="row align-items-center">
+                                                        <div class="col-3 text-center">
+                                                            <h5 class="fw-bold">Gold</h5>
+                                                            <p class="fw-normal mb-0">10</p>
+                                                        </div>
+                                                        <div class="col-3 text-center">
+                                                            <h5 class="fw-bold">Silver</h5>
+                                                            <p class="fw-normal mb-0">8</p>
+                                                        </div>
+                                                        <div class="col-3 text-center">
+                                                            <h5 class="fw-bold">Bronze</h5>
+                                                            <p class="fw-normal mb-0">5</p>
+                                                        </div>
+                                                        <div class="col-3 d-flex justify-content-end">
+                                                            <div class="p-2 h-100 bg-gray rounded-2 text-center me-2" style="width: 100px; height: 100px;">
+                                                                <h5 class="fw-bold">Total</h5>
+                                                                <p class="fw-normal mb-0">23</p>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class=" bg-gray" id="devs">
+            <div class="container">
+                <div class="container">
+                    <div class="row align-items-center mx-md-5" >
+                        <div class="text-center text-md-start">
+                            <h6 class="fw-bold fs-4 display-3 lh-sm text-center">Sports Events Results</h6>
+                            <p class="mt-3 text-center"> Get to know the talented developers behind our innovative
+                                solutions.
+                            </p>
+                            <div class="w-100 mx-md-4 row">
+                                <div class="col-lg-4 col-md-12">
+                                    <div class="pt-4 d-flex d-sm-block flex-center">
+                                        <div class="d-flex align-items-md-center">
+                                            <img class="img-fluid me-4 me-md-3 me-lg-4 rounded-circle"
+                                                src="{{ asset('image/number_1.png') }}" width="100"
+                                                alt="" />
+                                            <div class="w-lg-50 my-3">
+                                                <h5 class="mb-0 fw-bold"> <a
+                                                        class="text-dark text-decoration-none"
+                                                        target="_blank"
+                                                        href="https://www.facebook.com/NasaPh8210">Brian John M. Gulac</a></h5>
+                                                <p class="fw-normal mb-0">Koronadal City</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-lg-4 col-md-12">
+                                    <div class="pt-4 d-flex d-sm-block flex-center">
+                                        <div class="d-flex align-items-md-center">
+                                            <img class="img-fluid me-4 me-md-3 me-lg-4 rounded-circle"
+                                                src="{{ asset('image/number_2.png') }}" width="100"
+                                                alt="" />
+                                            <div class="w-lg-50 my-3">
+                                                <h5 class="mb-0 fw-bold"> <a
+                                                        class="text-dark text-decoration-none"
+                                                        target="_blank"
+                                                        href="https://www.facebook.com/NasaPh8210">Brian John M. Gulac</a></h5>
+                                                <p class="fw-normal mb-0">Koronadal City</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-lg-4 col-md-12">
+                                    <div class="pt-4 d-flex d-sm-block flex-center">
+                                        <div class="d-flex align-items-md-center">
+                                            <img class="img-fluid me-4 me-md-3 me-lg-4 rounded-circle"
+                                                src="{{ asset('image/number_3.png') }}" width="100"
+                                                alt="" />
+                                            <div class="w-lg-50 my-3">
+                                                <h5 class="mb-0 fw-bold"> <a
+                                                        class="text-dark text-decoration-none"
+                                                        target="_blank"
+                                                        href="https://www.facebook.com/NasaPh8210">Brian John M. Gulac</a></h5>
+                                                <p class="fw-normal mb-0">Koronadal City</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -123,8 +532,8 @@
 
                     <div class=" px-sm-5 px-md-0">
                         <h6 class="fw-bold fs-4 display-3 lh-sm mb-5 text-center">Awesome apps features</h6>
-                        <div class="row">
-                            <div class="d-flex align-items-center mb-5 col-4">
+                        <div class="row mx-md-5">
+                            <div class="d-flex align-items-center mb-5 col-lg-4 col-md-12">
                                 <div><img class="img-fluid" src="{{ asset('image/no_wifi.png') }}" width="90"
                                         alt="" />
                                 </div>
@@ -134,7 +543,7 @@
                                     </p>
                                 </div>
                             </div>
-                            <div class="d-flex align-items-center mb-5 col-4">
+                            <div class="d-flex align-items-center mb-5 col-lg-4 col-md-12">
                                 <div><img class="img-fluid" src="{{ asset('image/sync.png') }}" width="90"
                                         alt="" />
                                 </div>
@@ -143,7 +552,7 @@
                                     <p>Attendance data syncs automatically once the device is online.</p>
                                 </div>
                             </div>
-                            <div class="d-flex align-items-center mb-5 col-4">
+                            <div class="d-flex align-items-center mb-5 col-lg-4 col-md-12">
                                 <div><img class="img-fluid" src="{{ asset('image/business_report.png') }}"
                                         width="90" alt="" />
                                 </div>
