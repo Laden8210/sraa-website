@@ -22,14 +22,14 @@
     <div id="preloader">
         <div class="loader-container">
             <img src="{{ asset('image/logo.png') }}" alt="Lakbay Philippine Logo" class="loader-logo">
-            <p class="loader-text">SRAA South Cotabato</p>
+            <p class="loader-text">SRAA 2025</p>
         </div>
     </div>
     <main class="main" id="top">
         <nav class="navbar navbar-expand-lg navbar-light fixed-top py-3" data-navbar-on-scroll="data-navbar-on-scroll">
             <div class="container">
                 <a href="/" class="navbar-brand d-flex align-items-center fw-bold fs-2" href="index.html">
-                    <img src="{{ asset('image/logo.png') }}" alt="Logo" style="height: 60px;">
+                    <img class="m-2" src="{{ asset('image/logo.png') }}" alt="Logo" style="height: 45px;">
                     <div class="text-warning">SRAA</div>
                     <div class="text-secondary">MEET</div>
                 </a>
@@ -291,7 +291,7 @@
                 <div class="row flex-center">
                     <div class="col-auto mb-5"><a
                             class="pe-2 d-flex align-items-center text-decoration-none fw-bold fs-3" href="#">
-                            <img src="{{ asset('image/logo.png') }}" alt="Logo" style="height: 60px;">
+                            <img class="m-2" src="{{ asset('image/logo.png') }}" alt="Logo" style="height:45px;">
                             <div class="text-warning">SRAA</div>
                             <div class="text-white">MEET 2025</div>
                         </a></div>

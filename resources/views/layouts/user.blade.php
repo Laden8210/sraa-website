@@ -52,7 +52,7 @@
     <div id="preloader">
         <div class="loader-container">
             <img src="{{ asset('image/logo.png') }}" alt="Lakbay Philippine Logo" class="loader-logo">
-            <p class="loader-text">SRAA South Cotabato</p>
+            <p class="loader-text">SRAA 2025</p>
         </div>
     </div>
 
@@ -61,7 +61,7 @@
         <div class="container-fluid d-flex align-items-center justify-content-between my-0" style="padding-inline: 2%;">
             <div>
                 <a class="navbar-brand d-flex align-items-center fw-bold fs-5" href="index.html">
-                    <img src="{{ asset('image/logo.png') }}" alt="Logo" style="height: 50px;">
+                    <img class="m-2" src="{{ asset('image/logo.png') }}" alt="Logo" style="height: 50px;">
                     <div class="text-warning" style="color: #8e53fd !important">SRAA</div>
                     <div class="text-secondary">MEET</div>
                  </a>

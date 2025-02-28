@@ -38,7 +38,7 @@
     <div id="preloader">
         <div class="loader-container">
             <img src="{{ asset('image/logo.png') }}" alt="Lakbay Philippine Logo" class="loader-logo">
-            <p class="loader-text">SRAA South Cotabato</p>
+            <p class="loader-text">SRAA 2025</p>
         </div>
     </div>
 
