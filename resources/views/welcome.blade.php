@@ -425,7 +425,7 @@
                             <p class="mt-3 text-center"> Stay updated with the latest scores, rankings, and highlights
                                 from your favorite sports events."
                             </p>
-                            <div class="container p-5 w-50">
+                            <div class="p-5 w-lg-50 m-auto">
 
                                 <select name="" class="form-select">
                                     <option value="Select">Select Event</option>
