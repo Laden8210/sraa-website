@@ -64,10 +64,16 @@ class ResultController extends Controller
         foreach ($medalTally as $index => $tally) {
             $medalTally[$index]['rank'] = $index + 1;
         }
-        // return($medalTally);
-        return view('welcome', compact('medalTally'));
-    }
 
+        $events = $manager->getEvents();
+        return view('welcome', compact('medalTally', 'events'));
+    }
+    public function getEventResults(Request $request)
+    {
+        $eventName = $request->query('event_name');
+        $results = EventResult::getResultsByEvent($eventName);
+        return response()->json($results);
+    }
     public function updateEventResult(Request $request)
     {
         $request->validate([

@@ -122,7 +122,7 @@
                                                         <!-- Image Section -->
                                                         <div class="col-12 col-lg-auto d-flex justify-content-center">
                                                             <img class="img-fluid me-lg-4 rounded-circle"
-                                                                src="{{ asset('image/number_' . $tally['rank'] . '.png') }}"
+                                                                src="{{ asset('image/rank_' . $tally['rank'] . '.png') }}"
                                                                 width="100" alt="" />
                                                         </div>
 
@@ -175,82 +175,31 @@
             </div>
         </section>
 
-        <section class=" bg-gray pt-2" id="results">
+        <section class="bg-gray pt-2" id="results">
             <div class="container">
                 <div class="container">
                     <div class="row align-items-center">
                         <div class="text-center text-md-start">
                             <h6 class="fw-bold fs-4 display-3 lh-sm text-center">Sports Events Results</h6>
-                            <p class="mt-3 text-center"> Stay updated with the latest scores, rankings, and highlights
-                                from your favorite sports events."
-                            </p>
+                            <p class="mt-3 text-center">Stay updated with the latest scores, rankings, and highlights
+                                from your favorite sports events.</p>
                             <div class="p-5 w-lg-50 m-auto">
-
-                                <select name="" class="form-select">
-                                    <option value="Select">Select Event</option>
-                                    <option value="India">Basketball</option>
-                                    <option value="Nepal">Football</option>
-                                    <option value="Bangladesh">Sepak Takraw</option>
-                                    <option value="Sri Lanka">Baseball</option>
+                                <select name="event" id="event-select" class="form-select">
+                                    <option value="">Select Event</option>
+                                    @foreach ($events as $event)
+                                        <option value="{{ $event }}">{{ $event }}</option>
+                                    @endforeach
                                 </select>
-
-
                             </div>
-                            <div class="w-100 mx-md-4 row">
-                                <div class="col-lg-4 col-md-12">
-                                    <div class="pt-4 d-flex d-sm-block flex-center">
-                                        <div class="d-flex align-items-md-center">
-                                            <img class="img-fluid me-4 me-md-3 me-lg-4 rounded-circle"
-                                                src="{{ asset('image/number_1.png') }}" width="100"
-                                                alt="" />
-                                            <div class="w-lg-50 my-3">
-                                                <h5 class="mb-0 fw-bold"> <a class="text-dark text-decoration-none"
-                                                        target="_blank"
-                                                        href="https://www.facebook.com/NasaPh8210">Brian John M.
-                                                        Gulac</a></h5>
-                                                <p class="fw-normal mb-0">Koronadal City</p>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-lg-4 col-md-12">
-                                    <div class="pt-4 d-flex d-sm-block flex-center">
-                                        <div class="d-flex align-items-md-center">
-                                            <img class="img-fluid me-4 me-md-3 me-lg-4 rounded-circle"
-                                                src="{{ asset('image/number_2.png') }}" width="100"
-                                                alt="" />
-                                            <div class="w-lg-50 my-3">
-                                                <h5 class="mb-0 fw-bold"> <a class="text-dark text-decoration-none"
-                                                        target="_blank"
-                                                        href="https://www.facebook.com/NasaPh8210">Brian John M.
-                                                        Gulac</a></h5>
-                                                <p class="fw-normal mb-0">Koronadal City</p>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-lg-4 col-md-12">
-                                    <div class="pt-4 d-flex d-sm-block flex-center">
-                                        <div class="d-flex align-items-md-center">
-                                            <img class="img-fluid me-4 me-md-3 me-lg-4 rounded-circle"
-                                                src="{{ asset('image/number_3.png') }}" width="100"
-                                                alt="" />
-                                            <div class="w-lg-50 my-3">
-                                                <h5 class="mb-0 fw-bold"> <a class="text-dark text-decoration-none"
-                                                        target="_blank"
-                                                        href="https://www.facebook.com/NasaPh8210">Brian John M.
-                                                        Gulac</a></h5>
-                                                <p class="fw-normal mb-0">Koronadal City</p>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
+                            <div id="event-results" class="w-100 mx-md-4 row">
+                                <!-- Results will be displayed here -->
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
         </section>
+
 
         <section class="py-6">
 
@@ -261,7 +210,7 @@
                             alt="" />
                     </div>
                     <div class="col-md-6 text-center text-md-start offset-md-1">
-                        <h6 class="fw-bold fs-4 display-3 lh-sm">About the System</h6>
+                        <h6 class="fw-bold fs-4 display-3 lh-sm">About the Mobile Application</h6>
                         <p class="my-4 pe-xl-5">
                             Participant Attendance System is designed to streamline and automate attendance
                             tracking
@@ -528,9 +477,8 @@
     </main>
 
     <!-- ===============================================-->
-    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
-        integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous">
-    </script>
+    <script src="https://code.jquery.com/jquery-3.7.1.js" integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4="
+        crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js"
         integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous">
     </script>
@@ -544,6 +492,49 @@
     <link
         href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,200;1,300;1,400&amp;display=swap"
         rel="stylesheet">
+    <script>
+        $(document).ready(function() {
+            $('#event-select').change(function() {
+                var eventName = $(this).val();
+                if (eventName) {
+                    $.ajax({
+                        url: '/get-event-results',
+                        type: 'GET',
+                        data: {
+                            event_name: eventName
+                        },
+                        success: function(data) {
+                            $('#event-results').html('');
+                            if (data.length > 0) {
+                                data.forEach(function(result) {
+                                    $('#event-results').append(`
+                                                <div class="col-lg-4 col-md-12">
+                                                    <div class="pt-4 d-flex d-sm-block flex-center">
+                                                        <div class="d-flex align-items-md-center">
+                                                            <img class="img-fluid me-4 me-md-3 me-lg-4 rounded-circle" src="{{ asset('image/rank_${result.rank}.png') }}" width="100" alt="" />
+                                                            <div class="w-lg-50 my-3">
+                                                                <h5 class="mb-0 fw-bold"><a class="text-dark text-decoration-none" target="_blank" href="#">${result.winner_name}</a></h5>
+                                                                <p class="fw-normal mb-0">${result.division}</p>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            `);
+                                });
+                            } else {
+                                $('#event-results').html(
+                                    '<p class="text-center">No results available for this event.</p>'
+                                );
+                            }
+                        }
+                    });
+                } else {
+                    $('#event-results').html('');
+                }
+            });
+        });
+    </script>
+
 </body>
 
 </html>

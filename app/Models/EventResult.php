@@ -11,9 +11,9 @@ class EventResult extends Model
 
     protected $table = 'event_results';
 
-    protected $primaryKey = 'result_id'; 
+    protected $primaryKey = 'result_id';
 
-    public $timestamps = true; 
+    public $timestamps = true;
 
     protected $fillable = [
         'event_name',
@@ -21,4 +21,18 @@ class EventResult extends Model
         'winner_name',
         'division',
     ];
+    public static function getResultsByEvent($eventName)
+    {
+        return self::where('event_name', $eventName)
+            ->get()
+            ->map(function ($result) {
+                $rankMapping = [
+                    'gold' => 1,
+                    'silver' => 2,
+                    'bronze' => 3,
+                ];
+                $result->rank = $rankMapping[strtolower($result->medal_type)] ?? null;
+                return $result;
+            });
+    }
 }

@@ -49,6 +49,7 @@ Route::middleware(['check.role:admin'])->group(function () {
 Route::get('/event-results', [ResultController::class, 'showEventResults'])->name('event-results');
 Route::post('/update-event-results', [ResultController::class, 'updateEventResult'])->name('update-event-results');
 Route::get('/medal-tally', [ResultController::class, 'getMedalTally'])->name('medal_tally');
+Route::get('/get-event-results', [ResultController::class, 'getEventResults']);
 
 Route::middleware(['check.role:admin,superintendent'])->group(function () {
 
