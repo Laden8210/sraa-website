@@ -41,7 +41,7 @@
                     <ul class="navbar-nav ms-auto pt-2 pt-lg-0">
                         <li class="nav-item" data-anchor="data-anchor"><a class="nav-link fw-medium active"
                                 aria-current="page" href="#home">Home</a></li>
-                        
+
 
                         <li class="nav-item" data-anchor="data-anchor"><a class="nav-link fw-medium"
                                 href="#medals">Medal Tallies</a>
@@ -50,11 +50,11 @@
                                 href="#results">Events Result</a>
                         </li>
                         <li class="nav-item" data-anchor="data-anchor"><a class="nav-link fw-medium" href="#features">
-                            Features</a></li>   
+                                Features</a></li>
                         <li class="nav-item" data-anchor="data-anchor"><a class="nav-link fw-medium"
                                 href="#devs">Devs</a>
                         </li>
-                        
+
                     </ul>
                     <form class="ps-lg-5">
                         @if (Auth::user() == null)
@@ -110,303 +110,62 @@
                     <div class="row align-items-center">
                         <div class="text-center text-md-start">
                             <h6 class="fw-bold fs-4 display-3 lh-sm text-center">Current Medal Tally and Standings</h6>
-                            <p class="mt-3 text-center"> Track the latest medal standings of each schools division and see how they rank in the competition.</p>
+                            <p class="mt-3 text-center"> Track the latest medal standings of each schools division and
+                                see how they rank in the competition.</p>
                             <div class="row ">
                                 <div class="col-lg-12">
-                                    <div class="pt-4 d-flex d-sm-block flex-center">
-                                        <div class="d-flex align-items-md-center p-3 bg-white rounded-3">
-                                            <img class="img-fluid me-4 me-md-3 me-lg-4 rounded-circle"
-                                                src="{{ asset('image/number_1.png') }}" width="100"
-                                                alt="" />
-                                            <div class="w-25">
-                                                <a class="text-dark text-decoration-none">Koronadal CIty </a></h5>
-                                                <p class="fw-normal mb-0">Schools Division</p>
-                                            </div>
-                                            <div class="w-lg-75 my-3">
-                                                <div class="row align-items-center">
-                                                    <div class="col-3 text-center">
-                                                        <h5 class="fw-bold">Gold</h5>
-                                                        <p class="fw-normal mb-0">10</p>
-                                                    </div>
-                                                    <div class="col-3 text-center">
-                                                        <h5 class="fw-bold">Silver</h5>
-                                                        <p class="fw-normal mb-0">8</p>
-                                                    </div>
-                                                    <div class="col-3 text-center">
-                                                        <h5 class="fw-bold">Bronze</h5>
-                                                        <p class="fw-normal mb-0">5</p>
-                                                    </div>
-                                                    <div class="col-3 d-flex justify-content-end">
-                                                        <div class="p-2 h-100 bg-gray rounded-2 text-center me-2"
-                                                            style="width: 100px; height: 100px;">
-                                                            <h5 class="fw-bold">Total</h5>
-                                                            <p class="fw-normal mb-0">23</p>
+                                    @foreach ($medalTally as $tally)
+                                        <div class="col-lg-12">
+                                            <div class="pt-4 d-flex d-sm-block flex-center">
+                                                <div class="w-100 p-3 bg-white rounded-3">
+                                                    <div class="row align-items-center text-center text-lg-start">
+                                                        <!-- Image Section -->
+                                                        <div class="col-12 col-lg-auto d-flex justify-content-center">
+                                                            <img class="img-fluid me-lg-4 rounded-circle"
+                                                                src="{{ asset('image/number_' . $tally['rank'] . '.png') }}"
+                                                                width="100" alt="" />
+                                                        </div>
+
+                                                        <!-- Name and Division Section -->
+                                                        <div class="col-12 col-lg-3 mt-3 mt-lg-0">
+                                                            <a
+                                                                class="text-dark text-decoration-none d-block">{{ $tally['division'] }}</a>
+                                                            <p class="fw-normal mb-0">Schools Division</p>
+                                                        </div>
+
+                                                        <!-- Medal Count Section -->
+                                                        <div class="col-12 col-lg-6 my-3">
+                                                            <div class="row align-items-center">
+                                                                <div class="col-4 col-lg-3 text-center">
+                                                                    <h5 class="fw-bold">Gold</h5>
+                                                                    <p class="fw-normal mb-0">{{ $tally['gold'] }}</p>
+                                                                </div>
+                                                                <div class="col-4 col-lg-3 text-center">
+                                                                    <h5 class="fw-bold">Silver</h5>
+                                                                    <p class="fw-normal mb-0">{{ $tally['silver'] }}
+                                                                    </p>
+                                                                </div>
+                                                                <div class="col-4 col-lg-3 text-center">
+                                                                    <h5 class="fw-bold">Bronze</h5>
+                                                                    <p class="fw-normal mb-0">{{ $tally['bronze'] }}
+                                                                    </p>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+
+                                                        <div
+                                                            class="col-12 col-lg-auto d-flex justify-content-center justify-content-lg-end">
+                                                            <div class="p-2 bg-gray rounded-2 text-center"
+                                                                style="width: 100px; height: 100px;">
+                                                                <h5 class="fw-bold mt-3">Total</h5>
+                                                                <p class="fw-normal mb-0">{{ $tally['total'] }}</p>
+                                                            </div>
                                                         </div>
                                                     </div>
                                                 </div>
                                             </div>
-
                                         </div>
-                                    </div>
-                                </div>
-                                <div class="col-lg-12">
-                                    <div class="pt-4 d-flex d-sm-block flex-center">
-                                        <div class="d-flex align-items-md-center p-3 bg-white rounded-3">
-                                            <img class="img-fluid me-4 me-md-3 me-lg-4 rounded-circle"
-                                                src="{{ asset('image/number_1.png') }}" width="100"
-                                                alt="" />
-                                            <div class="w-25">
-                                                <a class="text-dark text-decoration-none">General Santos CIty </a></h5>
-                                                <p class="fw-normal mb-0">Schools Division</p>
-                                            </div>
-                                            <div class="w-lg-75 my-3">
-                                                <div class="row align-items-center">
-                                                    <div class="col-3 text-center">
-                                                        <h5 class="fw-bold">Gold</h5>
-                                                        <p class="fw-normal mb-0">10</p>
-                                                    </div>
-                                                    <div class="col-3 text-center">
-                                                        <h5 class="fw-bold">Silver</h5>
-                                                        <p class="fw-normal mb-0">8</p>
-                                                    </div>
-                                                    <div class="col-3 text-center">
-                                                        <h5 class="fw-bold">Bronze</h5>
-                                                        <p class="fw-normal mb-0">5</p>
-                                                    </div>
-                                                    <div class="col-3 d-flex justify-content-end">
-                                                        <div class="p-2 h-100 bg-gray rounded-2 text-center me-2"
-                                                            style="width: 100px; height: 100px;">
-                                                            <h5 class="fw-bold">Total</h5>
-                                                            <p class="fw-normal mb-0">23</p>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-lg-12">
-                                    <div class="pt-4 d-flex d-sm-block flex-center">
-                                        <div class="d-flex align-items-md-center p-3 bg-white rounded-3">
-                                            <img class="img-fluid me-4 me-md-3 me-lg-4 rounded-circle"
-                                                src="{{ asset('image/number_1.png') }}" width="100"
-                                                alt="" />
-                                            <div class="w-25">
-                                                <a class="text-dark text-decoration-none">Cotabato Province</a></h5>
-                                                <p class="fw-normal mb-0">Schools Division</p>
-                                            </div>
-                                            <div class="w-lg-75 my-3">
-                                                <div class="row align-items-center">
-                                                    <div class="col-3 text-center">
-                                                        <h5 class="fw-bold">Gold</h5>
-                                                        <p class="fw-normal mb-0">10</p>
-                                                    </div>
-                                                    <div class="col-3 text-center">
-                                                        <h5 class="fw-bold">Silver</h5>
-                                                        <p class="fw-normal mb-0">8</p>
-                                                    </div>
-                                                    <div class="col-3 text-center">
-                                                        <h5 class="fw-bold">Bronze</h5>
-                                                        <p class="fw-normal mb-0">5</p>
-                                                    </div>
-                                                    <div class="col-3 d-flex justify-content-end">
-                                                        <div class="p-2 h-100 bg-gray rounded-2 text-center me-2"
-                                                            style="width: 100px; height: 100px;">
-                                                            <h5 class="fw-bold">Total</h5>
-                                                            <p class="fw-normal mb-0">23</p>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-lg-12">
-                                    <div class="pt-4 d-flex d-sm-block flex-center">
-                                        <div class="d-flex align-items-md-center p-3 bg-white rounded-3">
-                                            <img class="img-fluid me-4 me-md-3 me-lg-4 rounded-circle"
-                                                src="{{ asset('image/number_1.png') }}" width="100"
-                                                alt="" />
-                                            <div class="w-25">
-                                                <a class="text-dark text-decoration-none"> South Cotabato</a></h5>
-                                                <p class="fw-normal mb-0">Schools Division</p>
-                                            </div>
-                                            <div class="w-lg-75 my-3">
-                                                <div class="row align-items-center">
-                                                    <div class="col-3 text-center">
-                                                        <h5 class="fw-bold">Gold</h5>
-                                                        <p class="fw-normal mb-0">10</p>
-                                                    </div>
-                                                    <div class="col-3 text-center">
-                                                        <h5 class="fw-bold">Silver</h5>
-                                                        <p class="fw-normal mb-0">8</p>
-                                                    </div>
-                                                    <div class="col-3 text-center">
-                                                        <h5 class="fw-bold">Bronze</h5>
-                                                        <p class="fw-normal mb-0">5</p>
-                                                    </div>
-                                                    <div class="col-3 d-flex justify-content-end">
-                                                        <div class="p-2 h-100 bg-gray rounded-2 text-center me-2"
-                                                            style="width: 100px; height: 100px;">
-                                                            <h5 class="fw-bold">Total</h5>
-                                                            <p class="fw-normal mb-0">23</p>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-lg-12">
-                                    <div class="pt-4 d-flex d-sm-block flex-center">
-                                        <div class="d-flex align-items-md-center p-3 bg-white rounded-3">
-                                            <img class="img-fluid me-4 me-md-3 me-lg-4 rounded-circle"
-                                                src="{{ asset('image/number_1.png') }}" width="100"
-                                                alt="" />
-                                            <div class="w-25">
-                                                <a class="text-dark text-decoration-none">Tacurong City </a></h5>
-                                                <p class="fw-normal mb-0">Schools Division</p>
-                                            </div>
-                                            <div class="w-lg-75 my-3">
-                                                <div class="row align-items-center">
-                                                    <div class="col-3 text-center">
-                                                        <h5 class="fw-bold">Gold</h5>
-                                                        <p class="fw-normal mb-0">10</p>
-                                                    </div>
-                                                    <div class="col-3 text-center">
-                                                        <h5 class="fw-bold">Silver</h5>
-                                                        <p class="fw-normal mb-0">8</p>
-                                                    </div>
-                                                    <div class="col-3 text-center">
-                                                        <h5 class="fw-bold">Bronze</h5>
-                                                        <p class="fw-normal mb-0">5</p>
-                                                    </div>
-                                                    <div class="col-3 d-flex justify-content-end">
-                                                        <div class="p-2 h-100 bg-gray rounded-2 text-center me-2"
-                                                            style="width: 100px; height: 100px;">
-                                                            <h5 class="fw-bold">Total</h5>
-                                                            <p class="fw-normal mb-0">23</p>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-lg-12">
-                                    <div class="pt-4 d-flex d-sm-block flex-center">
-                                        <div class="d-flex align-items-md-center p-3 bg-white rounded-3">
-                                            <img class="img-fluid me-4 me-md-3 me-lg-4 rounded-circle"
-                                                src="{{ asset('image/number_1.png') }}" width="100"
-                                                alt="" />
-                                            <div class="w-25">
-                                                <a class="text-dark text-decoration-none">Koronadal CIty </a></h5>
-                                                <p class="fw-normal mb-0">Schools Division</p>
-                                            </div>
-                                            <div class="w-lg-75 my-3">
-                                                <div class="row align-items-center">
-                                                    <div class="col-3 text-center">
-                                                        <h5 class="fw-bold">Gold</h5>
-                                                        <p class="fw-normal mb-0">10</p>
-                                                    </div>
-                                                    <div class="col-3 text-center">
-                                                        <h5 class="fw-bold">Silver</h5>
-                                                        <p class="fw-normal mb-0">8</p>
-                                                    </div>
-                                                    <div class="col-3 text-center">
-                                                        <h5 class="fw-bold">Bronze</h5>
-                                                        <p class="fw-normal mb-0">5</p>
-                                                    </div>
-                                                    <div class="col-3 d-flex justify-content-end">
-                                                        <div class="p-2 h-100 bg-gray rounded-2 text-center me-2"
-                                                            style="width: 100px; height: 100px;">
-                                                            <h5 class="fw-bold">Total</h5>
-                                                            <p class="fw-normal mb-0">23</p>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-lg-12">
-                                    <div class="pt-4 d-flex d-sm-block flex-center">
-                                        <div class="d-flex align-items-md-center p-3 bg-white rounded-3">
-                                            <img class="img-fluid me-4 me-md-3 me-lg-4 rounded-circle"
-                                                src="{{ asset('image/number_1.png') }}" width="100"
-                                                alt="" />
-                                            <div class="w-25">
-                                                <a class="text-dark text-decoration-none">Koronadal CIty </a></h5>
-                                                <p class="fw-normal mb-0">Schools Division</p>
-                                            </div>
-                                            <div class="w-lg-75 my-3">
-                                                <div class="row align-items-center">
-                                                    <div class="col-3 text-center">
-                                                        <h5 class="fw-bold">Gold</h5>
-                                                        <p class="fw-normal mb-0">10</p>
-                                                    </div>
-                                                    <div class="col-3 text-center">
-                                                        <h5 class="fw-bold">Silver</h5>
-                                                        <p class="fw-normal mb-0">8</p>
-                                                    </div>
-                                                    <div class="col-3 text-center">
-                                                        <h5 class="fw-bold">Bronze</h5>
-                                                        <p class="fw-normal mb-0">5</p>
-                                                    </div>
-                                                    <div class="col-3 d-flex justify-content-end">
-                                                        <div class="p-2 h-100 bg-gray rounded-2 text-center me-2"
-                                                            style="width: 100px; height: 100px;">
-                                                            <h5 class="fw-bold">Total</h5>
-                                                            <p class="fw-normal mb-0">23</p>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-lg-12">
-                                    <div class="pt-4 d-flex d-sm-block flex-center">
-                                        <div class="d-flex align-items-md-center p-3 bg-white rounded-3">
-                                            <img class="img-fluid me-4 me-md-3 me-lg-4 rounded-circle"
-                                                src="{{ asset('image/number_1.png') }}" width="100"
-                                                alt="" />
-                                            <div class="w-25">
-                                                <a class="text-dark text-decoration-none">Koronadal CIty </a></h5>
-                                                <p class="fw-normal mb-0">Schools Division</p>
-                                            </div>
-                                            <div class="w-lg-75 my-3">
-                                                <div class="row align-items-center">
-                                                    <div class="col-3 text-center">
-                                                        <h5 class="fw-bold">Gold</h5>
-                                                        <p class="fw-normal mb-0">10</p>
-                                                    </div>
-                                                    <div class="col-3 text-center">
-                                                        <h5 class="fw-bold">Silver</h5>
-                                                        <p class="fw-normal mb-0">8</p>
-                                                    </div>
-                                                    <div class="col-3 text-center">
-                                                        <h5 class="fw-bold">Bronze</h5>
-                                                        <p class="fw-normal mb-0">5</p>
-                                                    </div>
-                                                    <div class="col-3 d-flex justify-content-end">
-                                                        <div class="p-2 h-100 bg-gray rounded-2 text-center me-2"
-                                                            style="width: 100px; height: 100px;">
-                                                            <h5 class="fw-bold">Total</h5>
-                                                            <p class="fw-normal mb-0">23</p>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-
-                                        </div>
-                                    </div>
+                                    @endforeach
                                 </div>
                             </div>
 

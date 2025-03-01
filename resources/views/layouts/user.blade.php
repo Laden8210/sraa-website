@@ -39,7 +39,8 @@
         crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
-    @vite(['resources/css/style.css', 'resources/js/main.js'])
+    @vite(['resources/css/style.css'])
+   
 
 
     <link rel="icon" type="image/png" href="{{ asset('image/logo.png') }}">
@@ -148,8 +149,7 @@
     <script type="text/javascript" src="https://cdn.jsdelivr.net/jquery/latest/jquery.min.js"></script>
     <script type="text/javascript" src="https://cdn.jsdelivr.net/momentjs/latest/moment.min.js"></script>
     <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.min.js"></script>
-
-
+    @vite(['resources/js/main.js'])
 
 </body>
 

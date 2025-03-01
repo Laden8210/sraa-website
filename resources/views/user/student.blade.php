@@ -225,6 +225,7 @@
             });
 
             $('#submitStudentForm').on('click', function() {
+                showLoader();
                 var form = $('#addStudentForm');
                 var formData = form.serialize();
                 var studentId = $('#student_id').val();
@@ -265,12 +266,13 @@
                             $('#event').addClass('is-invalid');
                             $('#eventError').text(errors.event[0]);
                         }
-                        
+                        hideLoader();
                     }
                 });
             });
 
             $('#submitUploadExcelForm').on('click', function() {
+                showLoader();
                 var form = $('#uploadExcelForm')[0];
                 var formData = new FormData(form);
                 var url = '{{ route('save_from_excel') }}';
@@ -311,6 +313,7 @@
                             $('#excelFile').addClass('is-invalid');
                             $('#excelFileError').text(errors.excel_file[0]);
                         }
+                        hideLoader();
                     }
                 });
             });

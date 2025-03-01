@@ -381,9 +381,3 @@ $(window).on("load", () => {
     setTimeout(() => $("#preloader").hide(), 200);
   }, 1000);
 });
-
-$(document).ready(() => {
-
-  initCarousel();
-
-});
