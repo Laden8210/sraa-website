@@ -8,9 +8,10 @@ use App\Http\Controllers\StudentController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\CoachController;
 use App\Http\Controllers\QRController;
+use App\Http\Controllers\ResultController;
 use Illuminate\Support\Facades\Auth;
 
-Route::get('', [RouteController::class, 'index']);
+Route::get('', [ResultController::class, 'getMedalTally']);
 Route::get('login', [RouteController::class, 'login'])->name('login');
 Route::get('logout', [RouteController::class, 'logout'])->name('logout');
 Route::get('register', [RouteController::class, 'register'])->name('register');
@@ -41,7 +42,13 @@ Route::middleware(['check.role:admin'])->group(function () {
 
     Route::post('/generate-qr-id', [QRController::class, 'generateQrID'])->name('generate-qr-id');
     Route::post('/generate-qr-code', [QRController::class, 'generateQrCode'])->name('generate-qr-code');
+
+    
 });
+
+Route::get('/event-results', [ResultController::class, 'showEventResults'])->name('event-results');
+Route::post('/update-event-results', [ResultController::class, 'updateEventResult'])->name('update-event-results');
+Route::get('/medal-tally', [ResultController::class, 'getMedalTally'])->name('medal_tally');
 
 Route::middleware(['check.role:admin,superintendent'])->group(function () {
 

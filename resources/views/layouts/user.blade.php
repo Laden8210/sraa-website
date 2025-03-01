@@ -39,7 +39,8 @@
         crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
-    @vite(['resources/css/style.css', 'resources/js/main.js'])
+    @vite(['resources/css/style.css'])
+   
 
 
     <link rel="icon" type="image/png" href="{{ asset('image/logo.png') }}">
@@ -52,7 +53,7 @@
     <div id="preloader">
         <div class="loader-container">
             <img src="{{ asset('image/logo.png') }}" alt="Lakbay Philippine Logo" class="loader-logo">
-            <p class="loader-text">SRAA South Cotabato</p>
+            <p class="loader-text">SRAA 2025</p>
         </div>
     </div>
 
@@ -61,7 +62,7 @@
         <div class="container-fluid d-flex align-items-center justify-content-between my-0" style="padding-inline: 2%;">
             <div>
                 <a class="navbar-brand d-flex align-items-center fw-bold fs-5" href="index.html">
-                    <img src="{{ asset('image/logo.png') }}" alt="Logo" style="height: 50px;">
+                    <img class="m-2" src="{{ asset('image/logo.png') }}" alt="Logo" style="height: 50px;">
                     <div class="text-warning" style="color: #8e53fd !important">SRAA</div>
                     <div class="text-secondary">MEET</div>
                  </a>
@@ -148,8 +149,7 @@
     <script type="text/javascript" src="https://cdn.jsdelivr.net/jquery/latest/jquery.min.js"></script>
     <script type="text/javascript" src="https://cdn.jsdelivr.net/momentjs/latest/moment.min.js"></script>
     <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.min.js"></script>
-
-
+    @vite(['resources/js/main.js'])
 
 </body>
 

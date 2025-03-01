@@ -59,6 +59,7 @@ class AccommodationManager
         'Athletics',
         'BOCCE',
         'Goalball',
+        'Paragames',
     ];
     
 

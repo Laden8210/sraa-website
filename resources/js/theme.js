@@ -20,6 +20,8 @@ var docReady = function docReady(fn) {
   }
 };
 
+
+
 var resize = function resize(fn) {
   return window.addEventListener('resize', fn);
 };
@@ -378,10 +380,4 @@ $(window).on("load", () => {
     $("#preloader").addClass("animate__animated animate__fadeOut preloader-hidden");
     setTimeout(() => $("#preloader").hide(), 200);
   }, 1000);
-});
-
-$(document).ready(() => {
-
-  initCarousel();
-
 });

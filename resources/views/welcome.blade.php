@@ -22,14 +22,14 @@
     <div id="preloader">
         <div class="loader-container">
             <img src="{{ asset('image/logo.png') }}" alt="Lakbay Philippine Logo" class="loader-logo">
-            <p class="loader-text">SRAA South Cotabato</p>
+            <p class="loader-text">SRAA 2025</p>
         </div>
     </div>
     <main class="main" id="top">
         <nav class="navbar navbar-expand-lg navbar-light fixed-top py-3" data-navbar-on-scroll="data-navbar-on-scroll">
             <div class="container">
                 <a href="/" class="navbar-brand d-flex align-items-center fw-bold fs-2" href="index.html">
-                    <img src="{{ asset('image/logo.png') }}" alt="Logo" style="height: 60px;">
+                    <img class="m-2" src="{{ asset('image/logo.png') }}" alt="Logo" style="height: 45px;">
                     <div class="text-warning">SRAA</div>
                     <div class="text-secondary">MEET</div>
                 </a>
@@ -41,11 +41,20 @@
                     <ul class="navbar-nav ms-auto pt-2 pt-lg-0">
                         <li class="nav-item" data-anchor="data-anchor"><a class="nav-link fw-medium active"
                                 aria-current="page" href="#home">Home</a></li>
+
+
+                        <li class="nav-item" data-anchor="data-anchor"><a class="nav-link fw-medium"
+                                href="#medals">Medal Tallies</a>
+                        </li>
+                        <li class="nav-item" data-anchor="data-anchor"><a class="nav-link fw-medium"
+                                href="#results">Events Result</a>
+                        </li>
                         <li class="nav-item" data-anchor="data-anchor"><a class="nav-link fw-medium" href="#features">
                                 Features</a></li>
                         <li class="nav-item" data-anchor="data-anchor"><a class="nav-link fw-medium"
                                 href="#devs">Devs</a>
                         </li>
+
                     </ul>
                     <form class="ps-lg-5">
                         @if (Auth::user() == null)
@@ -67,7 +76,7 @@
             <div class="container position-relative">
                 <div class="row align-items-center py-8">
                     <div class="col-md-5 col-lg-6 order-md-1 text-center text-md-end"><img class="img-fluid"
-                            src="{{ asset('image/mobile_hero.png') }}" width="650" alt="" /></div>
+                            src="{{ asset('image/SRAALOGO.png') }}" width="500" alt="" /></div>
                     <div class="col-md-7 col-lg-6 text-center text-md-start">
                         <h1 class="mb-4 display-3 fw-bold lh-sm">SOCCSKSARGEN <br
                                 class="d-block d-lg-none d-xl-block" />REGIONAL
@@ -79,6 +88,165 @@
                             href="{{ asset('mobile_application/SRAA ATTENDANCE APPLICATION.apk') }}"
                             role="button">Download
                             Mobile App</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section class="py-7">
+
+            <div class="container">
+
+                <div class="row align-items-center justify-content-center justify-content-lg-around">
+                    <div class="col-12 text-center"><img src="{{ asset('image/divisions.png') }}" class="w-100"
+                            alt="" /></div>
+                </div>
+            </div>
+
+        </section>
+
+        <section class=" bg-gray pt-5" id="medals">
+            <div class="container">
+                <div class="container">
+                    <div class="row align-items-center">
+                        <div class="text-center text-md-start">
+                            <h6 class="fw-bold fs-4 display-3 lh-sm text-center">Current Medal Tally and Standings</h6>
+                            <p class="mt-3 text-center"> Track the latest medal standings of each schools division and
+                                see how they rank in the competition.</p>
+                            <div class="row ">
+                                <div class="col-lg-12">
+                                    @foreach ($medalTally as $tally)
+                                        <div class="col-lg-12">
+                                            <div class="pt-4 d-flex d-sm-block flex-center">
+                                                <div class="w-100 p-3 bg-white rounded-3">
+                                                    <div class="row align-items-center text-center text-lg-start">
+                                                        <!-- Image Section -->
+                                                        <div class="col-12 col-lg-auto d-flex justify-content-center">
+                                                            <img class="img-fluid me-lg-4 rounded-circle"
+                                                                src="{{ asset('image/number_' . $tally['rank'] . '.png') }}"
+                                                                width="100" alt="" />
+                                                        </div>
+
+                                                        <!-- Name and Division Section -->
+                                                        <div class="col-12 col-lg-3 mt-3 mt-lg-0">
+                                                            <a
+                                                                class="text-dark text-decoration-none d-block">{{ $tally['division'] }}</a>
+                                                            <p class="fw-normal mb-0">Schools Division</p>
+                                                        </div>
+
+                                                        <!-- Medal Count Section -->
+                                                        <div class="col-12 col-lg-6 my-3">
+                                                            <div class="row align-items-center">
+                                                                <div class="col-4 col-lg-3 text-center">
+                                                                    <h5 class="fw-bold">Gold</h5>
+                                                                    <p class="fw-normal mb-0">{{ $tally['gold'] }}</p>
+                                                                </div>
+                                                                <div class="col-4 col-lg-3 text-center">
+                                                                    <h5 class="fw-bold">Silver</h5>
+                                                                    <p class="fw-normal mb-0">{{ $tally['silver'] }}
+                                                                    </p>
+                                                                </div>
+                                                                <div class="col-4 col-lg-3 text-center">
+                                                                    <h5 class="fw-bold">Bronze</h5>
+                                                                    <p class="fw-normal mb-0">{{ $tally['bronze'] }}
+                                                                    </p>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+
+                                                        <div
+                                                            class="col-12 col-lg-auto d-flex justify-content-center justify-content-lg-end">
+                                                            <div class="p-2 bg-gray rounded-2 text-center"
+                                                                style="width: 100px; height: 100px;">
+                                                                <h5 class="fw-bold mt-3">Total</h5>
+                                                                <p class="fw-normal mb-0">{{ $tally['total'] }}</p>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    @endforeach
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class=" bg-gray pt-2" id="results">
+            <div class="container">
+                <div class="container">
+                    <div class="row align-items-center">
+                        <div class="text-center text-md-start">
+                            <h6 class="fw-bold fs-4 display-3 lh-sm text-center">Sports Events Results</h6>
+                            <p class="mt-3 text-center"> Stay updated with the latest scores, rankings, and highlights
+                                from your favorite sports events."
+                            </p>
+                            <div class="p-5 w-lg-50 m-auto">
+
+                                <select name="" class="form-select">
+                                    <option value="Select">Select Event</option>
+                                    <option value="India">Basketball</option>
+                                    <option value="Nepal">Football</option>
+                                    <option value="Bangladesh">Sepak Takraw</option>
+                                    <option value="Sri Lanka">Baseball</option>
+                                </select>
+
+
+                            </div>
+                            <div class="w-100 mx-md-4 row">
+                                <div class="col-lg-4 col-md-12">
+                                    <div class="pt-4 d-flex d-sm-block flex-center">
+                                        <div class="d-flex align-items-md-center">
+                                            <img class="img-fluid me-4 me-md-3 me-lg-4 rounded-circle"
+                                                src="{{ asset('image/number_1.png') }}" width="100"
+                                                alt="" />
+                                            <div class="w-lg-50 my-3">
+                                                <h5 class="mb-0 fw-bold"> <a class="text-dark text-decoration-none"
+                                                        target="_blank"
+                                                        href="https://www.facebook.com/NasaPh8210">Brian John M.
+                                                        Gulac</a></h5>
+                                                <p class="fw-normal mb-0">Koronadal City</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-lg-4 col-md-12">
+                                    <div class="pt-4 d-flex d-sm-block flex-center">
+                                        <div class="d-flex align-items-md-center">
+                                            <img class="img-fluid me-4 me-md-3 me-lg-4 rounded-circle"
+                                                src="{{ asset('image/number_2.png') }}" width="100"
+                                                alt="" />
+                                            <div class="w-lg-50 my-3">
+                                                <h5 class="mb-0 fw-bold"> <a class="text-dark text-decoration-none"
+                                                        target="_blank"
+                                                        href="https://www.facebook.com/NasaPh8210">Brian John M.
+                                                        Gulac</a></h5>
+                                                <p class="fw-normal mb-0">Koronadal City</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-lg-4 col-md-12">
+                                    <div class="pt-4 d-flex d-sm-block flex-center">
+                                        <div class="d-flex align-items-md-center">
+                                            <img class="img-fluid me-4 me-md-3 me-lg-4 rounded-circle"
+                                                src="{{ asset('image/number_3.png') }}" width="100"
+                                                alt="" />
+                                            <div class="w-lg-50 my-3">
+                                                <h5 class="mb-0 fw-bold"> <a class="text-dark text-decoration-none"
+                                                        target="_blank"
+                                                        href="https://www.facebook.com/NasaPh8210">Brian John M.
+                                                        Gulac</a></h5>
+                                                <p class="fw-normal mb-0">Koronadal City</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -123,8 +291,8 @@
 
                     <div class=" px-sm-5 px-md-0">
                         <h6 class="fw-bold fs-4 display-3 lh-sm mb-5 text-center">Awesome apps features</h6>
-                        <div class="row">
-                            <div class="d-flex align-items-center mb-5 col-4">
+                        <div class="row mx-md-5">
+                            <div class="d-flex align-items-center mb-5 col-lg-4 col-md-12">
                                 <div><img class="img-fluid" src="{{ asset('image/no_wifi.png') }}" width="90"
                                         alt="" />
                                 </div>
@@ -134,7 +302,7 @@
                                     </p>
                                 </div>
                             </div>
-                            <div class="d-flex align-items-center mb-5 col-4">
+                            <div class="d-flex align-items-center mb-5 col-lg-4 col-md-12">
                                 <div><img class="img-fluid" src="{{ asset('image/sync.png') }}" width="90"
                                         alt="" />
                                 </div>
@@ -143,7 +311,7 @@
                                     <p>Attendance data syncs automatically once the device is online.</p>
                                 </div>
                             </div>
-                            <div class="d-flex align-items-center mb-5 col-4">
+                            <div class="d-flex align-items-center mb-5 col-lg-4 col-md-12">
                                 <div><img class="img-fluid" src="{{ asset('image/business_report.png') }}"
                                         width="90" alt="" />
                                 </div>
@@ -235,8 +403,7 @@
                                                 src="{{ asset('image/gettyimages-517443904.jpg') }}" width="100"
                                                 alt="" />
                                             <div class="w-lg-50 my-3">
-                                                <h5 class="mb-0 fw-bold"> <a
-                                                        class="text-dark text-decoration-none"
+                                                <h5 class="mb-0 fw-bold"> <a class="text-dark text-decoration-none"
                                                         target="_blank"
                                                         href="https://www.facebook.com/NasaPh8210">John Michael D.
                                                         Domingo</a></h5>
@@ -253,10 +420,10 @@
                                                 alt="" />
                                             <div class="w-lg-50 my-3">
                                                 <h5 class="mb-0 fw-bold">
-                                                    <a
-                                                    class="text-dark text-decoration-none"
-                                                    target="_blank"
-                                                    href="https://www.facebook.com/brian.gulac">Brian John Gulac </a></h5>
+                                                    <a class="text-dark text-decoration-none" target="_blank"
+                                                        href="https://www.facebook.com/brian.gulac">Brian John Gulac
+                                                    </a>
+                                                </h5>
                                                 <p class="fw-normal mb-0">Full Stack Developer</p>
                                             </div>
                                         </div>
@@ -269,10 +436,10 @@
                                                 src="{{ asset('image/gettyimages-517443904.jpg') }}" width="100"
                                                 alt="" />
                                             <div class="w-lg-50 my-3">
-                                                <h5 class="mb-0 fw-bold"><a
-                                                    class="text-dark text-decoration-none"
-                                                    target="_blank"
-                                                    href="https://www.facebook.com/Lastlastacc1`">Machrys Mondejar</a></h5>
+                                                <h5 class="mb-0 fw-bold"><a class="text-dark text-decoration-none"
+                                                        target="_blank"
+                                                        href="https://www.facebook.com/Lastlastacc1`">Machrys
+                                                        Mondejar</a></h5>
                                                 <p class="fw-normal mb-0">Full Stack Developer</p>
                                             </div>
                                         </div>
@@ -291,7 +458,8 @@
                 <div class="row flex-center">
                     <div class="col-auto mb-5"><a
                             class="pe-2 d-flex align-items-center text-decoration-none fw-bold fs-3" href="#">
-                            <img src="{{ asset('image/logo.png') }}" alt="Logo" style="height: 60px;">
+                            <img class="m-2" src="{{ asset('image/logo.png') }}" alt="Logo"
+                                style="height:45px;">
                             <div class="text-warning">SRAA</div>
                             <div class="text-white">MEET 2025</div>
                         </a></div>
@@ -358,6 +526,7 @@
 
 
     </main>
+
     <!-- ===============================================-->
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
         integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous">
@@ -370,6 +539,7 @@
     </script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/is_js/0.9.0/is.min.js"></script>
     <script src="https://polyfill.io/v3/polyfill.min.js?features=window.scroll"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 
     <link
         href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,200;1,300;1,400&amp;display=swap"

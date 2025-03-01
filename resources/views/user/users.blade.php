@@ -188,14 +188,14 @@
                 $('#billeting_quarter').val(userQuarter);
                 $('#role').val(userRole).change();
             });
-
+            
             $('#submitUserForm').on('click', function() {
+                showLoader();
                 var form = $('#addUserForm');
                 var formData = form.serialize();
                 var userId = $('#user_id').val();
                 var url = userId ? '{{ route('update_user') }}' : '{{ route('save_user') }}';
 
-                // Clear previous errors
                 $('.text-danger').text('');
                 $('.form-control').removeClass('is-invalid');
 
@@ -234,6 +234,7 @@
                             $('#role').addClass('is-invalid');
                             $('#roleError').text(errors.role[0]);
                         }
+                        hideLoader();
                     }
                 });
             });
