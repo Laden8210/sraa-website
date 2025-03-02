@@ -5,13 +5,14 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\EventResult;
 use App\Utils\AccommodationManager;
+use Illuminate\Database\Capsule\Manager;
 
 class ResultController extends Controller
 {
     public function showEventResults()
     {
         $manager = new AccommodationManager();
-        $events = $manager->getEvents();
+        $events = $manager->getResultEvents();
 
         $eventResults = [];
         foreach ($events as $event) {
@@ -64,7 +65,7 @@ class ResultController extends Controller
         foreach ($medalTally as $index => $tally) {
             $medalTally[$index]['rank'] = $index + 1;
         }
-
+        
         $events = $manager->getEvents();
         return view('welcome', compact('medalTally', 'events'));
     }

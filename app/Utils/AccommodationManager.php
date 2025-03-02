@@ -61,7 +61,40 @@ class AccommodationManager
         'Goalball',
         'Paragames',
     ];
+
+    private $result_events = [
+        'Archery',
+        'Arnis',
+        'Badminton',
+        'Baseball',
+        'Basketball',
+        'Billiards',
+        'Boxing',
+        'Chess',
+        'Dancesport',
+        'Football',
+        'Futsal',
+        'Gymnastics',
+        'Volleyball',
+        'Tennis',
+        'Swimming',
+        'Table Tennis',
+        'Wrestling',
+        'Wushu',
+        'Pencak Silat',
+        'Sepak Takraw',
+        'Softball',
+        'Taekwondo',
+        'Athletics',
+        'BOCCE',
+        'Goalball',
+        'Paragames',
+    ];
     
+    public function getResultEvents()
+    {
+        return $this->result_events;
+    }
 
     public function getQuarters()
     {
