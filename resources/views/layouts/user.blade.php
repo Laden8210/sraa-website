@@ -96,6 +96,11 @@
                             <a class="nav-link {{ Request::routeIs('attendance') ? 'active fw-semibold border-bottom border-2 border-dark' : '' }}"
                                 href="{{ route('attendance') }}">Attendance</a>
                         </li>
+
+                        <li class="nav-item position-relative">
+                            <a class="nav-link {{ Request::routeIs('event-results') ? 'active fw-semibold border-bottom border-2 border-dark' : '' }}"
+                                href="{{ route('event-results') }}">Event Results</a>
+                        </li>
                     </ul>
                 @else
                     <ul class="nav">
