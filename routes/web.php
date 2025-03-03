@@ -43,11 +43,12 @@ Route::middleware(['check.role:admin'])->group(function () {
     Route::post('/generate-qr-id', [QRController::class, 'generateQrID'])->name('generate-qr-id');
     Route::post('/generate-qr-code', [QRController::class, 'generateQrCode'])->name('generate-qr-code');
 
+    Route::get('/event-results', [ResultController::class, 'showEventResults'])->name('event-results');
+    Route::post('/update-event-results', [ResultController::class, 'updateEventResult'])->name('update-event-results');
     
 });
 
-Route::get('/event-results', [ResultController::class, 'showEventResults'])->name('event-results');
-Route::post('/update-event-results', [ResultController::class, 'updateEventResult'])->name('update-event-results');
+
 Route::get('/medal-tally', [ResultController::class, 'getMedalTally'])->name('medal_tally');
 Route::get('/get-event-results', [ResultController::class, 'getEventResults']);
 
