@@ -61,8 +61,6 @@ class AttendanceController extends Controller
 
         $attendance = $query->paginate(10);
 
-        
-
         $increase_coach = $this->increase_coach;
         $increase_student = $this->increase_student;
         $total_coach = $this->total_coach;
@@ -74,7 +72,7 @@ class AttendanceController extends Controller
     {
         if (Auth::user()->role == 'admin') {
             $attendance_count = Attendance::with(["participant", "user"])
-                ->whereDate('created_at', Carbon::today());
+                ->whereDate('date_recorded', Carbon::today());
 
             if (!empty($division)) {
                 $attendance_count->whereHas('participant', function ($q) use ($division) {
@@ -85,23 +83,24 @@ class AttendanceController extends Controller
             $this->total_student = Attendance::whereHas('participant', function ($q) {
                 $q->where('participant_role', 'student');
             })
-                ->whereDate('created_at', Carbon::today())
+                ->whereDate('date_recorded', Carbon::today())
                 ->count();
 
             $this->total_coach = Attendance::whereHas('participant', function ($q) {
                 $q->where('participant_role', 'coach');
             })
-                ->whereDate('created_at', Carbon::today())
+                ->whereDate('date_recorded', Carbon::today())
                 ->count();
 
-            $yesterday_total = Attendance::whereDate('created_at', Carbon::yesterday())->count();
+            $yesterday_total = Attendance::whereDate('date_recorded', Carbon::yesterday())->count();
+            
             $yesterday_student = Attendance::whereHas('participant', function ($q) {
                 $q->where('participant_role', 'student');
-            })->whereDate('created_at', Carbon::yesterday())->count();
+            })->whereDate('date_recorded', Carbon::yesterday())->count();
 
             $yesterday_coach = Attendance::whereHas('participant', function ($q) {
                 $q->where('participant_role', 'coach');
-            })->whereDate('created_at', Carbon::yesterday())->count();
+            })->whereDate('date_recorded', Carbon::yesterday())->count();
         } else if (Auth::user()->role == 'superintendent') {
 
 
@@ -109,29 +108,29 @@ class AttendanceController extends Controller
                 $q->where('participant_role', 'student')
                     ->where('division', Auth::user()->division);
             })
-                ->whereDate('created_at', Carbon::today())
+                ->whereDate('date_recorded', Carbon::today())
                 ->count();
 
             $this->total_coach = Attendance::whereHas('participant', function ($q) {
                 $q->where('participant_role', 'coach')
                     ->where('division', Auth::user()->division);
             })
-                ->whereDate('created_at', Carbon::today())
+                ->whereDate('date_recorded', Carbon::today())
                 ->count();
 
             $yesterday_total = Attendance::whereHas('participant', function ($q) {
                 $q->where('division', Auth::user()->division);
-            })->whereDate('created_at', Carbon::yesterday())->count();
+            })->whereDate('date_recorded', Carbon::yesterday())->count();
 
             $yesterday_student = Attendance::whereHas('participant', function ($q) {
                 $q->where('participant_role', 'student')
                     ->where('division', Auth::user()->division);
-            })->whereDate('created_at', Carbon::yesterday())->count();
+            })->whereDate('date_recorded', Carbon::yesterday())->count();
 
             $yesterday_coach = Attendance::whereHas('participant', function ($q) {
                 $q->where('participant_role', 'coach')
                     ->where('division', Auth::user()->division);
-            })->whereDate('created_at', Carbon::yesterday())->count();
+            })->whereDate('date_recorded', Carbon::yesterday())->count();
         }
 
         $this->increase_student = $this->calculatePercentageIncrease($this->total_student, $yesterday_student);
@@ -149,7 +148,7 @@ class AttendanceController extends Controller
         $date = $request->query('date', Carbon::today()->toDateString()); // Get date from request or default to today
 
         if (Auth::user()->role == "superintendent") {
-            $query = Attendance::whereDate('created_at', $date)
+            $query = Attendance::whereDate('date_recorded', $date)
                 ->with('participant')
                 ->whereHas('participant', function ($q) use ($request) {
                     $q->where('division', Auth::user()->division);
@@ -158,15 +157,12 @@ class AttendanceController extends Controller
                 ->groupBy('hour')
                 ->orderBy('hour');
         } else {
-            $query = Attendance::whereDate('created_at', $date)
+            $query = Attendance::whereDate('date_recorded', $date)
                 ->with('participant')
                 ->selectRaw('HOUR(time_recorded) as hour, COUNT(*) as count')
                 ->groupBy('hour')
                 ->orderBy('hour');
         }
-
-
-
 
         if ($request->has('division') && $request->division != '') {
             $query->whereHas('participant', function ($q) use ($request) {
@@ -193,18 +189,18 @@ class AttendanceController extends Controller
         $startDate = Carbon::createFromFormat('m/d/Y', $request->query('start_date', Carbon::parse($endDate)->subDays(10)->format('m/d/Y')))->startOfDay();
     
         if (Auth::user()->role == "superintendent") {
-            $query = Attendance::whereBetween('created_at', [$startDate, $endDate])
+            $query = Attendance::whereBetween('date_recorded', [$startDate, $endDate])
                 ->with('participant')
                 ->whereHas('participant', function ($q) {
                     $q->where('division', Auth::user()->division);
                 })
-                ->selectRaw('DATE(created_at) as date, COUNT(*) as count')
+                ->selectRaw('DATE(date_recorded) as date, COUNT(*) as count')
                 ->groupBy('date')
                 ->orderBy('date');
         } else {
-            $query = Attendance::whereBetween('created_at', [$startDate, $endDate])
+            $query = Attendance::whereBetween('date_recorded', [$startDate, $endDate])
                 ->with('participant')
-                ->selectRaw('DATE(created_at) as date, COUNT(*) as count')
+                ->selectRaw('DATE(date_recorded) as date, COUNT(*) as count')
                 ->groupBy('date')
                 ->orderBy('date');
         }
@@ -271,7 +267,7 @@ class AttendanceController extends Controller
             [$startDate, $endDate] = explode(' - ', urldecode(urldecode($request->date)));
             $startDate = Carbon::createFromFormat('m/d/Y', trim($startDate))->startOfDay()->format('Y-m-d');
             $endDate = Carbon::createFromFormat('m/d/Y', trim($endDate))->endOfDay()->format('Y-m-d');
-            $query->whereBetween('created_at', [$startDate, $endDate]);
+            $query->whereBetween('date_recorded', [$startDate, $endDate]);
         }
 
         $division = $request->division;

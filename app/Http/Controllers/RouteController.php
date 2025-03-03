@@ -101,7 +101,7 @@ class RouteController extends Controller
     {
         if (Auth::user()->role == 'admin') {
             $attendance_count = Attendance::with(["participant", "user"])
-                ->whereDate('created_at', Carbon::today());
+                ->whereDate('date_recorded', Carbon::today());
 
             if (!empty($division)) {
                 $attendance_count->whereHas('participant', function ($q) use ($division) {
@@ -113,59 +113,59 @@ class RouteController extends Controller
             $this->total_student = Attendance::whereHas('participant', function ($q) {
                 $q->where('participant_role', 'student');
             })
-                ->whereDate('created_at', Carbon::today())
+                ->whereDate('date_recorded', Carbon::today())
                 ->count();
 
             $this->total_coach = Attendance::whereHas('participant', function ($q) {
                 $q->where('participant_role', 'coach');
             })
-                ->whereDate('created_at', Carbon::today())
+                ->whereDate('date_recorded', Carbon::today())
                 ->count();
 
-            $yesterday_total = Attendance::whereDate('created_at', Carbon::yesterday())->count();
+            $yesterday_total = Attendance::whereDate('date_recorded', Carbon::yesterday())->count();
             $yesterday_student = Attendance::whereHas('participant', function ($q) {
                 $q->where('participant_role', 'student');
-            })->whereDate('created_at', Carbon::yesterday())->count();
+            })->whereDate('date_recorded', Carbon::yesterday())->count();
 
             $yesterday_coach = Attendance::whereHas('participant', function ($q) {
                 $q->where('participant_role', 'coach');
-            })->whereDate('created_at', Carbon::yesterday())->count();
+            })->whereDate('date_recorded', Carbon::yesterday())->count();
         } else if (Auth::user()->role == 'superintendent') {
 
             $this->total_attendance = Attendance::with(["participant", "user"])
                 ->whereHas('participant', function ($q) {
                     $q->where('division', Auth::user()->division);
                 })
-                ->whereDate('created_at', Carbon::today())
+                ->whereDate('date_recorded', Carbon::today())
                 ->count();
 
             $this->total_student = Attendance::whereHas('participant', function ($q) {
                 $q->where('participant_role', 'student')
                     ->where('division', Auth::user()->division);
             })
-                ->whereDate('created_at', Carbon::today())
+                ->whereDate('date_recorded', Carbon::today())
                 ->count();
 
             $this->total_coach = Attendance::whereHas('participant', function ($q) {
                 $q->where('participant_role', 'coach')
                     ->where('division', Auth::user()->division);
             })
-                ->whereDate('created_at', Carbon::today())
+                ->whereDate('date_recorded', Carbon::today())
                 ->count();
 
             $yesterday_total = Attendance::whereHas('participant', function ($q) {
                 $q->where('division', Auth::user()->division);
-            })->whereDate('created_at', Carbon::yesterday())->count();
+            })->whereDate('date_recorded', Carbon::yesterday())->count();
 
             $yesterday_student = Attendance::whereHas('participant', function ($q) {
                 $q->where('participant_role', 'student')
                     ->where('division', Auth::user()->division);
-            })->whereDate('created_at', Carbon::yesterday())->count();
+            })->whereDate('date_recorded', Carbon::yesterday())->count();
 
             $yesterday_coach = Attendance::whereHas('participant', function ($q) {
                 $q->where('participant_role', 'coach')
                     ->where('division', Auth::user()->division);
-            })->whereDate('created_at', Carbon::yesterday())->count();
+            })->whereDate('date_recorded', Carbon::yesterday())->count();
         }
 
         $this->increase_attendance = $this->calculatePercentageIncrease($this->total_attendance, $yesterday_total);
